@@ -43,7 +43,6 @@ set clipboard=unnamedplus
 " enable line numbers
 :set ruler
 :set number
-:set relativenumber
 :set showcmd
 
 " set tab == 2 spaces
@@ -118,25 +117,7 @@ nmap <silent> <leader>k :NERDTreeToggle<cr>
 " expand to the path of the file in the current buffer
 nmap <silent> <leader>y :NERDTreeFind<cr>
 
-" map fuzzyfinder (CtrlP) plugin
-" nmap <silent> <leader>t :CtrlP<cr>
-" nmap <silent> <leader>r :CtrlPBuffer<cr>
-" let g:ctrlp_map='<leader>o'
-" let g:ctrlp_dotfiles=1
-" let g:ctrlp_working_path_mode = 'ra'
-
-" CtrlP ignore patterns
-" let g:ctrlp_custom_ignore = {
-"             \ 'dir': '\.git$\|node_modules$\|\.hg$\|\.svn$',
-"             \ 'file': '\.exe$\|\.so$'
-"             \ }
-
-" search the nearest ancestor that contains .git, .hg, .svn
-" let g:ctrlp_working_path_mode = 2
-
 let g:airline_powerline_fonts = 1
-" let g:airline_theme = 'molokai'
-" :Tmuxline airline
 
 " GitGutter
 set updatetime=500
@@ -149,10 +130,6 @@ map <leader>x :YcmCompleter GoToDefinition<cr>
 map <leader>c :YcmCompleter GoToDeclaration<cr>
 map <leader>t :YcmCompleter GetType<cr>
 map <leader>i :YcmCompleter GoToInclude<cr>
-" let g:ycm_semantic_triggers = {
-" \  'tex'  : ['\ref{','\cite{'],
-" \ }
-" highlight YcmErrorSection guibg=#ff0000 guifg=#000000
 
 nmap <leader>s :call VimuxRunCommand("git status")<cr>
 
@@ -161,24 +138,3 @@ map <silent> <leader>w <Plug>CamelCaseMotion_w
 map <silent> <leader>b <Plug>CamelCaseMotion_b
 map <silent> <leader>e <Plug>CamelCaseMotion_e
 map <silent> <leader>ge <Plug>CamelCaseMotion_ge
-" sunmap w
-" sunmap b
-" sunmap e
-" sunmap ge
-
-" Latex
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-" filetype plugin on
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-" set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: This enables automatic indentation as you type.
-" filetype indent on
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-" let g:tex_flavor='latex'

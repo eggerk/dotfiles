@@ -85,11 +85,11 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # For tmux.
-export TERM="screen-256color"
+# export TERM="screen-256color"
 
 # Make sure we always hide hidden files in Nautilus.
 # For some reason, this is set to true occasionally.
-gsettings set org.gtk.Settings.FileChooser show-hidden false
+# gsettings set org.gtk.Settings.FileChooser show-hidden false
 
 alias excel='wine ~/.wine/drive_c/Program\ Files/Microsoft\ Office/Office14/EXCEL.EXE'
 alias eclipse_java='/home/eggerk/programming/android_developer_tools/eclipse/eclipse'

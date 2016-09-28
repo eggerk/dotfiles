@@ -191,8 +191,10 @@ bindsym $mod+Shift+p exec /home/eggerk/dotfiles/shutdown_gui
 
 # See https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
+#increase sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse sset Master 5%+; /home/eggerk/dotfiles/volume_notification.sh"
+#decrease sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse sset Master 5%-; /home/eggerk/dotfiles/volume_notification.sh"
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 
 # Screen brightness controls

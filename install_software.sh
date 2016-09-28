@@ -11,7 +11,7 @@ sudo apt-get install -y backintime-gnome blueman build-essentials clementine \
     cmake colordiff default-jre gimp git gparted htop icedtea-7-jre-jamvm \
     inkscape network-manager-vpnc-gnome pdfshuffler \
     playonlinux psensor qtbase5-doc qtbase5-doc-html qtbase5-examples \
-    rar redshift redshift-gtk synaptic texlive-full \
+    rar redshift redshift-gtk synaptic texlive-full xfce4-notifyd \
     unrar virtualbox vlc vlc-plugin-fluidsynth vlc-plugin-notify wine1.6 \
     xautomation xbindkeys xwiimote vim scrot kupfer zsh feh tmux i3
 
@@ -46,3 +46,7 @@ sudo apt-get install -y spotify-client
 # clean up
 cd ..
 rm -rf setup_install_temp
+
+# Install vim plugins
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall # Needs to be manually terminated

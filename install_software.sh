@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# Latest i3wm
+echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" >> /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get --allow-unauthenticated install sur5r-keyring
+sudo apt-get update
+
+# Install everything
+sudo apt-get install -y backintime-gnome blueman build-essentials clementine \
+    cmake colordiff default-jre gimp git gparted htop icedtea-7-jre-jamvm \
+    inkscape network-manager-vpnc-gnome pdfshuffler \
+    playonlinux psensor qtbase5-doc qtbase5-doc-html qtbase5-examples \
+    rar redshift redshift-gtk synaptic texlive-full \
+    unrar virtualbox vlc vlc-plugin-fluidsynth vlc-plugin-notify wine1.6 \
+    xautomation xbindkeys xwiimote vim scrot kupfer zsh feh tmux i3
+
+mkdir setup_install_temp
+cd setup_install_temp
+
+# Download and install playerctl
+wget -O "playerctl.deb" "https://github.com/acrisci/playerctl/releases/download/v0.5.0/playerctl-0.5.0_amd64.deb"
+sudo dpkg -i playerctl.deb
+
+# Dropbox
+# wget -O "dropbox.deb" "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb"
+# sudo dpkg -i dropbox.deb
+
+# Steam
+wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb
+sudo dpkg -i steam.deb
+
+# Spotify
+# 1. Add the Spotify repository signing key to be able to verify downloaded packages
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+
+# 2. Add the Spotify repository
+echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+
+# 3. Update list of available packages
+sudo apt-get update
+
+# 4. Install Spotify
+sudo apt-get install -y spotify-client
+
+# clean up
+cd ..
+rm -rf setup_install_temp

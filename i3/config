@@ -183,8 +183,7 @@ bar {
 }
 
 # keyboard layout
-# exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut"
-# exec_always --no-startup-id "xmodmap ~/.Xmodmap"
+exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut"
 
 # lock computer
 bindsym $mod+Shift+x exec i3lock -c 000000
@@ -222,6 +221,7 @@ exec_always xbindkeys
 exec --no-startup-id nm-applet
 # exec --no-startup-id gnome-sound-applet
 # bindsym $mod+Shift+x exec "gnome-screensaver-command --lock "
+exec --no-startup-id redshift-gtk
 
 # start firefox
 exec firefox
@@ -231,3 +231,8 @@ assign [class = "Thunderbird"] $workspace2
 
 # transparency for notifications etc.
 # exec compton
+
+# screenshot
+bindsym --release Print exec "scrot -e 'mv $f ~/Pictures/screenshots'"
+bindsym --release Shift+Print exec "notify-send -t 1500 'Select area for screenshot.'; scrot -s -e 'mv $f ~/Pictures/screenshots'"
+bindsym --release control+Print exec "scrot -u -e 'mv $f ~/Pictures/screenshots'"

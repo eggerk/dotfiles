@@ -28,7 +28,11 @@ OUTPUT="$OUTPUT] ($VOLUME%)"
 
 # send notification
 pkill xfce4-notifyd # hacky
-/home/eggerk/dotfiles/notify-send.sh/notify-send.sh -p -t 1000 -i audio-headphones "Volume Level" $OUTPUT
+notify-send -i audio-headphones "Volume Level" $OUTPUT
 
 # play sound
-paplay /usr/share/sounds/ubuntu/stereo/message.ogg
+MUSIC_PLAYING=$(pacmd list-sink-inputs | grep -c 'state: RUNNING')
+if [ $MUSIC_PLAYING -ne 1 ]
+then
+  paplay /usr/share/sounds/ubuntu/stereo/message.ogg
+fi

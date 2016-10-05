@@ -113,13 +113,13 @@ set $workspace10 "10 "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
+bindsym $mod+8 workspace $workspace8
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
 bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace $workspace6
 bindsym $mod+7 workspace $workspace7
-bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
@@ -244,7 +244,7 @@ exec --no-startup-id qtpass
 exec firefox
 assign [class="Firefox"] $workspace1
 exec thunderbird
-assign [class = "Thunderbird"] $workspace2
+assign [class = "Thunderbird"] $workspace8
 
 # transparency for notifications etc.
 # exec compton

@@ -28,3 +28,7 @@ rm "$HOME_FOLDER/.config/i3status/config" > /dev/null
 ln -s "$DOTFILES_PATH/i3/statusbar" "$HOME_FOLDER/.config/i3status/config"
 rm "$HOME_FOLDER/.i3blocks.conf" > /dev/null
 ln -s "$DOTFILES_PATH/i3/i3blocks.conf" "$HOME_FOLDER/.i3blocks.conf"
+
+# xbindkeys
+rm "$HOME_FOLDER/.xbindkeysrc" > /dev/null
+ln -s "$DOTFILES_PATH/xbindkeysrc" "$HOME_FOLDER/.xbindkeysrc"

@@ -14,6 +14,9 @@ sudo apt-get install backintime-gnome blueman build-essentials clementine \
     unrar virtualbox vlc vlc-plugin-fluidsynth vlc-plugin-notify wine1.6 \
     xautomation xbindkeys xwiimote vim scrot zsh feh tmux i3 rofi
 
+# install oh-my-zsh
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
 mkdir setup_install_temp
 cd setup_install_temp
 

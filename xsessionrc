@@ -1,0 +1,4 @@
+# Map button 9 (top side button) to button 2 (middle button)
+logitech_mouse_id=$(xinput | grep "Logitech MX Master" | awk {'print substr($6,4,2)'})
+#echo $logitech_mouse_id > ~/logitech_mouse_id
+xinput set-button-map $logitech_mouse_id 1 2 3 4 5 13 10 8 9 10 11 12 13 14 15 16

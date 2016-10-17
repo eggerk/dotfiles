@@ -32,3 +32,7 @@ ln -s "$DOTFILES_PATH/i3/i3blocks.conf" "$HOME_FOLDER/.i3blocks.conf"
 # xbindkeys
 rm "$HOME_FOLDER/.xbindkeysrc" > /dev/null
 ln -s "$DOTFILES_PATH/xbindkeysrc" "$HOME_FOLDER/.xbindkeysrc"
+
+# xsessionrc
+rm "$HOME_FOLDER/.xsessionrc" > /dev/null
+ln -s "$DOTFILES_PATH/xsessionrc" "$HOME_FOLDER/.xsessionrc"

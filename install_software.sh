@@ -7,13 +7,12 @@ sudo apt-get --allow-unauthenticated install sur5r-keyring
 sudo apt-get update
 
 # Install everything
-sudo apt-get install -y backintime-gnome blueman build-essentials clementine \
+sudo apt-get install backintime-gnome blueman build-essentials clementine \
     cmake colordiff default-jre gimp git gparted htop icedtea-7-jre-jamvm \
     inkscape network-manager-vpnc-gnome pdfshuffler \
-    playonlinux psensor qtbase5-doc qtbase5-doc-html qtbase5-examples \
-    rar redshift redshift-gtk synaptic texlive-full xfce4-notifyd \
+    playonlinux rar redshift redshift-gtk synaptic texlive-full xfce4-notifyd \
     unrar virtualbox vlc vlc-plugin-fluidsynth vlc-plugin-notify wine1.6 \
-    xautomation xbindkeys xwiimote vim scrot kupfer zsh feh tmux i3
+    xautomation xbindkeys xwiimote vim scrot zsh feh tmux i3 rofi
 
 mkdir setup_install_temp
 cd setup_install_temp

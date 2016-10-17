@@ -38,9 +38,10 @@ bindsym $mod+Shift+q kill
 # The middle button over a titlebar kills the window
 bindsym --release Shift+button2 kill
 
-# start kupfer
-exec kupfer --no-splash
-bindsym $mod+d exec kupfer
+# rofi
+# bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+bindsym $mod+d exec "rofi -modi drun,run,window -show drun -fuzzy"
+bindsym $mod+c exec rofi -show window
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
@@ -200,7 +201,7 @@ bar {
 exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut"
 
 # lock computer
-bindsym $mod+Shift+x exec i3lock -c 000000
+bindsym $mod+Shift+x exec "i3lock; sleep 0.2s; xset dpms force off; feh --bg-fill --randomize /home/eggerk/Pictures/wallpapers/*"
 bindsym $mod+Shift+p exec /home/eggerk/dotfiles/shutdown_gui
 
 # See https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
@@ -253,3 +254,5 @@ assign [class = "Thunderbird"] $workspace8
 bindsym --release Print exec "scrot -e 'mv $f ~/Pictures/screenshots'"
 bindsym --release Shift+Print exec "notify-send -t 1500 'Select area for screenshot.'; scrot -s -e 'mv $f ~/Pictures/screenshots'"
 bindsym --release control+Print exec "scrot -u -e 'mv $f ~/Pictures/screenshots'"
+
+exec unity-settings-daemon

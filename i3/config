@@ -198,7 +198,7 @@ bar {
 }
 
 # keyboard layout
-exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut"
+exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut -option caps:escape"
 
 # lock computer
 bindsym $mod+Shift+x exec "i3lock; sleep 0.2s; xset dpms force off; feh --bg-fill --randomize /home/eggerk/Pictures/wallpapers/*"

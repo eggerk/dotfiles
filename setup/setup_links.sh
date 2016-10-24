@@ -23,7 +23,7 @@ ln -sf "$DOTFILES_PATH/i3/statusbar" "$HOME_FOLDER/.config/i3status/config"
 ln -sf "$DOTFILES_PATH/i3/i3blocks.conf" "$HOME_FOLDER/.i3blocks.conf"
 
 # xbindkeys
-ln -sf "$DOTFILES_PATH/xbindkeysrc" "$HOME_FOLDER/.xbindkeysrc"
+ln -sf "$DOTFILES_PATH/X/xbindkeysrc" "$HOME_FOLDER/.xbindkeysrc"
 
 # xsessionrc
-ln -sf "$DOTFILES_PATH/xsessionrc" "$HOME_FOLDER/.xsessionrc"
+ln -sf "$DOTFILES_PATH/X/xsessionrc" "$HOME_FOLDER/.xsessionrc"

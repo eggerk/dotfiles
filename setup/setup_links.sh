@@ -1,9 +1,7 @@
 #!/bin/sh
 
 HOME_FOLDER=/home/$USER
-FILE_PATH=$(dirname "$0")
-CURRENT_DIR=$(pwd)
-DOTFILES_PATH="$FILEPATH$CURRENT_DIR/.."
+DOTFILES_PATH="/home/eggerk/dotfiles"
 
 # zshrc
 ln -sf "$DOTFILES_PATH/zsh/zshrc" "$HOME_FOLDER/.zshrc"
@@ -13,6 +11,7 @@ ln -sf "$DOTFILES_PATH/vim/vimrc" "$HOME_FOLDER/.vimrc"
 
 # tmux
 ln -sf "$DOTFILES_PATH/tmux/tmux.conf" "$HOME_FOLDER/.tmux.conf"
+rm -rf "$HOME_FOLDER/.tmux"
 ln -sf "$DOTFILES_PATH/tmux/tmux" "$HOME_FOLDER/.tmux"
 
 # i3

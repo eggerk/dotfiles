@@ -7,12 +7,14 @@ sudo apt-get --allow-unauthenticated install sur5r-keyring
 sudo apt-get update
 
 # Install everything
-sudo apt-get install backintime-gnome blueman build-essentials clementine \
-    cmake colordiff default-jre gimp git gparted htop icedtea-7-jre-jamvm \
+sudo apt-get install backintime-gnome blueman build-essential clementine \
+    cmake colordiff default-jre gimp git gparted htop \
     inkscape network-manager-vpnc-gnome pdfshuffler \
     playonlinux rar redshift redshift-gtk synaptic texlive-full xfce4-notifyd \
     unrar virtualbox vlc vlc-plugin-fluidsynth vlc-plugin-notify wine1.6 \
-    xautomation xbindkeys xwiimote vim scrot zsh feh tmux i3 rofi
+    xautomation xbindkeys xwiimote vim vim-gtk scrot zsh feh tmux i3 rofi
+
+echo "apt-get completed ========================"
 
 # install oh-my-zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"

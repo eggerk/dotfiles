@@ -113,8 +113,8 @@ set $workspace9 "9"
 set $workspace10 "10 "
 
 # switch to workspace
-bindsym $mod+1 workspace $workspace1
 bindsym $mod+8 workspace $workspace8
+bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
@@ -135,6 +135,8 @@ bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
+
+exec i3 workspace $workspace1
 
 # spotify, clementine on workspace 10
 assign [class="Clementine"] $workspace10
@@ -193,12 +195,8 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 bar {
         position bottom
         font pango:Ubuntu 10, FontAwesome 10
-        tray_output eDP1
         status_command i3status
 }
-
-# keyboard layout
-exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut -option caps:escape"
 
 # lock computer
 bindsym $mod+Shift+x exec "i3lock; sleep 0.2s; xset dpms force off; feh --bg-fill --randomize /home/eggerk/Pictures/wallpapers/*"
@@ -239,7 +237,7 @@ exec --no-startup-id nm-applet
 # exec --no-startup-id gnome-sound-applet
 # bindsym $mod+Shift+x exec "gnome-screensaver-command --lock "
 exec --no-startup-id redshift-gtk
-exec --no-startup-id qtpass
+# exec --no-startup-id qtpass
 
 # start firefox
 exec firefox
@@ -255,4 +253,12 @@ bindsym --release Print exec "scrot -e 'mv $f ~/Pictures/screenshots'"
 bindsym --release Shift+Print exec "notify-send -t 1500 'Select area for screenshot.'; scrot -s -e 'mv $f ~/Pictures/screenshots'"
 bindsym --release control+Print exec "scrot -u -e 'mv $f ~/Pictures/screenshots'"
 
+# use unity/gnome settings
 exec unity-settings-daemon
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+
+# keyboard layout
+exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut -option caps:escape"
+# do it again to make sure
+exec --no-startup-id "sleep 5; setxkbmap -model pc105 -layout us_umlaut -option caps:escape"

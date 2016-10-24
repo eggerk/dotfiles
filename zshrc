@@ -13,7 +13,7 @@ ZSH_THEME="gnzh"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
+# HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -25,7 +25,7 @@ HYPHEN_INSENSITIVE="true"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
+# DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -54,7 +54,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/home/eggerk/ETH/SemesterProject/lib/gcc-arm-none-eabi-4_7-2014q2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -94,10 +94,8 @@ gsettings set org.gtk.Settings.FileChooser show-hidden false
 alias excel='wine ~/.wine/drive_c/Program\ Files/Microsoft\ Office/Office14/EXCEL.EXE'
 alias eclipse_java='/home/eggerk/programming/android_developer_tools/eclipse/eclipse'
 
-source ~/.dotfiles/setupros.sh
+source ~/dotfiles/setupros.sh
 export GRB_LICENSE_FILE='/home/eggerk/catkin_ws/gurobi.lic'
-alias qtcreator36='cd /home/eggerk/software/qtcreator-3.6.0; /home/eggerk/software/qtcreator-3.6.0/bin/qtcreator; cd -'
-alias qtcreator40='cd /home/eggerk/software/qtcreator-4.0.0; /home/eggerk/software/qtcreator-4.0.0/bin/qtcreator; cd -'
 
 alias -s cc='vim'
 alias -s cpp='vim'

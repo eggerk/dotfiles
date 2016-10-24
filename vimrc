@@ -1,11 +1,12 @@
 " load plugins from vundle
+set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
 " let vundle manage vundle
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " utilities
 Plugin 'scrooloose/nerdtree' " file drawer, open with :NERDTreeToggle
@@ -63,8 +64,8 @@ highlight ColorColumn ctermbg=magenta
 au BufNewFile,BufRead *.tex setlocal colorcolumn=
 
 " enable clang format
-map <C-F> :pyf /usr/share/vim/addons/syntax/clang-format-3.4.py<cr>
-imap <C-F> <c-o>:pyf /usr/share/vim/addons/syntax/clang-format-3.4.py<cr>
+map <C-F> :py3f /usr/share/vim/addons/syntax/clang-format-3.8.py<cr>
+imap <C-F> <c-o>:py3f /usr/share/vim/addons/syntax/clang-format-3.8.py<cr>
 
 " use ctrl-hjkl to switch split
 nnoremap <C-J> <C-W><C-J>
@@ -76,9 +77,9 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
-set undodir=~/.vim/undo//
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
+set undodir=~/.vim/undo/
+set backupdir=~/.vim/backup/
+set directory=~/.vim/swap/
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => User Interface

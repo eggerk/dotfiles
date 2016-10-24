@@ -94,7 +94,7 @@ gsettings set org.gtk.Settings.FileChooser show-hidden false
 alias excel='wine ~/.wine/drive_c/Program\ Files/Microsoft\ Office/Office14/EXCEL.EXE'
 alias eclipse_java='/home/eggerk/programming/android_developer_tools/eclipse/eclipse'
 
-source ~/dotfiles/setupros.sh
+source ~/dotfiles/ros/setupros.sh
 export GRB_LICENSE_FILE='/home/eggerk/catkin_ws/gurobi.lic'
 
 alias -s cc='vim'

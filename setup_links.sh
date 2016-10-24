@@ -6,14 +6,14 @@ CURRENT_DIR=$(pwd)
 DOTFILES_PATH="$FILEPATH$CURRENT_DIR"
 
 # zshrc
-ln -s "$DOTFILES_PATH/zshrc" "$HOME_FOLDER/.zshrc"
+ln -sf "$DOTFILES_PATH/zsh/zshrc" "$HOME_FOLDER/.zshrc"
 
 # vimrc
-ln -sf "$DOTFILES_PATH/vimrc" "$HOME_FOLDER/.vimrc"
+ln -sf "$DOTFILES_PATH/vim/vimrc" "$HOME_FOLDER/.vimrc"
 
 # tmux
-ln -sf "$DOTFILES_PATH/tmux.conf" "$HOME_FOLDER/.tmux.conf"
-ln -sf "$DOTFILES_PATH/tmux" "$HOME_FOLDER/.tmux"
+ln -sf "$DOTFILES_PATH/tmux/tmux.conf" "$HOME_FOLDER/.tmux.conf"
+ln -sf "$DOTFILES_PATH/tmux/tmux" "$HOME_FOLDER/.tmux"
 
 # i3
 mkdir -p "$HOME_FOLDER/.config/i3"

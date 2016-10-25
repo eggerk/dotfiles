@@ -6,6 +6,9 @@ sudo apt-get update
 sudo apt-get --allow-unauthenticated install sur5r-keyring
 sudo apt-get update
 
+# Latest rofi
+sudo add-apt-repository ppa:aguignard/ppa
+
 # Install everything
 sudo apt-get install backintime-gnome blueman build-essential clementine \
     cmake colordiff default-jre gimp git gparted htop \

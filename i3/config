@@ -227,15 +227,17 @@ bindsym $mod+Shift+s exec playerctl play-pause
 bindsym $mod+Shift+d exec playerctl next
 bindsym $mod+Shift+a exec playerctl previous
 
+# use unity/gnome settings
+exec unity-settings-daemon
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+
 # set wallpaper
 exec_always feh --bg-fill --randomize /home/eggerk/Pictures/wallpapers/*
 exec_always xbindkeys
 
 # network applet
-# exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
-# exec --no-startup-id gnome-sound-applet
-# bindsym $mod+Shift+x exec "gnome-screensaver-command --lock "
 exec --no-startup-id redshift-gtk
 # exec --no-startup-id qtpass
 
@@ -252,11 +254,6 @@ assign [class = "Thunderbird"] $workspace8
 bindsym --release Print exec "scrot -e 'mv $f ~/Pictures/screenshots'"
 bindsym --release Shift+Print exec "notify-send -t 1500 'Select area for screenshot.'; scrot -s -e 'mv $f ~/Pictures/screenshots'"
 bindsym --release control+Print exec "scrot -u -e 'mv $f ~/Pictures/screenshots'"
-
-# use unity/gnome settings
-exec unity-settings-daemon
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
-exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
 # keyboard layout
 exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut -option caps:escape"

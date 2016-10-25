@@ -100,3 +100,4 @@ export GRB_LICENSE_FILE='/home/eggerk/catkin_ws/gurobi.lic'
 alias -s cc='vim'
 alias -s cpp='vim'
 alias -s h='vim'
+export PATH="/usr/lib/ccache:$PATH"

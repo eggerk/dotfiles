@@ -22,6 +22,7 @@ Plugin 'benmills/vimux'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'lervag/vimtex'
 Plugin 'tpope/vim-obsession'
+Plugin 'richq/vim-cmake-completion'
 
 call vundle#end()
 filetype plugin indent on
@@ -80,7 +81,10 @@ set splitright
 set undodir=~/.vim/undo/
 set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/
+
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
+autocmd FileType cmake setlocal commentstring=#\ %s
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => User Interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""

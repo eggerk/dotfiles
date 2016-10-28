@@ -13,7 +13,7 @@
 
 echo 1682 > /sys/class/backlight/intel_backlight/brightness
 
-# disable turboboost
+# Disable turboboost.
 sudo modprobe msr
 cores=$(cat /proc/cpuinfo | grep processor | awk '{print $3}')
 for core in $cores; do

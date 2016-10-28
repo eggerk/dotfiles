@@ -101,6 +101,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # workspaces
+set $workspace0 "0"
 set $workspace1 "1"
 set $workspace2 "2"
 set $workspace3 "3"
@@ -113,7 +114,7 @@ set $workspace9 "9"
 set $workspace10 "10 "
 
 # switch to workspace
-bindsym $mod+8 workspace $workspace8
+bindsym $mod+grave workspace $workspace0
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
@@ -122,9 +123,11 @@ bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace $workspace6
 bindsym $mod+7 workspace $workspace7
 bindsym $mod+9 workspace $workspace9
+bindsym $mod+8 workspace $workspace8
 bindsym $mod+0 workspace $workspace10
 
 # move focused container to workspace
+bindsym $mod+Shift+grave move container to workspace $workspace0
 bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
 bindsym $mod+Shift+3 move container to workspace $workspace3
@@ -142,7 +145,6 @@ exec i3 workspace $workspace1
 assign [class="Clementine"] $workspace10
 assign [class="Spotify"] $workspace10
 for_window [class="Spotify"] move to workspace $workspace10
-assign [class="Steam"] $workspace9
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -245,7 +247,7 @@ exec --no-startup-id redshift-gtk
 exec firefox
 assign [class="Firefox"] $workspace1
 exec thunderbird
-assign [class = "Thunderbird"] $workspace8
+assign [class = "Thunderbird"] $workspace0
 
 # transparency for notifications etc.
 # exec compton

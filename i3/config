@@ -244,9 +244,9 @@ exec --no-startup-id redshift-gtk
 # exec --no-startup-id qtpass
 
 # start firefox
-exec firefox
+exec "sleep 2; firefox"
 assign [class="Firefox"] $workspace1
-exec thunderbird
+exec "sleep 2; thunderbird"
 assign [class = "Thunderbird"] $workspace0
 
 # transparency for notifications etc.

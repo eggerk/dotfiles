@@ -23,6 +23,7 @@ Plugin 'bkad/CamelCaseMotion'
 Plugin 'lervag/vimtex'
 Plugin 'tpope/vim-obsession'
 Plugin 'richq/vim-cmake-completion'
+Plugin 'vim-scripts/DoxygenToolkit.vim'
 
 call vundle#end()
 filetype plugin indent on

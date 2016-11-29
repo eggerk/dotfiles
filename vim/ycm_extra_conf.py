@@ -133,9 +133,33 @@ def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
   return new_flags
 
 
+def IsSourceFile( filename ):
+  extension = os.path.splitext( filename )[ 1 ]
+  return extension in [ '.c', '.cxx', '.cpp', '.cc' ]
+
+
 def IsHeaderFile( filename ):
   extension = os.path.splitext( filename )[ 1 ]
   return extension in [ '.h', '.hxx', '.hpp', '.hh' ]
+
+
+def CheckFolderForCompilationInfo( folder, filename ):
+  basename = os.path.splitext( filename )[ 0 ]
+  for extension in SOURCE_EXTENSIONS:
+    replacement_file = basename + extension
+    if os.path.exists( replacement_file ):
+      compilation_info = database.GetCompilationInfoForFile(
+        replacement_file )
+      if compilation_info.compiler_flags_:
+        return compilation_info
+
+  all_elements_in_dir = os.listdir(folder);
+  for e in all_elements_in_dir:
+    new_path = folder + '/' + e
+    if os.path.isdir(new_path):
+      return CheckFolderForCompilationInfo(new_path, filename)
+
+  return None
 
 
 def GetCompilationInfoForFile( filename ):
@@ -144,14 +168,34 @@ def GetCompilationInfoForFile( filename ):
   # corresponding source file, if any. If one exists, the flags for that file
   # should be good enough.
   if IsHeaderFile( filename ):
-    basename = os.path.splitext( filename )[ 0 ]
-    for extension in SOURCE_EXTENSIONS:
-      replacement_file = basename + extension
-      if os.path.exists( replacement_file ):
-        compilation_info = database.GetCompilationInfoForFile(
-          replacement_file )
-        if compilation_info.compiler_flags_:
-          return compilation_info
+    basename = os.path.dirname(filename)
+    filename_without_path = os.path.basename(filename)
+    compilation_info = CheckFolderForCompilationInfo(".", filename_without_path)
+
+    src_path = ""
+    src_found = False
+    if compilation_info == None:
+      # Check for source folder.
+      for i in range(1, 5):
+        if src_found:
+          break
+        basename = basename + "/.."
+        all_elements_in_dir = os.listdir(basename);
+        for e in all_elements_in_dir:
+          src_path = basename + '/' + e
+          if e == 'src' and os.path.isdir(src_path):
+            compilation_info = CheckFolderForCompilationInfo(src_path, filename)
+            src_found = True
+            break
+
+      if compilation_info == None and src_path != "":
+        # Use first entry in src folder.
+        all_elements_in_dir = os.listdir(src_path);
+        for e in all_elements_in_dir:
+          file_path = src_path + '/' + e
+          if IsSourceFile(file_path):
+            return database.GetCompilationInfoForFile( file_path )
+
     return None
   return database.GetCompilationInfoForFile( filename )
 

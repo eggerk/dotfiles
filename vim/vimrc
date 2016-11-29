@@ -59,9 +59,10 @@ set foldmethod=syntax
 set foldnestmax=2
 set foldlevel=1
 
+set cursorline
+
 " line at 80 chars
 set colorcolumn=81
-" highlight ColorColumn ctermbg=7
 highlight ColorColumn ctermbg=magenta
 au BufNewFile,BufRead *.tex setlocal colorcolumn=
 
@@ -144,3 +145,12 @@ map <silent> <leader>w <Plug>CamelCaseMotion_w
 map <silent> <leader>b <Plug>CamelCaseMotion_b
 map <silent> <leader>e <Plug>CamelCaseMotion_e
 map <silent> <leader>ge <Plug>CamelCaseMotion_ge
+
+" Doxygen
+let g:DoxygenToolkit_commentType = "C++"
+let g:DoxygenToolkit_briefTag_pre="\\brief "
+let g:DoxygenToolkit_paramTag_pre="\\param "
+let g:DoxygenToolkit_returnTag="\\returns "
+let g:DoxygenToolkit_templateParamTag_pre="\\tparam "
+let g:DoxygenToolkit_classTag="\\class"
+let g:DoxygenToolkit_compactDoc="yes"

@@ -220,7 +220,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 # Touchpad controls
-# bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+bindsym $mod+shift+t exec /home/eggerk/dotfiles/X/toggle_touchpad.sh
 
 # Media player controls
 # Needs https://github.com/acrisci/playerctl/releases

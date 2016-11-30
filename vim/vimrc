@@ -137,6 +137,7 @@ map <leader>x :YcmCompleter GoToDefinition<cr>
 map <leader>c :YcmCompleter GoToDeclaration<cr>
 map <leader>t :YcmCompleter GetType<cr>
 map <leader>i :YcmCompleter GoToInclude<cr>
+map <leader>h :YcmCompleter GetDoc<cr>
 
 nmap <leader>s :call VimuxRunCommand("git status")<cr>
 

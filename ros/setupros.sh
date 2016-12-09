@@ -22,4 +22,17 @@ source ${CATKIN_WS}/devel/setup.zsh
 alias ckws='$CATKIN_WS'
 
 alias ckthis='catkin build --this --no-deps'
+alias cb='ckthis'
+alias cbd='catkin build --this'
 alias cktest='catkin run_tests --this --no-deps'
+
+alias muma1='cd ~/catkin_ws_1/src/multiagent_mapping/'
+alias muma2='cd ~/catkin_ws/src/multiagent_mapping2/'
+
+function muma() {
+  if [[ "$CATKIN_FOLDER" == "catkin_ws" ]] ; then
+    muma2
+  else
+    muma1
+  fi
+}

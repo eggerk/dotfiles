@@ -23,8 +23,11 @@ alias ckws='$CATKIN_WS'
 
 alias ckthis='catkin build --this --no-deps'
 alias cb='ckthis'
+alias cbl='ckthis --no-status | less'
 alias cbd='catkin build --this'
 alias cktest='catkin run_tests --this --no-deps'
+alias ct='cktest'
+alias ctl='ct --no-status | less'
 
 alias muma1='cd ~/catkin_ws_1/src/multiagent_mapping/'
 alias muma2='cd ~/catkin_ws/src/multiagent_mapping2/'

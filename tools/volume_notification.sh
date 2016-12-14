@@ -28,6 +28,7 @@ OUTPUT="$OUTPUT] ($VOLUME%)"
 
 # send notification
 pkill xfce4-notifyd # hacky
+pkill dunst
 notify-send -i audio-headphones "Volume Level" $OUTPUT
 
 # play sound

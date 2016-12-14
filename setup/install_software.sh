@@ -17,6 +17,9 @@ sudo apt-get install backintime-gnome blueman build-essential clementine \
     unrar virtualbox vlc vlc-plugin-fluidsynth vlc-plugin-notify wine1.6 \
     xautomation xbindkeys xwiimote vim vim-gtk scrot zsh feh tmux i3 rofi
 
+# Disable nautilus Desktop rendering.
+gsettings set org.gnome.desktop.background show-desktop-icons false
+
 echo "apt-get completed ========================"
 
 # install oh-my-zsh

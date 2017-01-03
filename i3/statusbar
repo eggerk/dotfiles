@@ -19,7 +19,6 @@ order += "disk /home"
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "battery 0"
-# order += "volume b"
 order += "volume master"
 order += "load"
 order += "cpu_temperature 0"
@@ -67,15 +66,7 @@ disk "/home" {
 volume master {
         format = "VOL: %volume"
         format_muted = "VOL: muted (%volume)"
-        device = "pulse:1"
-        mixer = "Master"
-        mixer_idx = 0
-}
-
-volume b {
-        format = "(0) ♪: %volume"
-        format_muted = "(0) ♪: muted (%volume)"
-        device = "pulse:0"
+        device = "default"
         mixer = "Master"
         mixer_idx = 0
 }

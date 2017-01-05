@@ -91,7 +91,7 @@ function volume_notification() {
 
   if [ $MUSIC_PLAYING -ne 1 ]
   then
-    paplay /usr/share/sounds/ubuntu/stereo/message.ogg
+    paplay -d $CURRENT_AUDIO_OUTPUT /usr/share/sounds/ubuntu/stereo/message.ogg
   fi
 }
 

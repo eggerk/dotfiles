@@ -30,7 +30,7 @@ alias ct='cktest'
 alias ctl='ct --no-status | less'
 
 alias muma1='cd ~/catkin_ws_1/src/multiagent_mapping/'
-alias muma2='cd ~/catkin_ws/src/multiagent_mapping2/'
+alias muma2='cd ~/catkin_ws/src/maplab/'
 
 function muma() {
   if [[ "$CATKIN_FOLDER" == "catkin_ws" ]] ; then

@@ -24,5 +24,11 @@ ln -sf "$DOTFILES_PATH/i3/i3blocks.conf" "$HOME_FOLDER/.i3blocks.conf"
 # xbindkeys
 ln -sf "$DOTFILES_PATH/X/xbindkeysrc" "$HOME_FOLDER/.xbindkeysrc"
 
-# xsessionrc
+# x stuff
 ln -sf "$DOTFILES_PATH/X/xsessionrc" "$HOME_FOLDER/.xsessionrc"
+ln -sf "$DOTFILES_PATH/X/xprofile" "$HOME_FOLDER/.xprofile"
+ln -sf "$DOTFILES_PATH/X/Xresources" "$HOME_FOLDER/.Xresources"
+
+# font config
+mkdir -p "$HOME_FOLDER/fontconfig"
+ln -sf "$DOTFILES_PATH/X/fonts.conf" "$HOME_FOLDER/fontconfig/fonts.conf"

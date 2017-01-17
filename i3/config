@@ -235,8 +235,8 @@ bindsym $mod+Shift+d exec playerctl next
 bindsym $mod+Shift+a exec playerctl previous
 
 # use unity/gnome settings
-exec unity-settings-daemon
-exec /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+# exec unity-settings-daemon
+# exec /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
 # set wallpaper

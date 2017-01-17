@@ -98,3 +98,5 @@ alias -s cc='vim'
 alias -s cpp='vim'
 alias -s h='vim'
 export PATH="/usr/lib/ccache:$PATH"
+
+fortune

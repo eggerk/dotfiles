@@ -11,6 +11,20 @@ function change_catkin_ws() {
   source ~/.zshrc
 }
 
+function ckdebug() {
+  catkin config --cmake-args \
+      -DCMAKE_BUILD_TYPE=Debug \
+      -DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
+      -DCMAKE_CXX_FLAGS=-fdiagnostics-color
+}
+
+function ckrelease() {
+  catkin config --cmake-args \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
+      -DCMAKE_CXX_FLAGS=-fdiagnostics-color
+}
+
 if [ -z "$CATKIN_FOLDER" ] ; then
   export CATKIN_FOLDER=catkin_ws
 fi

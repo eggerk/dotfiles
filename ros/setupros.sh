@@ -11,6 +11,20 @@ function change_catkin_ws() {
   source ~/.zshrc
 }
 
+function ckdebug() {
+  catkin config --cmake-args \
+      -DCMAKE_BUILD_TYPE=Debug \
+      -DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
+      -DCMAKE_CXX_FLAGS=-fdiagnostics-color
+}
+
+function ckrelease() {
+  catkin config --cmake-args \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
+      -DCMAKE_CXX_FLAGS=-fdiagnostics-color
+}
+
 if [ -z "$CATKIN_FOLDER" ] ; then
   export CATKIN_FOLDER=catkin_ws
 fi
@@ -23,11 +37,14 @@ alias ckws='$CATKIN_WS'
 
 alias ckthis='catkin build --this --no-deps'
 alias cb='ckthis'
+alias cbl='ckthis --no-status | less'
 alias cbd='catkin build --this'
 alias cktest='catkin run_tests --this --no-deps'
+alias ct='cktest'
+alias ctl='ct --no-status | less'
 
 alias muma1='cd ~/catkin_ws_1/src/multiagent_mapping/'
-alias muma2='cd ~/catkin_ws/src/multiagent_mapping2/'
+alias muma2='cd ~/catkin_ws/src/maplab/'
 
 function muma() {
   if [[ "$CATKIN_FOLDER" == "catkin_ws" ]] ; then

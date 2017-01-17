@@ -5,8 +5,7 @@
 # this file and re-run i3-config-wizard(1).
 #
 
-# i3 config file (v4)
-#
+# i3 config file (v4) #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
@@ -15,7 +14,6 @@ set $mod Mod4
 # is used in the bar {} block below.
 # font pango:monospace 8
 font pango:System Ubuntu 9, FontAwesome 10
-
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -112,10 +110,12 @@ set $workspace7 "7"
 set $workspace8 "8"
 set $workspace9 "9"
 set $workspace10 "10 "
+workspace $workspace0 output eDP-1
+workspace $workspace1 output DP-3.2.8
 
 # switch to workspace
-bindsym $mod+grave workspace $workspace0
 bindsym $mod+1 workspace $workspace1
+bindsym $mod+grave workspace $workspace0
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
@@ -204,7 +204,7 @@ bar {
 }
 
 # lock computer
-bindsym $mod+Shift+x exec "i3lock; sleep 0.2s; xset dpms force off; feh --bg-fill --randomize /home/eggerk/Pictures/wallpapers/*"
+bindsym $mod+Shift+x exec "i3lock -c 000011; sleep 0.2s; xset dpms force off; feh --bg-fill --randomize /home/eggerk/Pictures/wallpapers/*"
 bindsym $mod+Shift+p exec /home/eggerk/dotfiles/tools/shutdown_gui
 
 # See https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
@@ -235,9 +235,8 @@ bindsym $mod+Shift+d exec playerctl next
 bindsym $mod+Shift+a exec playerctl previous
 
 # use unity/gnome settings
-exec unity-settings-daemon
-exec /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec /home/eggerk/dotfiles/X/xrandr.sh
 
 # set wallpaper
 exec_always feh --bg-fill --randomize /home/eggerk/Pictures/wallpapers/*
@@ -250,9 +249,11 @@ exec --no-startup-id blueman-applet
 # exec --no-startup-id qtpass
 
 # start firefox
-exec "sleep 2; firefox"
+exec "firefox"
+exec "/home/eggerk/dotfiles/tools/start-communication.sh"
 assign [class="Firefox"] $workspace1
 assign [class = "Thunderbird"] $workspace0
+assign [class = "yakyak"] $workspace0
 
 # transparency for notifications etc.
 # exec compton

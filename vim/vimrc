@@ -61,7 +61,7 @@ set foldlevel=1
 
 set cursorline
 
-" line at 80 chars
+" line at 100 chars
 set colorcolumn=101
 highlight ColorColumn ctermbg=magenta
 au BufNewFile,BufRead *.tex setlocal colorcolumn=

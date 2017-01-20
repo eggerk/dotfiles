@@ -20,13 +20,18 @@ function setMonitors() {
   i3-msg reload
 }
 
-if echo $HOSTNAME | grep 50  > /dev/null
+if echo $HOSTNAME | grep 50  > /dev/null || echo $HOST | grep 50 > /dev/null
 then
   # P50
   setMonitors
-elif echo $HOST | grep 50
-then
-  setMonitors
 else
-  echo "Not P50. Not changing anything."
+  # T440p
+  MONITOR1=$(xrandr -q | grep eDP | awk '{ print $1 }')
+  MONITOR2=$(xrandr -q | grep DP | grep -v eDP | grep -v disconnected | awk '{print $1}')
+  i3-msg workspace 0
+  i3-msg move workspace to output $MONITOR1
+  if [[ -z $MONITOR2 ]] ; then
+    i3-msg workspace 1
+    i3-msg move workspace to output $MONITOR2
+  fi
 fi

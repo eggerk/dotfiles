@@ -110,8 +110,6 @@ set $workspace7 "7"
 set $workspace8 "8"
 set $workspace9 "9"
 set $workspace10 "10 "
-workspace $workspace0 output eDP-1
-workspace $workspace1 output DP-3.2.8
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1

@@ -146,6 +146,7 @@ exec i3 workspace $workspace1
 assign [class="Clementine"] $workspace10
 assign [class="Spotify"] $workspace10
 for_window [class="Spotify"] move to workspace $workspace10
+for_window [class="LineAttack"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

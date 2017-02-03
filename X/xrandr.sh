@@ -30,8 +30,8 @@ else
   MONITOR2=$(xrandr -q | grep DP | grep -v eDP | grep -v disconnected | awk '{print $1}')
   i3-msg workspace 0
   i3-msg move workspace to output $MONITOR1
-  if [[ -z $MONITOR2 ]] ; then
-    i3-msg workspace 1
+  i3-msg workspace 1
+  if [[ ! -z $MONITOR2 ]] ; then
     i3-msg move workspace to output $MONITOR2
   fi
 fi

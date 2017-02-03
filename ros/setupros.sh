@@ -2,7 +2,9 @@
 
 function change_catkin_ws() {
   if [[ "$CATKIN_FOLDER" == "catkin_ws" ]] ; then
-    export CATKIN_FOLDER=catkin_ws_1
+    export CATKIN_FOLDER=other_ckws/muma_ws
+  elif [[ "$CATKIN_FOLDER" == "other_ckws/muma_ws" ]] ; then
+    export CATKIN_FOLDER=other_ckws/tango_ws
   else
     export CATKIN_FOLDER=catkin_ws
   fi
@@ -43,13 +45,13 @@ alias cktest='catkin run_tests --this --no-deps'
 alias ct='cktest'
 alias ctl='ct --no-status | less'
 
-alias muma1='cd ~/catkin_ws_1/src/multiagent_mapping/'
+alias muma1='cd ~/other_ckws/muma_ws/src/multiagent_mapping/'
 alias muma2='cd ~/catkin_ws/src/maplab/'
 
 function muma() {
-  if [[ "$CATKIN_FOLDER" == "catkin_ws" ]] ; then
-    muma2
-  else
+  if [[ "$CATKIN_FOLDER" == "other_ckws/muma_ws" ]] ; then
     muma1
+  else
+    muma2
   fi
 }

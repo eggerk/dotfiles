@@ -37,13 +37,41 @@ source /opt/ros/kinetic/setup.zsh
 source ${CATKIN_WS}/devel/setup.zsh
 alias ckws='$CATKIN_WS'
 
-alias ckthis='catkin build --this --no-deps'
-alias cb='ckthis'
-alias cbl='ckthis --no-status | less'
-alias cbd='catkin build --this'
-alias cktest='catkin run_tests --this --no-deps'
-alias ct='cktest'
-alias ctl='ct --no-status | less'
+function cb() {
+  if [[ -z $1 ]] ; then
+    catkin build --this --no-deps
+  else
+    catkin build $1 --no-deps
+  fi
+}
+function cbl() {
+  if [[ -z $1 ]] ; then
+    catkin build --this --no-deps --no-status | less
+  else
+    catkin build $1 --no-deps --no-status | less
+  fi
+}
+function cbd() {
+  if [[ -z $1 ]] ; then
+    catkin build --this
+  else
+    catkin build $1
+  fi
+}
+function ct() {
+  if [[ -z $1 ]] ; then
+    catkin run_tests --this --no-deps
+  else
+    catkin run_tests $1 --no-deps
+  fi
+}
+function ctl() {
+  if [[ -z $1 ]] ; then
+    catkin run_tests --this --no-deps --no-status | less
+  else
+    catkin run_tests $1 --no-deps --no-status | less
+  fi
+}
 
 alias muma1='cd ~/other_ckws/muma_ws/src/multiagent_mapping/'
 alias muma2='cd ~/catkin_ws/src/maplab/'

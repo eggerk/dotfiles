@@ -46,6 +46,7 @@ set clipboard=unnamedplus
 " enable line numbers
 :set ruler
 :set number
+:set relativenumber
 :set showcmd
 
 " set tab == 2 spaces

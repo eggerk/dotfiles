@@ -36,7 +36,7 @@ set autoread " detect when a file is changed
 set backspace=indent,eol,start
 
 " set a map leader for more key combos
-let mapleader = ','
+" let mapleader = ','
 
 set clipboard=unnamedplus
 

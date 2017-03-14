@@ -24,6 +24,7 @@ Plugin 'lervag/vimtex'
 Plugin 'tpope/vim-obsession'
 Plugin 'richq/vim-cmake-completion'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
+Plugin 'drmikehenry/vim-headerguard'
 
 call vundle#end()
 filetype plugin indent on
@@ -156,3 +157,16 @@ let g:DoxygenToolkit_returnTag="\\returns "
 let g:DoxygenToolkit_templateParamTag_pre="\\tparam "
 let g:DoxygenToolkit_classTag="\\class"
 let g:DoxygenToolkit_compactDoc="yes"
+
+" HeaderGuards
+function! g:HeaderguardName()
+  let project_name = expand('%:p:gs@.*include/\(.*\)/.*@\1@g')
+  let project_name = substitute(project_name, '[^0-9a-zA-Z_]', '_', '')
+  let project_name = toupper(project_name)
+  let file_name = toupper(expand('%:t:gs/[^0-9a-zA-Z_]/_/g'))
+  return project_name . "_" . file_name . "_"
+endfunction
+
+function! g:HeaderguardLine3()
+  return "#endif  // " . g:HeaderguardName() . ""
+endfunction

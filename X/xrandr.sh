@@ -16,8 +16,6 @@ function setMonitors() {
   i3-msg workspace 1
   i3-msg move workspace to output $MONITOR2
   i3-msg reload
-  sleep 2
-  i3-msg reload
 }
 
 if echo $HOSTNAME | grep 50  > /dev/null || echo $HOST | grep 50 > /dev/null

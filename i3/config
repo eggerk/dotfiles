@@ -181,12 +181,14 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $bg-color 	         #3c3b37
+# set $bg-color 	         #3c3b37
+set $bg-color 	         #285577
 set $inactive-bg-color   #222222
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
-set $indicator-color     #285577
+# set $indicator-color     #285577
+set $indicator-color     #885577
 
 # window colors
 #                       border              background         text                 indicator
@@ -270,3 +272,5 @@ exec --no-startup-id "sleep 5; setxkbmap -model pc105 -layout us_umlaut -option 
 
 # Disallow notifications to take focus.
 no_focus [class="Xfce4-notifyd"]
+
+for_window [class="Gnome-terminal"] border pixel 2

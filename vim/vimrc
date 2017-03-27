@@ -162,7 +162,7 @@ let g:DoxygenToolkit_compactDoc="yes"
 " HeaderGuards
 function! g:HeaderguardName()
   let project_name = expand('%:p:gs@.*include/\(.*\)/.*@\1@g')
-  let project_name = substitute(project_name, '[^0-9a-zA-Z_]', '_', '')
+  let project_name = substitute(project_name, '[^0-9a-zA-Z_]', '_', 'g')
   let project_name = toupper(project_name)
   let file_name = toupper(expand('%:t:gs/[^0-9a-zA-Z_]/_/g'))
   return project_name . "_" . file_name . "_"

@@ -106,9 +106,6 @@ source $ZSH/oh-my-zsh.sh
 # For some reason, this is set to true occasionally.
 gsettings set org.gtk.Settings.FileChooser show-hidden false
 
-alias excel='wine ~/.wine/drive_c/Program\ Files/Microsoft\ Office/Office14/EXCEL.EXE'
-alias eclipse_java='/home/eggerk/programming/android_developer_tools/eclipse/eclipse'
-
 source ~/dotfiles/ros/setupros.sh
 export GRB_LICENSE_FILE='/home/eggerk/catkin_ws/gurobi.lic'
 
@@ -116,6 +113,9 @@ alias -s cc='vim'
 alias -s cpp='vim'
 alias -s h='vim'
 export PATH="/usr/lib/ccache:$PATH"
+
+alias octave-gui='octave'
+alias octave='octave-cli'
 
 # Vi mode.
 function zle-line-init {
@@ -145,3 +145,7 @@ function zle-keymap-select {
 zle -N zle-line-init
 zle -N ale-line-finish
 zle -N zle-keymap-select
+
+# Remote IPs.
+export TITUS_IP=192.168.1.3
+export MAPCOMPUTE_IP=129.132.16.42

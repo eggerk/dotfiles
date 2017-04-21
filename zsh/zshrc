@@ -112,6 +112,7 @@ export GRB_LICENSE_FILE='/home/eggerk/catkin_ws/gurobi.lic'
 alias -s cc='vim'
 alias -s cpp='vim'
 alias -s h='vim'
+alias -s patch='vim'
 export PATH="/usr/lib/ccache:$PATH"
 
 alias octave-gui='octave'

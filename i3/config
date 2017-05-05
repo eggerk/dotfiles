@@ -220,8 +220,8 @@ bindsym $mod+XF86AudioMute exec --no-startup-id "/home/eggerk/dotfiles/tools/aud
 bindsym $mod+F1 exec --no-startup-id "/home/eggerk/dotfiles/tools/audio_tools.sh -c"
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec /home/eggerk/dotfiles/X/acpilight/xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec /home/eggerk/dotfiles/X/acpilight/xbacklight -dec 5 # decrease screen brightness
 
 # Touchpad controls
 bindsym $mod+shift+t exec /home/eggerk/dotfiles/X/toggle_touchpad.sh

@@ -274,4 +274,13 @@ exec --no-startup-id "/home/eggerk/dotfiles/X/caps2esc/caps2esc"
 # Disallow notifications to take focus.
 no_focus [class="Xfce4-notifyd"]
 
-for_window [class="Gnome-terminal"] border pixel 2
+new_window pixel 2
+new_float normal 2
+for_window [class="Xfce4-notifyd"] border pixel 0
+workspace $workspace10 gaps outer 10
+workspace $workspace10 gaps inner 10
+
+# Compton
+exec --no-startup-id compton --backend glx --paint-on-overlay --glx-no-stencil \
+                             --vsync opengl-swc --unredir-if-possible -b \
+                             --config /home/eggerk/dotfiles/compton/compton.conf

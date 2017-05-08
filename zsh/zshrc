@@ -71,8 +71,8 @@ POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='black'
 POWERLEVEL9K_STATUS_VERBOSE=false
 
 # User configuration
-
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export GOPATH="/home/eggerk/software/go"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$GOPATH/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

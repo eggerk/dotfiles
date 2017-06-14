@@ -9,10 +9,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " utilities
-Plugin 'scrooloose/nerdtree' " file drawer, open with :NERDTreeToggle
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-" Plugin 'tpope/vim-fugitive' " the ultimate git helper
+" Plugin 'scrooloose/nerdtree' " file drawer, open with :NERDTreeToggle
+" Plugin 'jistr/vim-nerdtree-tabs'
+" Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'tpope/vim-fugitive' " the ultimate git helper
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
@@ -22,12 +22,12 @@ Plugin 'Valloric/YouCompleteMe'
 " Plugin 'christoomey/vim-tmux-navigator'
 " Plugin 'benmills/vimux'
 " Plugin 'bkad/CamelCaseMotion'
-Plugin 'lervag/vimtex'
+" Plugin 'lervag/vimtex'
 Plugin 'tpope/vim-obsession'
 Plugin 'richq/vim-cmake-completion'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'drmikehenry/vim-headerguard'
-Plugin 'kien/ctrlp.vim'
+" Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -120,14 +120,14 @@ set mouse=a
 " => Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" let g:NERDTreeQuitOnOpen=1 " close NERDTree after a file is opened
-let NERDTreeShowHidden=1 " show hidden files in NERDTree
-" Toggle NERDTree
-nmap <silent> <leader>k :NERDTreeTabsToggle<cr>
-" expand to the path of the file in the current buffer
-nmap <silent> <leader>y :NERDTreeTabsOpen<cr>:NERDTreeTabsFind<cr>
-let g:nerdtree_tabs_smart_startup_focus = 2
-let g:nerdtree_tabs_focus_on_files = 1
+" " let g:NERDTreeQuitOnOpen=1 " close NERDTree after a file is opened
+" let NERDTreeShowHidden=1 " show hidden files in NERDTree
+" " Toggle NERDTree
+" nmap <silent> <leader>k :NERDTreeTabsToggle<cr>
+" " expand to the path of the file in the current buffer
+" nmap <silent> <leader>y :NERDTreeTabsOpen<cr>:NERDTreeTabsFind<cr>
+" let g:nerdtree_tabs_smart_startup_focus = 2
+" let g:nerdtree_tabs_focus_on_files = 1
 
 let g:airline_powerline_fonts = 1
 

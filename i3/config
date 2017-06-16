@@ -206,7 +206,7 @@ bar {
 }
 
 # lock computer
-bindsym $mod+Shift+x exec "i3lock -c 000011; sleep 0.2s; xset dpms force off; feh --bg-fill --randomize /home/eggerk/Pictures/wallpapers/*"
+bindsym $mod+Shift+x exec "i3lock -c 000011; sleep 0.2s; xset dpms force off; /home/eggerk/dotfiles/tools/set-wallpaper.sh"
 bindsym $mod+Shift+p exec /home/eggerk/dotfiles/tools/shutdown_gui
 
 # See https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
@@ -241,7 +241,7 @@ exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec /home/eggerk/dotfiles/X/xrandr.sh
 
 # set wallpaper
-exec_always feh --bg-fill --randomize /home/eggerk/Pictures/wallpapers/*
+exec_always --no-startup-id /home/eggerk/dotfiles/tools/set-wallpaper.sh
 exec_always xbindkeys
 
 # network applet
@@ -276,8 +276,8 @@ no_focus [class="Xfce4-notifyd"]
 new_window pixel 2
 new_float normal 2
 for_window [class="Xfce4-notifyd"] border pixel 0
-workspace $workspace10 gaps outer 10
-workspace $workspace10 gaps inner 10
+# workspace $workspace10 gaps outer 10
+# workspace $workspace10 gaps inner 10
 
 # Compton
 exec --no-startup-id compton --backend glx --paint-on-overlay --glx-no-stencil \

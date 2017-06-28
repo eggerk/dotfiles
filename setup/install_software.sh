@@ -16,6 +16,7 @@ sudo apt-get install backintime-gnome blueman build-essential clementine \
     playonlinux rar redshift redshift-gtk synaptic texlive-full xfce4-notifyd \
     unrar virtualbox vlc vlc-plugin-fluidsynth vlc-plugin-notify wine1.6 \
     xautomation xbindkeys xwiimote vim vim-gtk scrot zsh feh tmux i3 rofi
+    octave
 
 # Disable nautilus Desktop rendering.
 gsettings set org.gnome.desktop.background show-desktop-icons false
@@ -34,8 +35,8 @@ wget -O "playerctl.deb" "https://github.com/acrisci/playerctl/releases/download/
 sudo dpkg -i playerctl.deb
 
 # Dropbox
-# wget -O "dropbox.deb" "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb"
-# sudo dpkg -i dropbox.deb
+wget -O "dropbox.deb" "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb"
+sudo dpkg -i dropbox.deb
 
 # Steam
 wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb

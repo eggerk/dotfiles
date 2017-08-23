@@ -269,6 +269,8 @@ bindsym --release control+Print exec "scrot -u -e 'mv $f ~/Pictures/screenshots'
 exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut -option caps:escape"
 # do it again to make sure
 exec --no-startup-id "sleep 5; setxkbmap -model pc105 -layout us_umlaut -option caps:escape"
+# Disable caps-lock.
+exec_always --no-startup-id "python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
 
 # Disallow notifications to take focus.
 no_focus [class="Xfce4-notifyd"]

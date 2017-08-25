@@ -256,6 +256,10 @@ exec "/home/eggerk/dotfiles/tools/start-communication.sh"
 assign [class="Firefox"] $workspace1
 assign [class = "Thunderbird"] $workspace0
 assign [class = "yakyak"] $workspace0
+assign [class = "slack"] $workspace0
+assign [class = "Slack"] $workspace0
+for_window [class="slack"] move to workspace $workspace0
+for_window [class="Slack"] move to workspace $workspace0
 
 # transparency for notifications etc.
 # exec compton

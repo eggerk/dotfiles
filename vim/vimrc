@@ -23,7 +23,7 @@ Plugin 'tpope/vim-obsession'
 Plugin 'richq/vim-cmake-completion'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'drmikehenry/vim-headerguard'
-" Plugin 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 Plugin 'Chiel92/vim-autoformat'
 
 call vundle#end()
@@ -56,7 +56,11 @@ highlight ColorColumn ctermbg=magenta
 au BufNewFile,BufRead *.tex setlocal colorcolumn=
 
 " set tab == 2 spaces
-:set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
+set tabstop=2
+set softtabstop=2
+set expandtab
+set shiftwidth=2
+set smarttab
 
 "Enable code folding
 set nofoldenable

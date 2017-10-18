@@ -48,7 +48,8 @@ set clipboard=unnamedplus
 :set showcmd
 
 set cursorline
-hi CursorLine cterm=none ctermbg=23
+hi CursorLine cterm=none ctermbg=187
+" fdf6e3
 
 " line at 80 chars
 set colorcolumn=81
@@ -126,6 +127,7 @@ let g:autoformat_remove_trailing_spaces = 0
 " let g:nerdtree_tabs_focus_on_files = 1
 
 let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
 
 " GitGutter
 set updatetime=500

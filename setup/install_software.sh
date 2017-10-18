@@ -16,7 +16,7 @@ sudo apt install backintime-gnome blueman build-essential clementine \
     rar redshift redshift-gtk synaptic texlive-full xfce4-notifyd \
     unrar virtualbox vlc vlc-plugin-fluidsynth vlc-plugin-notify \
     xautomation xbindkeys xwiimote vim vim-gtk scrot zsh feh tmux i3 rofi
-    octave udiskie
+    octave udiskie rxvt-unicode-256color
 
 # Disable nautilus Desktop rendering.
 gsettings set org.gnome.desktop.background show-desktop-icons false

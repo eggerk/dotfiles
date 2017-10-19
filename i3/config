@@ -182,7 +182,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # set $bg-color 	         #3c3b37
-set $bg-color 	         #285577
+set $bg-color            #3d81b5
 set $inactive-bg-color   #222222
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
@@ -280,8 +280,8 @@ exec_always --no-startup-id "python -c 'from ctypes import *; X11 = cdll.LoadLib
 # Disallow notifications to take focus.
 no_focus [class="Xfce4-notifyd"]
 
-new_window pixel 2
-new_float normal 2
+new_window pixel 4
+new_float normal 3
 for_window [class="Xfce4-notifyd"] border pixel 0
 # workspace $workspace10 gaps outer 10
 # workspace $workspace10 gaps inner 10

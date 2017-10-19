@@ -54,6 +54,7 @@ hi CursorLine cterm=none ctermbg=187
 " line at 80 chars
 set colorcolumn=81
 highlight ColorColumn ctermbg=magenta
+highlight Search ctermfg=white
 au BufNewFile,BufRead *.tex setlocal colorcolumn=
 
 " set tab == 2 spaces

@@ -105,8 +105,10 @@ hi CursorLine cterm=none ctermbg=187
 set colorcolumn=81  " Line at 80 chars.
 highlight ColorColumn ctermbg=magenta
 highlight Search ctermfg=white
-highlight Todo ctermfg=lightgray ctermbg=darkblue
 au BufNewFile,BufRead *.tex setlocal colorcolumn=
+au VimEnter * :highlight Todo ctermfg=lightgray ctermbg=darkblue
+au FileType python set tabstop=2
+au FileType python set shiftwidth=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings

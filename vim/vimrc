@@ -23,7 +23,7 @@ Plugin 'tpope/vim-obsession'
 Plugin 'richq/vim-cmake-completion'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'drmikehenry/vim-headerguard'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Chiel92/vim-autoformat'
 
 call vundle#end()
@@ -46,23 +46,6 @@ set clipboard=unnamedplus
 :set number
 :set relativenumber
 :set showcmd
-
-set cursorline
-hi CursorLine cterm=none ctermbg=187
-" fdf6e3
-
-" line at 80 chars
-set colorcolumn=81
-highlight ColorColumn ctermbg=magenta
-highlight Search ctermfg=white
-au BufNewFile,BufRead *.tex setlocal colorcolumn=
-
-" set tab == 2 spaces
-set tabstop=2
-set softtabstop=2
-set expandtab
-set shiftwidth=2
-set smarttab
 
 "Enable code folding
 set nofoldenable
@@ -102,11 +85,30 @@ syntax on
 set autoindent " automatically set indent of new line
 set smartindent
 
+" set tab == 2 spaces
+set tabstop=2
+set softtabstop=2
+set expandtab
+set shiftwidth=2
+set smarttab
+
 set laststatus=2 " show the satus line all the time
 " Set the command window height to 2 lines, to avoid many cases of having to
 " "press <Enter> to continue"
 set cmdheight=2
 set mouse=a
+
+
+set cursorline
+hi CursorLine cterm=none ctermbg=187
+
+set colorcolumn=81  " Line at 80 chars.
+highlight ColorColumn ctermbg=magenta
+highlight Search ctermfg=white
+au BufNewFile,BufRead *.tex setlocal colorcolumn=
+au VimEnter * :highlight Todo ctermfg=lightgray ctermbg=darkblue
+au FileType python set tabstop=2
+au FileType python set shiftwidth=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings

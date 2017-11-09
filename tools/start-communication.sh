@@ -1,9 +1,11 @@
 #!/bin/bash
 function startCommunication() {
   /home/eggerk/software/yakyak-linux-x64/yakyak &
-  sleep 5
- thunderbird &
- i3-msg resize grow width 20 px or 20 ppt
+  thunderbird &
+  slack &
+  i3-msg workspace 0
+  i3-msg layout tabbed
+  i3-msg workspace 1
 }
 
 if echo $HOSTNAME | grep 50  ; then

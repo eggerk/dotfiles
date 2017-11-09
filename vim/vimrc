@@ -9,22 +9,22 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " utilities
-Plugin 'scrooloose/nerdtree' " file drawer, open with :NERDTreeToggle
+" Plugin 'scrooloose/nerdtree' " file drawer, open with :NERDTreeToggle
+" Plugin 'jistr/vim-nerdtree-tabs'
+" Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive' " the ultimate git helper
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
-Plugin 'taketwo/vim-ros'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'christoomey/vim-tmux-navigator'
-" Plugin 'benmills/vimux'
-Plugin 'bkad/CamelCaseMotion'
-Plugin 'lervag/vimtex'
+" Plugin 'lervag/vimtex'
 Plugin 'tpope/vim-obsession'
 Plugin 'richq/vim-cmake-completion'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'drmikehenry/vim-headerguard'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'Chiel92/vim-autoformat'
 
 call vundle#end()
 filetype plugin indent on
@@ -35,9 +35,6 @@ set autoread " detect when a file is changed
 
 " make backspace behave in a sane manner
 set backspace=indent,eol,start
-
-" set a map leader for more key combos
-" let mapleader = ','
 
 set clipboard=unnamedplus
 
@@ -50,28 +47,13 @@ set clipboard=unnamedplus
 :set relativenumber
 :set showcmd
 
-" set tab == 2 spaces
-:set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
-
 "Enable code folding
-set foldenable
+set nofoldenable
 
 " fold everything that is more than 1 level indented
 set foldmethod=syntax
 set foldnestmax=2
 set foldlevel=1
-
-set cursorline
-set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
-
-" line at 80 chars
-set colorcolumn=81
-highlight ColorColumn ctermbg=magenta
-au BufNewFile,BufRead *.tex setlocal colorcolumn=
-
-" enable clang format
-map <C-F> :py3f /usr/share/vim/addons/syntax/clang-format-3.8.py<cr>
-imap <C-F> <c-o>:py3f /usr/share/vim/addons/syntax/clang-format-3.8.py<cr>
 
 " use ctrl-hjkl to switch split
 nnoremap <C-J> <C-W><C-J>
@@ -87,8 +69,6 @@ set undodir=~/.vim/undo/
 set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/
 
-autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
-autocmd FileType cmake setlocal commentstring=#\ %s
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => User Interface
@@ -105,29 +85,52 @@ syntax on
 set autoindent " automatically set indent of new line
 set smartindent
 
+" set tab == 2 spaces
+set tabstop=2
+set softtabstop=2
+set expandtab
+set shiftwidth=2
+set smarttab
+
 set laststatus=2 " show the satus line all the time
 " Set the command window height to 2 lines, to avoid many cases of having to
 " "press <Enter> to continue"
 set cmdheight=2
 set mouse=a
 
-" let g:molokai_original = 1
-" let g:rehash256 = 1
+
+set cursorline
+hi CursorLine cterm=none ctermbg=187
+
+set colorcolumn=81  " Line at 80 chars.
+highlight ColorColumn ctermbg=magenta
+highlight Search ctermfg=white
+au BufNewFile,BufRead *.tex setlocal colorcolumn=
+au VimEnter * :highlight Todo ctermfg=lightgray ctermbg=darkblue
+au FileType python set tabstop=2
+au FileType python set shiftwidth=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Format
+noremap <C-F> V:Autoformat<cr>
+imap <C-F> <c-o>V:Autoformat<cr>
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
 
-" close NERDTree after a file is opened
-let g:NERDTreeQuitOnOpen=1
-" show hidden files in NERDTree
-let NERDTreeShowHidden=1
-" Toggle NERDTree
-nmap <silent> <leader>k :NERDTreeToggle<cr>
-" expand to the path of the file in the current buffer
-nmap <silent> <leader>y :NERDTreeFind<cr>
+" let g:NERDTreeQuitOnOpen=1 " close NERDTree after a file is opened
+" let NERDTreeShowHidden=1 " show hidden files in NERDTree
+" " Toggle NERDTree
+" nmap <silent> <leader>k :NERDTreeTabsToggle<cr>
+" " expand to the path of the file in the current buffer
+" nmap <silent> <leader>y :NERDTreeTabsOpen<cr>:NERDTreeTabsFind<cr>
+" let g:nerdtree_tabs_smart_startup_focus = 2
+" let g:nerdtree_tabs_focus_on_files = 1
 
 let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
 
 " GitGutter
 set updatetime=500
@@ -142,13 +145,12 @@ map <leader>t :YcmCompleter GetType<cr>
 map <leader>i :YcmCompleter GoToInclude<cr>
 map <leader>h :YcmCompleter GetDoc<cr>
 
-nmap <leader>s :call VimuxRunCommand("git status")<cr>
+" Ctrl-P
+map <c-b> :CtrlPBuffer<cr>
 
-" Camel case motion
-map <silent> <leader>w <Plug>CamelCaseMotion_w
-map <silent> <leader>b <Plug>CamelCaseMotion_b
-map <silent> <leader>e <Plug>CamelCaseMotion_e
-map <silent> <leader>ge <Plug>CamelCaseMotion_ge
+" Commentary
+autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
+autocmd FileType cmake setlocal commentstring=#\ %s
 
 " Doxygen
 let g:DoxygenToolkit_commentType = "C++"

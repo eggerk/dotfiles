@@ -182,7 +182,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # set $bg-color 	         #3c3b37
-set $bg-color 	         #285577
+set $bg-color            #285577
 set $inactive-bg-color   #222222
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
@@ -206,7 +206,7 @@ bar {
 }
 
 # lock computer
-bindsym $mod+Shift+x exec "i3lock -c 000011; sleep 0.2s; xset dpms force off; feh --bg-fill --randomize /home/eggerk/Pictures/wallpapers/*"
+bindsym $mod+Shift+x exec "i3lock -c 000011; sleep 0.2s; xset dpms force off; /home/eggerk/dotfiles/tools/set-wallpaper.sh"
 bindsym $mod+Shift+p exec /home/eggerk/dotfiles/tools/shutdown_gui
 
 # See https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
@@ -220,8 +220,8 @@ bindsym $mod+XF86AudioMute exec --no-startup-id "/home/eggerk/dotfiles/tools/aud
 bindsym $mod+F1 exec --no-startup-id "/home/eggerk/dotfiles/tools/audio_tools.sh -c"
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec /home/eggerk/dotfiles/X/acpilight/xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec /home/eggerk/dotfiles/X/acpilight/xbacklight -dec 5 # decrease screen brightness
 
 # Touchpad controls
 bindsym $mod+shift+t exec /home/eggerk/dotfiles/X/toggle_touchpad.sh
@@ -241,7 +241,7 @@ exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec /home/eggerk/dotfiles/X/xrandr.sh
 
 # set wallpaper
-exec_always feh --bg-fill --randomize /home/eggerk/Pictures/wallpapers/*
+exec_always --no-startup-id /home/eggerk/dotfiles/tools/set-wallpaper.sh
 exec_always xbindkeys
 
 # network applet
@@ -249,6 +249,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id redshift-gtk
 exec --no-startup-id blueman-applet
 exec --no-startup-id "dropbox start"
+exec --no-startup-id "udiskie --tray"
 
 # start firefox
 exec "firefox"
@@ -256,6 +257,10 @@ exec "/home/eggerk/dotfiles/tools/start-communication.sh"
 assign [class="Firefox"] $workspace1
 assign [class = "Thunderbird"] $workspace0
 assign [class = "yakyak"] $workspace0
+assign [class = "slack"] $workspace0
+assign [class = "Slack"] $workspace0
+for_window [class="slack"] move to workspace $workspace0
+for_window [class="Slack"] move to workspace $workspace0
 
 # transparency for notifications etc.
 # exec compton
@@ -269,8 +274,13 @@ bindsym --release control+Print exec "scrot -u -e 'mv $f ~/Pictures/screenshots'
 exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut -option caps:escape"
 # do it again to make sure
 exec --no-startup-id "sleep 5; setxkbmap -model pc105 -layout us_umlaut -option caps:escape"
+# Disable caps-lock.
+exec_always --no-startup-id "python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
 
 # Disallow notifications to take focus.
 no_focus [class="Xfce4-notifyd"]
 
-for_window [class="Gnome-terminal"] border pixel 2
+# Compton
+exec --no-startup-id compton --backend glx --paint-on-overlay --glx-no-stencil \
+                             --vsync opengl-swc --unredir-if-possible -b \
+                             --config /home/eggerk/dotfiles/compton/compton.conf

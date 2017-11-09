@@ -88,6 +88,6 @@ function muma() {
   if [[ "$CATKIN_FOLDER" == "/home/eggerk/other_ckws/muma_ws" ]] ; then
     muma1
   else
-    muma2
+    cd $CATKIN_FOLDER/src/maplab
   fi
 }

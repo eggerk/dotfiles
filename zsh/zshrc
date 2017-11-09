@@ -1,5 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/eggerk/.oh-my-zsh
+xrdb ~/.Xresources
+export TERM=xterm-256color
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -54,25 +56,28 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Powerlevel theme.
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time custom_ckws)
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%K{blue}%F{black} $ %f%k%F{blue}%f "
+POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%K{blue%}%F{0%} $ %f%k%F{blue%}%f "
 
 POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='green'
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='black'
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='0'
 
 POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='75'
-POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='black'
+POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='0'
 POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='156'
-POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='black'
+POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='0'
 
-POWERLEVEL9K_STATUS_VERBOSE=false
+POWERLEVEL9K_STATUS_VERBOSE=true
+
+POWERLEVEL9K_CUSTOM_CKWS="echo ${CATKIN_WS/\/home\/eggerk*\//}"
+POWERLEVEL9K_CUSTOM_CKWS_BACKGROUND="blue"
 
 # User configuration
-
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export GOPATH="/home/eggerk/software/go"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$GOPATH/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -106,16 +111,17 @@ source $ZSH/oh-my-zsh.sh
 # For some reason, this is set to true occasionally.
 gsettings set org.gtk.Settings.FileChooser show-hidden false
 
-alias excel='wine ~/.wine/drive_c/Program\ Files/Microsoft\ Office/Office14/EXCEL.EXE'
-alias eclipse_java='/home/eggerk/programming/android_developer_tools/eclipse/eclipse'
-
 source ~/dotfiles/ros/setupros.sh
 export GRB_LICENSE_FILE='/home/eggerk/catkin_ws/gurobi.lic'
 
 alias -s cc='vim'
 alias -s cpp='vim'
 alias -s h='vim'
+alias -s patch='vim'
 export PATH="/usr/lib/ccache:$PATH"
+
+alias octave-gui='octave'
+alias octave='octave-cli'
 
 # Vi mode.
 function zle-line-init {
@@ -145,3 +151,7 @@ function zle-keymap-select {
 zle -N zle-line-init
 zle -N ale-line-finish
 zle -N zle-keymap-select
+
+# Remote IPs.
+export TITUS_IP=192.168.1.3
+export MAPCOMPUTE_IP=129.132.16.42

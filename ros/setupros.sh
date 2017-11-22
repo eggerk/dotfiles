@@ -6,9 +6,9 @@ function change_catkin_ws() {
     export CATKIN_FOLDER=$PATH
   else
     if [[ "$CATKIN_FOLDER" == "/home/eggerk/catkin_ws" ]] ; then
-      export CATKIN_FOLDER=/home/eggerk/other_ckws/muma_ws
+      export CATKIN_FOLDER=/home/${USER}/other_ckws/muma_ws
     else
-      export CATKIN_FOLDER=/home/eggerk/catkin_ws
+      export CATKIN_FOLDER=/home/${USER}/catkin_ws
     fi
   fi
   export CATKIN_WS="$CATKIN_FOLDER"
@@ -31,13 +31,18 @@ function ckrelease() {
 }
 
 if [ -z "$CATKIN_FOLDER" ] ; then
-  export CATKIN_FOLDER=/home/eggerk/catkin_ws
+  export CATKIN_FOLDER=/home/${USER}/catkin_ws
 fi
 export CATKIN_WS="$CATKIN_FOLDER"
 
 # ROS
-source /opt/ros/kinetic/setup.zsh
-source ${CATKIN_WS}/devel/setup.zsh
+if [ "$SHELL" = "/bin/bash" ] ; then
+  source /opt/ros/indigo/setup.bash
+  source ${CATKIN_WS}/devel/setup.bash
+else
+  source /opt/ros/kinetic/setup.zsh
+  source ${CATKIN_WS}/devel/setup.zsh
+fi
 alias ckws='$CATKIN_WS'
 
 function cbt() {

@@ -101,6 +101,7 @@ set mouse=a
 
 set cursorline
 hi CursorLine cterm=none ctermbg=187
+set guifont=Ubuntu\ Mono\ derivative\ Powerline
 
 set colorcolumn=81  " Line at 80 chars.
 highlight ColorColumn ctermbg=magenta

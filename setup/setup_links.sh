@@ -8,6 +8,12 @@ ln -sf "$DOTFILES_PATH/zsh/zshrc" "$HOME_FOLDER/.zshrc"
 
 # vimrc
 ln -sf "$DOTFILES_PATH/vim/vimrc" "$HOME_FOLDER/.vimrc"
+mkdir -p "$HOME_FOLDER/.config/nvim"
+ln -sf "$DOTFILES_PATH/vim/vimrc" "$HOME_FOLDER/.config/nvim/init.vim"
+
+# termite
+mkdir -p $HOME_FOLDER/.config/termite
+ln -sf $DOTFILES_PATH/termite/config $HOME_FOLDER/.config/termite/config
 
 # tmux
 ln -sf "$DOTFILES_PATH/tmux/tmux.conf" "$HOME_FOLDER/.tmux.conf"

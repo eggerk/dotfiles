@@ -83,6 +83,7 @@ function cttl() {
 
 alias muma1='cd ~/other_ckws/muma_ws/src/multiagent_mapping/'
 alias muma2='cd ~/catkin_ws/src/maplab/'
+alias maplab='rosrun maplab_console maplab_console'
 
 function muma() {
   if [[ "$CATKIN_FOLDER" == "/home/eggerk/other_ckws/muma_ws" ]] ; then

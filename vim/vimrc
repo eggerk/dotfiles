@@ -25,6 +25,7 @@ Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'drmikehenry/vim-headerguard'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'taketwo/vim-ros'
 
 call vundle#end()
 filetype plugin indent on
@@ -48,12 +49,14 @@ set clipboard=unnamedplus
 :set showcmd
 
 "Enable code folding
-set nofoldenable
+set foldenable
 
 " fold everything that is more than 1 level indented
 set foldmethod=syntax
-set foldnestmax=2
-set foldlevel=1
+set foldminlines=10
+
+" No indentation after namespace.
+set cino=N-s
 
 " use ctrl-hjkl to switch split
 nnoremap <C-J> <C-W><C-J>
@@ -174,3 +177,6 @@ endfunction
 function! g:HeaderguardLine3()
   return "#endif  // " . g:HeaderguardName() . ""
 endfunction
+
+" Vim-ros
+let g:ros_build_system="catkin-tools"

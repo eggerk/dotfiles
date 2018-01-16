@@ -4,9 +4,10 @@ cd termite
 
 # From https://github.com/Corwind/termite-install
 
+sudo apt install -y git
 git clone --recursive https://github.com/thestinger/termite.git
 git clone https://github.com/thestinger/vte-ng.git
-sudo apt-get install -y \
+sudo apt install -y \
 	g++ \
 	libgtk-3-dev \
 	gtk-doc-tools \

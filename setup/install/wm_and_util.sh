@@ -9,7 +9,7 @@ sudo apt --allow-unauthenticated install sur5r-keyring
 sudo add-apt-repository ppa:aguignard/ppa
 sudo apt update
 
-sudo apt install i3 rofi scrot feh xfce4-notifyd
+sudo apt install -y i3 rofi scrot feh xfce4-notifyd
 
 WORKING_FOLDER=$(mktemp -d)
 cd $WORKING_FOLDER

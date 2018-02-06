@@ -1,7 +1,9 @@
 #!/bin/sh
 
 # Latest i3wm
-echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" | sudo tee -a /etc/apt/sources.list
+if ! grep "debian.sur5r.net/i3" ; then
+  echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" | sudo tee -a /etc/apt/sources.list
+fi
 sudo apt update
 sudo apt --allow-unauthenticated install sur5r-keyring
 
@@ -9,7 +11,7 @@ sudo apt --allow-unauthenticated install sur5r-keyring
 sudo add-apt-repository ppa:aguignard/ppa
 sudo apt update
 
-sudo apt install -y i3 rofi scrot feh xfce4-notifyd
+sudo apt install -y i3 rofi scrot feh xfce4-notifyd compton
 
 WORKING_FOLDER=$(mktemp -d)
 cd $WORKING_FOLDER

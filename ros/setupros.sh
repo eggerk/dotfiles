@@ -37,11 +37,17 @@ export CATKIN_WS="$CATKIN_FOLDER"
 
 # ROS
 if [ "$SHELL" = "/bin/bash" ] ; then
-  source /opt/ros/indigo/setup.bash
-  source ${CATKIN_WS}/devel/setup.bash
+  ROS_OPT_FILE="/opt/ros/indigo/setup.bash"
+  ROS_DEVEL_FILE="${CATKIN_WS}/devel/setup.bash"
 else
-  source /opt/ros/kinetic/setup.zsh
-  source ${CATKIN_WS}/devel/setup.zsh
+  ROS_OPT_FILE="/opt/ros/indigo/setup.zsh"
+  ROS_DEVEL_FILE="${CATKIN_WS}/devel/setup.zsh"
+fi
+if [ -f $ROS_OPT_FILE ]; then
+  source $ROS_OPT_FILE
+  if [ -f $ROS_DEVEL_FILE ]; then
+    source $ROS_DEVEL_FILE
+  fi
 fi
 alias ckws='$CATKIN_WS'
 

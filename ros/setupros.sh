@@ -36,11 +36,16 @@ fi
 export CATKIN_WS="$CATKIN_FOLDER"
 
 # ROS
+# Assume kinetic by default.
+ROS_DISTRO="kinetic"
+if lsb_release -a 2>&1 | grep trusty > /dev/null ; then
+  ROS_DISTRO = "indigo"
+fi
 if [ "$SHELL" = "/bin/bash" ] ; then
-  ROS_OPT_FILE="/opt/ros/indigo/setup.bash"
+  ROS_OPT_FILE="/opt/ros/${ROS_DISTRO}/setup.bash"
   ROS_DEVEL_FILE="${CATKIN_WS}/devel/setup.bash"
 else
-  ROS_OPT_FILE="/opt/ros/indigo/setup.zsh"
+  ROS_OPT_FILE="/opt/ros/${ROS_DISTRO}/setup.zsh"
   ROS_DEVEL_FILE="${CATKIN_WS}/devel/setup.zsh"
 fi
 if [ -f $ROS_OPT_FILE ]; then

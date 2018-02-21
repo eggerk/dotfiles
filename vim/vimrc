@@ -2,33 +2,28 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-
-" let vundle manage vundle
-Plugin 'VundleVim/Vundle.vim'
-
+call plug#begin()
 " utilities
-" Plugin 'scrooloose/nerdtree' " file drawer, open with :NERDTreeToggle
-" Plugin 'jistr/vim-nerdtree-tabs'
-" Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tpope/vim-fugitive' " the ultimate git helper
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
-Plugin 'airblade/vim-gitgutter'
-Plugin 'Valloric/YouCompleteMe'
-" Plugin 'lervag/vimtex'
-Plugin 'tpope/vim-obsession'
-Plugin 'richq/vim-cmake-completion'
-Plugin 'vim-scripts/DoxygenToolkit.vim'
-Plugin 'drmikehenry/vim-headerguard'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'taketwo/vim-ros'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeOpen'] }
+" Plug 'jistr/vim-nerdtree-tabs'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive' " the ultimate git helper
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
+Plug 'airblade/vim-gitgutter'
+Plug 'Valloric/YouCompleteMe'
+" Plug 'lervag/vimtex'
+Plug 'tpope/vim-obsession'
+Plug 'richq/vim-cmake-completion'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'drmikehenry/vim-headerguard', { 'for': ['cpp', 'c'] }
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Chiel92/vim-autoformat'
+Plug 'taketwo/vim-ros'
+call plug#end()
 
-call vundle#end()
-filetype plugin indent on
+" filetype plugin indent on
 
 set t_Co=256
 set nocompatible " not compatible with vi
@@ -48,12 +43,13 @@ set clipboard=unnamedplus
 :set relativenumber
 :set showcmd
 
-"Enable code folding
-set foldenable
+" No code folding
+set nofoldenable
 
 " fold everything that is more than 1 level indented
 set foldmethod=syntax
 set foldminlines=10
+set foldopen+=jump
 
 " No indentation after namespace.
 set cino=N-s
@@ -123,15 +119,15 @@ imap <C-F> <c-o>V:Autoformat<cr>
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
+let g:formatters_python=['yapf']
+let g:formatter_yapf_style='google'
 
-" let g:NERDTreeQuitOnOpen=1 " close NERDTree after a file is opened
-" let NERDTreeShowHidden=1 " show hidden files in NERDTree
-" " Toggle NERDTree
-" nmap <silent> <leader>k :NERDTreeTabsToggle<cr>
-" " expand to the path of the file in the current buffer
-" nmap <silent> <leader>y :NERDTreeTabsOpen<cr>:NERDTreeTabsFind<cr>
-" let g:nerdtree_tabs_smart_startup_focus = 2
-" let g:nerdtree_tabs_focus_on_files = 1
+" Toggle NERDTree
+nmap <silent> <leader>k :NERDTreeToggle<cr>
+" expand to the path of the file in the current buffer
+nmap <silent> <leader>y :NERDTreeFind<cr>
+let g:NERDTreeQuitOnOpen=1 " close NERDTree after a file is opened
+let NERDTreeShowHidden=1 " show hidden files in NERDTree
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'

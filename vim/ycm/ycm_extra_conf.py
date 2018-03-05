@@ -37,7 +37,8 @@ import ycm_core
 flags = [
 '-Wall',
 '-Wextra',
-'-Werror',
+# '-Werror',
+'-Wc++98-compat',
 '-Wno-long-long',
 '-Wno-variadic-macros',
 '-fexceptions',
@@ -77,7 +78,54 @@ flags = [
 './tests/gmock',
 '-isystem',
 './tests/gmock/include',
+'-I/opt/ros/kinetic/include',
+'-I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp',
+'-I/usr/include/eigen3',
+'-I/home/eggerk/catkin_ws/build/voxblox',
+'-I/usr/include/pcl-1.7',
+'-I/usr/include/ni',
+'-I/usr/include/vtk-6.2',
+'-I/usr/include/freetype2',
+'-I/usr/include/x86_64-linux-gnu/freetype2',
+'-I/usr/include/x86_64-linux-gnu',
+'-I/usr/lib/openmpi/include/openmpi/opal/mca/event/libevent2021/libevent',
+'-I/usr/lib/openmpi/include/openmpi/opal/mca/event/libevent2021/libevent/include',
+'-I/usr/lib/openmpi/include',
+'-I/usr/lib/openmpi/include/openmpi',
+'-I/usr/include/python2.7',
+'-I/usr/include/jsoncpp',
+'-I/usr/include/hdf5/openmpi',
+'-I/usr/include/libxml2',
+'-I/usr/include/tcl',
+'-DENABLE_TIMING=TRUE',
+'-DENABLE_STATISTICS=TRUE',
+'-DHAVE_OPENCV',
+'-mssse3',
 ]
+
+def _CheckFolder(folder):
+  all_elements_in_dir = os.listdir(folder);
+  for e in all_elements_in_dir:
+    path = os.path.join(folder, e)
+    if os.path.islink(path):
+      continue
+    if os.path.isdir(path):
+      if e == 'include':
+        flags.append('-I' + path)
+      else:
+        _CheckFolder(path)
+
+# Get all catkin folders.
+if 'CATKIN_WS' in os.environ:
+  catkin_ws = os.environ["CATKIN_WS"]
+  print 'catkin_ws:', catkin_ws
+  devel_include_folder = os.path.join(catkin_ws, 'devel', 'include')
+  flags.append('-I' + devel_include_folder)
+  flags.append('-I' + os.path.join(devel_include_folder, 'opencv'))
+
+  # Find all include folders in src.
+  src_dir = os.path.join(catkin_ws, 'src')
+  _CheckFolder(src_dir)
 
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
@@ -90,10 +138,11 @@ flags = [
 #
 # Most projects will NOT need to set this to anything; you can just change the
 # 'flags' list of compilation flags. Notice that YCM itself uses that approach.
-compilation_database_folder = '%%%BUILD_FOLDER_PATH%%%'
+compilation_database_folder = '' # '%%%BUILD_FOLDER_PATH%%%'
 
 if os.path.exists( compilation_database_folder ):
   database = ycm_core.CompilationDatabase( compilation_database_folder )
+  print(compilation_database_folder)
 else:
   database = None
 

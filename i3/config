@@ -200,7 +200,16 @@ gaps outer 0
 bar {
   i3bar_command i3bar -t
   colors {
+    # Colors are rgba.
     background #00000080
+    statusline #ffffffd0
+    separator #ffffffd0
+
+    # Border / background / text
+    focused_workspace  #4c7899 #285577e0 #ffffffe0
+    active_workspace   #333333 #5f676ae0 #ffffffe0  # Active on some other output.
+    inactive_workspace #333333 #222222d0 #888888e0
+    urgent_workspace   #2f343a #900000ff #ffffff
   }
   position bottom
   font pango:Ubuntu 10, FontAwesome 10

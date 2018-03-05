@@ -12,7 +12,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
 Plug 'airblade/vim-gitgutter'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 " Plug 'lervag/vimtex'
 Plug 'tpope/vim-obsession'
 Plug 'richq/vim-cmake-completion'
@@ -135,7 +135,7 @@ let g:airline_theme='solarized'
 " GitGutter
 set updatetime=500
 
-let g:ycm_global_ycm_extra_conf = '/home/eggerk/dotfiles/vim/ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '/home/eggerk/dotfiles/vim/ycm/ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 map <leader>g :YcmCompleter GoTo<cr>

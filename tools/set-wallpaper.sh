@@ -11,8 +11,10 @@ function generate_wallpaper {
   mkdir -p $OUTPUT_FOLDER
   OUTPUT_PICTURE="$OUTPUT_FOLDER/generated_wallpaper_$timestamp.jpg"
 
+  COUNTER=0
   while read -r PICTURE;do
-    convert "$PICTURE_FOLDER/$PICTURE" -resize 1920x1200 "$WORKING_FOLDER/$PICTURE"
+    convert "$PICTURE_FOLDER/$PICTURE" -resize 1920x9999 "$WORKING_FOLDER/$COUNTER.jpg"
+    COUNTER=$(($COUNTER+1))
   done <<< $PICTURES
   rm $OUTPUT_FOLDER/generated_wallpaper*
   convert +append $WORKING_FOLDER/* $OUTPUT_PICTURE

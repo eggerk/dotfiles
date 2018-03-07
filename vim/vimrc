@@ -13,7 +13,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
 Plug 'airblade/vim-gitgutter'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': ['tex'] }
 Plug 'tpope/vim-obsession'
 Plug 'richq/vim-cmake-completion'
 Plug 'vim-scripts/DoxygenToolkit.vim'
@@ -21,6 +21,7 @@ Plug 'drmikehenry/vim-headerguard', { 'for': ['cpp', 'c'] }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'taketwo/vim-ros'
+Plug 'chrisbra/csv.vim', { 'for': ['csv'] }
 call plug#end()
 
 " filetype plugin indent on

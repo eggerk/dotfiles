@@ -191,8 +191,9 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # Gaps.
 for_window [class="^.*"] border pixel 2
 for_window [class="Xfce4-notifyd"] border pixel 0
-gaps inner 5
-gaps outer 0
+set $inner_gaps 5
+gaps inner $inner_gaps
+gaps outer -2
 smart_gaps on
 
 # Start i3bar to display a workspace bar (plus the system information i3status

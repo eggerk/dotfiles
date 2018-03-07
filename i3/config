@@ -204,7 +204,7 @@ bar {
     # Colors are rgba.
     background #00000080
     statusline #ffffffd0
-    separator #ffffffd0
+    separator #666666d0
 
     # Border / background / text
     focused_workspace  #4c7899 #285577e0 #ffffffe0

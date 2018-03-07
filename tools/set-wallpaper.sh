@@ -13,13 +13,16 @@ function generate_wallpaper {
 
   COUNTER=0
   while read -r PICTURE;do
-    convert "$PICTURE_FOLDER/$PICTURE" -resize 1920x9999 "$WORKING_FOLDER/$COUNTER.jpg"
+    # Force resize to 4:3 aspect ratio as otherwise part of white filler might
+    # be shown as desktop background if pictures with two different aspect
+    # ratios are combined.
+    convert "$PICTURE_FOLDER/$PICTURE" -resize 1920x1440\! "$WORKING_FOLDER/$COUNTER.jpg"
     COUNTER=$(($COUNTER+1))
   done <<< $PICTURES
   rm $OUTPUT_FOLDER/generated_wallpaper*
   convert +append $WORKING_FOLDER/* $OUTPUT_PICTURE
 
-  # Write nitrogen config.
+  # Rewrite nitrogen config.
   sed -i "s@file=/home.*@file=$OUTPUT_PICTURE@g" /home/eggerk/.config/nitrogen/bg-saved.cfg
 }
 

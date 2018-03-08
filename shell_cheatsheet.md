@@ -1,5 +1,25 @@
 # Table of Contents
+- [Linux tools](#linux-tools)
 - [Git](#git)
+
+# Linux tools
+- *[Table of Contents](#table-of-contents)*
+- [find](#find)
+
+## find
+- *[Linux tools](#linux-tools)*
+
+General syntax:
+```bash
+find $search_folder -name $search_name -exec $command {} +
+```
+
+### type flag
+Use `-type $type` to set the the type of the files to be searched. Possible values:
+- `d` directory
+- `f` regular file
+- `l` symbolic link
+- and more
 
 # Git
 - *[Table of Contents](#table-of-contents)*
@@ -7,7 +27,6 @@
 
 ## Rebase
 - *[Git](#git)*
-- [Change base branch](#change-base-branch)
 
 ### Change base branch
 Convert

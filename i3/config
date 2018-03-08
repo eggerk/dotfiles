@@ -251,6 +251,7 @@ bindsym $mod+Shift+a exec playerctl previous
 exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec /home/eggerk/dotfiles/X/xrandr.sh
 exec_always --no-startup-id /home/eggerk/dotfiles/tools/set-wallpaper.sh
+exec --no-startup-id "/home/eggerk/dotfiles/tools/set-wallpaper.sh startupk
 exec_always xbindkeys
 
 # Applets.

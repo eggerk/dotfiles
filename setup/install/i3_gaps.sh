@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -rf i3-gaps
+sudo apt remove i3
 if lsb_release -c | grep xenial > /dev/null ; then
 sudo add-apt-repository ppa:aguignard/ppa
   sudo apt-get update
@@ -21,6 +23,9 @@ else
     libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 \
     libxcb-xrm-dev automake
 fi
+
+# Packages not provided by i3-gaps.
+sudo apt install -y i3lock i3status
 
 git clone https://www.github.com/Airblader/i3 i3-gaps
 cd i3-gaps

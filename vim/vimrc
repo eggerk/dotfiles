@@ -22,6 +22,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'taketwo/vim-ros'
 Plug 'chrisbra/csv.vim', { 'for': ['csv'] }
+Plug 'ntpeters/vim-better-whitespace'
 call plug#end()
 
 " filetype plugin indent on
@@ -117,6 +118,7 @@ au FileType python set shiftwidth=2
 " Format
 noremap <C-F> V:Autoformat<cr>
 imap <C-F> <c-o>V:Autoformat<cr>
+let g:formatdef_clangformat='"clang-format -style=file -fallback-style=google"'
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
@@ -147,11 +149,18 @@ map <leader>i :YcmCompleter GoToInclude<cr>
 map <leader>h :YcmCompleter GetDoc<cr>
 
 " Ctrl-P
+let g:ctrlp_root_markers = ['package.xml', '.git']
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = {
+      \ 'dir': '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(pyc)$',
+      \ }
 map <c-b> :CtrlPBuffer<cr>
 
 " Commentary
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 autocmd FileType cmake setlocal commentstring=#\ %s
+autocmd BufRead,BufNewFile *.launch setfiletype roslaunch
 
 " Doxygen
 let g:DoxygenToolkit_commentType = "C++"

@@ -158,3 +158,5 @@ export MAPCOMPUTE_IP=129.132.16.42
 # Disable built-in time.
 disable -r time
 alias time='time -p'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -18,7 +18,8 @@ Plug 'tpope/vim-obsession'
 Plug 'richq/vim-cmake-completion'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'drmikehenry/vim-headerguard', { 'for': ['cpp', 'c'] }
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'taketwo/vim-ros'
 Plug 'chrisbra/csv.vim', { 'for': ['csv'] }
@@ -148,14 +149,10 @@ map <leader>t :YcmCompleter GetType<cr>
 map <leader>i :YcmCompleter GoToInclude<cr>
 map <leader>h :YcmCompleter GetDoc<cr>
 
-" Ctrl-P
-let g:ctrlp_root_markers = ['package.xml', '.git']
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = {
-      \ 'dir': '\v[\/]\.(git|hg|svn)$',
-      \ 'file': '\v\.(pyc)$',
-      \ }
-map <c-b> :CtrlPBuffer<cr>
+" fzf
+map <c-p> :FZF<cr>
+map <c-g> :GFiles<cr>
+map <c-b> :Buffers<cr>
 
 " Commentary
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s

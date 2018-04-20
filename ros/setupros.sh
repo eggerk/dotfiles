@@ -1,5 +1,7 @@
 #! /bin/zsh
 
+export ROSCONSOLE_FORMAT='${severity} ${time} ${node}] ${message}'
+
 function change_catkin_ws() {
   if [[ ! -z $1 ]] ; then
     PATH=`realpath $1`

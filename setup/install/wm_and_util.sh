@@ -1,14 +1,9 @@
 #!/bin/sh
 
-# # Latest i3wm
-# if ! grep "debian.sur5r.net/i3" ; then
-#   echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" | sudo tee -a /etc/apt/sources.list
-# fi
-# sudo apt update
-# sudo apt --allow-unauthenticated install sur5r-keyring
-
-# Install i3-gaps instead.
-. /home/$USER/dotfiles/setup/install/i3_gaps.sh
+# Install i3-gaps.
+if which i3 > /dev/null ; then
+  . /home/$USER/dotfiles/setup/install/i3_gaps.sh
+fi
 
 # Latest rofi
 sudo add-apt-repository ppa:aguignard/ppa

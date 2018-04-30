@@ -140,6 +140,10 @@ assign [class="Spotify"] $workspace10
 for_window [class="Spotify"] move to workspace $workspace10
 for_window [class="LineAttack"] floating enable
 
+# Some floating windows.
+for_window [class="[Gg]nome-calculator"] floating enable
+for_window [class="[Nn]m-connection-editor"] floating enable
+
 # Reload the configuration file.
 bindsym $mod+Shift+c reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3).
@@ -289,3 +293,6 @@ no_focus [class="Xfce4-notifyd"]
 exec --no-startup-id compton --backend glx --paint-on-overlay --glx-no-stencil \
                              --vsync opengl-swc --unredir-if-possible -b \
                              --config /home/eggerk/dotfiles/compton/compton.conf
+
+# Disable caps lock because sometimes it reenables itself for some reason.
+exec_always --no-startup-id "python3 -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"

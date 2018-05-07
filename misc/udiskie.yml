@@ -1,0 +1,5 @@
+program_options:
+  menu: nested
+device_config:
+  - device_file: /dev/loop*
+    ignore: true

@@ -195,10 +195,10 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # Gaps.
 for_window [class="^.*"] border pixel 2
 for_window [class="Xfce4-notifyd"] border pixel 0
-set $inner_gaps 5
-gaps inner $inner_gaps
-gaps outer -2
-smart_gaps on
+gaps inner 5
+gaps outer 3
+workspace $workspace10 gaps outer 30
+workspace $workspace10 gaps inner 25
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available).
@@ -263,7 +263,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id redshift-gtk
 exec --no-startup-id blueman-applet
 exec --no-startup-id "dropbox start"
-exec --no-startup-id "udiskie --tray"
+exec --no-startup-id "udiskie --tray --config=/home/eggerk/dotfiles/misc/udiskie.yml"
 
 # Start firefox
 exec "firefox"

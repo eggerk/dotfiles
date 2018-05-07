@@ -236,20 +236,20 @@ bar {
 }
 
 # Lock computer.
-set $lock_command "exec /home/eggerk/dotfiles/tools/lock.sh"
-bindsym $mod+Shift+x $lock_command
+set $lock_command /home/eggerk/dotfiles/tools/lock.sh
+bindsym $mod+Shift+x exec $lock_command
 set $power_mode "Power menu: [x] lock; [l]ogout; [s]uspend; [r]eboot; [p]oweroff"
 mode $power_mode {
   # Lock.
-  bindsym x exec "$lock_command && i3-msg mode \"default\""
+  bindsym x exec $lock_command && i3-msg mode \default\"
   # Logout.
-  bindsym l exec "i3-msg exit"
+  bindsym l exec i3-msg exit
   # Reboot.
-  bindsym r exec "dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 \"org.freedesktop.login1.Manager.Reboot\" boolean:true"
-  # Powe off.
-  bindsym p exec "dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 \"org.freedesktop.login1.Manager.PowerOff\" boolean:true"
+  bindsym r exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true
+  # Power off.
+  bindsym p exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true
   # Suspend.
-  bindsym s exec "dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 \"org.freedesktop.login1.Manager.Suspend\" boolean:true"
+  bindsym s exec $lock_command && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Suspend" boolean:true && i3-msg mode "default"
 
   bindsym Return mode "default"
   bindsym Escape mode "default"

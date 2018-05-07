@@ -79,13 +79,13 @@ else
 fi
 
 MESSAGE="Connected"
-if [[ ! -z $MONITOR1 ]] ; then
+if [[ ! -z $MONITOR1 ]] && [ $ENABLE_MONITOR1 = "on" ] ; then
   MESSAGE="${MESSAGE} ${MONITOR1}"
-  if [[ ! -z $MONITOR2 ]] ; then
+  if [[ ! -z $MONITOR2 ]] && [ $ENABLE_MONITOR2 = "on" ] ; then
     MESSAGE="${MESSAGE} and"
   fi
 fi
-if [[ ! -z $MONITOR2 ]] ; then
+if [[ ! -z $MONITOR2 ]] && [ $ENABLE_MONITOR2 = "on" ] ; then
   MESSAGE="${MESSAGE} ${MONITOR2}."
 fi
 notify-send -i display "Monitors connected" "${MESSAGE}"

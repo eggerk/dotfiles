@@ -130,7 +130,20 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # Move workspace to other monitor.
-bindsym $mod+Shift+m exec i3-msg move workspace to output right
+bindsym $mod+Shift+m move workspace to output right
+
+set $monitor_mode "Monitors: [1] only internal; [2] only external; [3] both"
+bindsym $mod+m mode $monitor_mode
+mode  $monitor_mode{
+  bindsym 1 exec /home/eggerk/dotfiles/X/xrandr.sh on off
+  bindsym 2 exec /home/eggerk/dotfiles/X/xrandr.sh off on
+  bindsym 3 exec /home/eggerk/dotfiles/X/xrandr.sh on on
+
+  # Back to normal: Enter or Escape.
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+m mode "default"
+}
 
 exec i3 workspace $workspace1
 
@@ -173,6 +186,7 @@ mode "resize" {
         # Back to normal: Enter or Escape.
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
 

@@ -21,6 +21,7 @@ sudo apt install \
   ranger \
   rar unrar \
   redshift redshift-gtk \
+  silversearcher-ag \
   synaptic \
   tmux \
   tree \

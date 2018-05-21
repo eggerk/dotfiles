@@ -132,12 +132,14 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 # Move workspace to other monitor.
 bindsym $mod+Shift+m move workspace to output right
 
-set $monitor_mode "Monitors: [1] only internal; [2] only external; [3] both"
+set $monitor_mode "Monitors: [1] auto, [2] internal only, [3] external only, [4] expand, [5] mirror"
 bindsym $mod+m mode $monitor_mode
 mode  $monitor_mode{
-  bindsym 1 exec /home/eggerk/dotfiles/X/xrandr.sh on off
-  bindsym 2 exec /home/eggerk/dotfiles/X/xrandr.sh off on
-  bindsym 3 exec /home/eggerk/dotfiles/X/xrandr.sh on on
+  bindsym 1 exec /home/eggerk/dotfiles/X/xrandr.sh auto ; mode "default"
+  bindsym 2 exec /home/eggerk/dotfiles/X/xrandr.sh internal ; mode "default"
+  bindsym 3 exec /home/eggerk/dotfiles/X/xrandr.sh external ; mode "default"
+  bindsym 4 exec /home/eggerk/dotfiles/X/xrandr.sh expand ; mode "default"
+  bindsym 5 exec /home/eggerk/dotfiles/X/xrandr.sh mirror ; mode "default"
 
   # Back to normal: Enter or Escape.
   bindsym Return mode "default"
@@ -285,7 +287,7 @@ bindsym $mod+Shift+d exec playerctl next
 bindsym $mod+Shift+a exec playerctl previous
 
 exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
-exec /home/eggerk/dotfiles/X/xrandr.sh on on
+exec /home/eggerk/dotfiles/X/xrandr.sh
 exec_always --no-startup-id /home/eggerk/dotfiles/tools/set-wallpaper.sh
 exec --no-startup-id "/home/eggerk/dotfiles/tools/set-wallpaper.sh startup"
 exec_always xbindkeys

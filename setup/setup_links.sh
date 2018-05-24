@@ -21,9 +21,9 @@ rm -rf "$HOME_FOLDER/.tmux"
 ln -sf "$DOTFILES_PATH/tmux/tmux" "$HOME_FOLDER/.tmux"
 
 # i3
-mkdir -p "$HOME_FOLDER/.config/i3"
+mkdir -p "$HOME_FOLDER/.i3"
 mkdir -p "$HOME_FOLDER/.config/i3status"
-ln -sf "$DOTFILES_PATH/i3/config" "$HOME_FOLDER/.config/i3/config"
+ln -sf "$DOTFILES_PATH/i3/config" "$HOME_FOLDER/.i3/config"
 ln -sf "$DOTFILES_PATH/i3/statusbar" "$HOME_FOLDER/.config/i3status/config"
 
 # xbindkeys

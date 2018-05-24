@@ -38,6 +38,9 @@ then
   RESOLUTION1="1920x1080"
   MONITOR2=$(xrandr -q | grep HDMI | grep connected | awk '{print $1}')
   RESOLUTION2="1920x1080"
+  if [ "$ACTION" = "auto" ] ; then
+    ACTION="mirror"
+  fi
 else
   # T440p
   MONITOR1=$(xrandr -q | grep eDP | awk '{ print $1 }')

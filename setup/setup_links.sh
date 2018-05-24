@@ -13,7 +13,7 @@ ln -sf "$DOTFILES_PATH/vim/vimrc" "$HOME_FOLDER/.config/nvim/init.vim"
 
 # termite
 mkdir -p $HOME_FOLDER/.config/termite
-ln -sf $DOTFILES_PATH/termite/config $HOME_FOLDER/.config/termite/config
+ln -sf $DOTFILES_PATH/misc/termite $HOME_FOLDER/.config/termite/config
 
 # tmux
 ln -sf "$DOTFILES_PATH/tmux/tmux.conf" "$HOME_FOLDER/.tmux.conf"
@@ -37,3 +37,12 @@ ln -sf "$DOTFILES_PATH/X/Xresources" "$HOME_FOLDER/.Xresources"
 # font config
 mkdir -p "$HOME_FOLDER/fontconfig"
 ln -sf "$DOTFILES_PATH/X/fonts.conf" "$HOME_FOLDER/fontconfig/fonts.conf"
+
+# ranger
+mkdir -p "$HOME_FOLDER/.config/ranger"
+ln -sf "$DOTFILES_PATH/ranger/rc.conf" "$HOME_FOLDER/.config/ranger/rc.conf"
+ln -sf "$DOTFILES_PATH/ranger/scope.sh" "$HOME_FOLDER/.config/ranger/scope.sh"
+
+# rofi
+mkdir -p "$HOME_FOLDER/.config/rofi"
+ln -sf "$DOTFILES_PATH/misc/rofi" "$HOME_FOLDER/.config/rofi/config"

@@ -12,7 +12,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
 Plug 'airblade/vim-gitgutter'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': '/home/eggerk/dotfiles/vim/install_ycm.sh $(pwd)' }
 Plug 'lervag/vimtex', { 'for': ['tex'] }
 Plug 'tpope/vim-obsession'
 Plug 'richq/vim-cmake-completion'
@@ -69,10 +69,6 @@ set splitbelow
 set splitright
 set equalalways
 
-set undodir=~/.vim/undo/
-set backupdir=~/.vim/backup/
-set directory=~/.vim/swap/
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => User Interface
@@ -103,8 +99,9 @@ set cmdheight=2
 set mouse=a
 
 
+colorscheme desert
 set cursorline
-hi CursorLine cterm=none ctermbg=187
+hi CursorLine cterm=none ctermbg=237
 set guifont=Ubuntu\ Mono\ derivative\ Powerline
 
 set colorcolumn=81  " Line at 80 chars.
@@ -136,7 +133,7 @@ let g:NERDTreeQuitOnOpen=1 " close NERDTree after a file is opened
 let NERDTreeShowHidden=1 " show hidden files in NERDTree
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized'
+" let g:airline_theme='solarized'
 
 " GitGutter
 set updatetime=500

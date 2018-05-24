@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # This file is NOT licensed under the GPLv3, which is the license for the rest
 # of YouCompleteMe.
 #
@@ -115,7 +116,6 @@ def _CheckFolder(folder):
 # Get all catkin folders.
 if 'CATKIN_WS' in os.environ:
   catkin_ws = os.environ["CATKIN_WS"]
-  print 'catkin_ws:', catkin_ws
   devel_include_folder = os.path.join(catkin_ws, 'devel', 'include')
   flags.append('-I' + devel_include_folder)
   flags.append('-I' + os.path.join(devel_include_folder, 'opencv'))

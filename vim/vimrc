@@ -102,6 +102,7 @@ set mouse=a
 colorscheme desert
 set cursorline
 hi CursorLine cterm=none ctermbg=237
+hi MatchParen cterm=none ctermbg=white ctermfg=black
 set guifont=Ubuntu\ Mono\ derivative\ Powerline
 
 set colorcolumn=81  " Line at 80 chars.

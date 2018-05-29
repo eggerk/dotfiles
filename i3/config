@@ -272,15 +272,15 @@ bindsym $mod+Shift+x exec $lock_command
 set $power_mode "Power menu: [x] lock; [l]ogout; [s]uspend; [r]eboot; [p]oweroff"
 mode $power_mode {
   # Lock.
-  bindsym x exec $lock_command, i3-msg mode \default\"
+  bindsym x exec $lock_command, mode "default"
   # Logout.
   bindsym l exec i3-msg exit
   # Reboot.
-  bindsym r exec i3exit reboot
+  bindsym r exec systemctl reboot
   # Power off.
-  bindsym p exec i3exit shutdown
+  bindsym p exec systemctl poweroff
   # Suspend.
-  bindsym s exec $lock_command, i3exit suspend, mode "default"
+  bindsym s exec $lock_command, exec systemctl suspend, mode "default"
 
   bindsym Return mode "default"
   bindsym Escape mode "default"

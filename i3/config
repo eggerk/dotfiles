@@ -268,12 +268,11 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 # Lock computer.
-set $lock_command $dotfiles_path/tools/lock.sh
-bindsym $mod+Shift+x exec $lock_command
+bindsym $mod+Shift+x exec $dotfiles_path/tools/lock.sh
 set $power_mode "Power menu: [x] lock; [l]ogout; [s]uspend; [r]eboot; [p]oweroff"
 mode $power_mode {
   # Lock.
-  bindsym x exec $lock_command, mode "default"
+  bindsym x exec $dotfiles_path/tools/lock.sh, mode "default"
   # Logout.
   bindsym l exec i3-msg exit
   # Reboot.

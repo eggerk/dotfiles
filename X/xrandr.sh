@@ -53,7 +53,7 @@ fi
 POSITION1="--off"
 if [ "$ACTION" = "auto" ] || [ "$ACTION" = "internal" ] || [ "$ACTION" = "expand" ] || [ "$ACTION" = "mirror" ]
 then
-  if xrandr -q | grep $MONITOR1 -A3 | grep $RESOLUTION1 > /dev/null
+  if xrandr -q | grep $MONITOR1 -A8 | grep $RESOLUTION1 > /dev/null
   then
     POSITION1="--pos 0x0"
   fi

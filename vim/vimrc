@@ -110,8 +110,6 @@ highlight ColorColumn ctermbg=magenta
 highlight Search ctermfg=white
 au BufNewFile,BufRead *.tex setlocal colorcolumn=
 au VimEnter * :highlight Todo ctermfg=lightgray ctermbg=darkblue
-au FileType python set tabstop=2
-au FileType python set shiftwidth=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
@@ -124,7 +122,7 @@ let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 let g:formatters_python=['yapf']
-let g:formatter_yapf_style='google'
+let g:formatter_yapf_style='pep8'
 
 " Toggle NERDTree
 nmap <silent> <leader>k :NERDTreeToggle<cr>

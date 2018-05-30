@@ -7,6 +7,7 @@ foreground = #d8d8d8
 foreground_bold = #d8d8d8
 background = #222D31
 cursor = #1abb9b
+cursor_foreground = #d8d8d8
 
 # black dark/light
 color0 =                         #222D31

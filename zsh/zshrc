@@ -63,6 +63,7 @@ POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='black'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{white%}%F{0%} $ %k%F{white%}%f "
+POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="$POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX"
 
 POWERLEVEL9K_VI_INSERT_MODE_STRING="INS"
 POWERLEVEL9K_VI_COMMAND_MODE_STRING="NOR"
@@ -163,3 +164,11 @@ disable -r time
 alias time='time -p'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# SSH agent.
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(<~/.ssh-agent-thing)" > /dev/null
+fi

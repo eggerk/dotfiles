@@ -196,7 +196,7 @@ bindsym $mod+r mode "resize"
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
+  client.focused          #556064 #556064 #80FFF9 #FDF6E3  #aa8899
   client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
   client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
@@ -352,7 +352,7 @@ exec --no-startup-id "sleep 5; setxkbmap -model pc105 -layout us_umlaut -option 
 no_focus [class="Xfce4-notifyd"]
 
 # Compton
-exec --no-startup-id compton --backend glx --paint-on-overlay --glx-no-stencil \
+exec_always --no-startup-id killall compton; compton --backend glx --paint-on-overlay --glx-no-stencil \
                              --vsync opengl-swc --unredir-if-possible -b \
                              --config $dotfiles_path/compton/compton.conf
 

@@ -3,68 +3,61 @@ set nocompatible
 filetype off
 
 call plug#begin()
-" utilities
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeOpen'] }
-" Plug 'jistr/vim-nerdtree-tabs'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tpope/vim-fugitive' " the ultimate git helper
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
-Plug 'airblade/vim-gitgutter'
+" General
+Plug 'Chiel92/vim-autoformat'
 Plug 'Valloric/YouCompleteMe', { 'do': '/home/eggerk/dotfiles/vim/install_ycm.sh $(pwd)' }
-Plug 'lervag/vimtex', { 'for': ['tex'] }
-Plug 'tpope/vim-obsession'
-Plug 'richq/vim-cmake-completion'
-Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'drmikehenry/vim-headerguard', { 'for': ['cpp', 'c'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Chiel92/vim-autoformat'
-Plug 'taketwo/vim-ros'
-Plug 'chrisbra/csv.vim', { 'for': ['csv'] }
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-obsession'
+
+" Theme
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'taketwo/vim-ros'
+Plug 'tpope/vim-fugitive'
+
+" C++
+Plug 'drmikehenry/vim-headerguard', { 'for': ['cpp', 'c'] }
+Plug 'richq/vim-cmake-completion'
+
+" Latex
+Plug 'lervag/vimtex', { 'for': ['tex'] }
+
+" CSV
+Plug 'chrisbra/csv.vim', { 'for': ['csv'] }
 call plug#end()
 
-" filetype plugin indent on
-
-set t_Co=256
-set nocompatible " not compatible with vi
-set autoread " detect when a file is changed
-
-" make backspace behave in a sane manner
-set backspace=indent,eol,start
-
+set autoread " Detect when a file is changed
 set clipboard=unnamedplus
 
-" minimal number of of screen lines (context) above and below the cursor
-:set scrolloff=5
+" Minimal number of of screen lines (context) above and below the cursor
+set scrolloff=5
 
-" enable line numbers
-:set ruler
-:set number
-:set relativenumber
-:set showcmd
-
-" No code folding
-set nofoldenable
-
-" fold everything that is more than 1 level indented
-set foldmethod=syntax
-set foldminlines=10
-set foldopen+=jump
+" Enable line numbers
+set ruler
+set number
+set relativenumber
+set showcmd
 
 " No indentation after namespace.
 set cino=N-s
 
-" use ctrl-hjkl to switch split
+" Use ctrl-hjkl to switch split
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+inoremap <C-J> <Esc><C-W><C-J>
+inoremap <C-K> <Esc><C-W><C-K>
+inoremap <C-L> <Esc><C-W><C-L>
+inoremap <C-H> <Esc><C-W><C-H>
 
-" open new splits bottom/right
+" Open new splits bottom/right
 set splitbelow
 set splitright
 set equalalways
@@ -98,7 +91,6 @@ set laststatus=2 " show the satus line all the time
 set cmdheight=2
 set mouse=a
 
-
 colorscheme desert
 set cursorline
 hi CursorLine cterm=none ctermbg=237
@@ -124,15 +116,7 @@ let g:autoformat_remove_trailing_spaces = 0
 let g:formatters_python=['yapf']
 let g:formatter_yapf_style='pep8'
 
-" Toggle NERDTree
-nmap <silent> <leader>k :NERDTreeToggle<cr>
-" expand to the path of the file in the current buffer
-nmap <silent> <leader>y :NERDTreeFind<cr>
-let g:NERDTreeQuitOnOpen=1 " close NERDTree after a file is opened
-let NERDTreeShowHidden=1 " show hidden files in NERDTree
-
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='solarized'
 
 " GitGutter
 set updatetime=500
@@ -153,23 +137,9 @@ map <c-g> :GFiles<cr>
 map <c-b> :Buffers<cr>
 map <c-s> :Ag<cr>
 
-" Tagbar
-map <leader>o :TagbarToggle<cr>
-let g:tagbar_autofocus = 1
-
 " Commentary
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 autocmd FileType cmake setlocal commentstring=#\ %s
-autocmd BufRead,BufNewFile *.launch setfiletype roslaunch
-
-" Doxygen
-let g:DoxygenToolkit_commentType = "C++"
-let g:DoxygenToolkit_briefTag_pre="\\brief "
-let g:DoxygenToolkit_paramTag_pre="\\param "
-let g:DoxygenToolkit_returnTag="\\returns "
-let g:DoxygenToolkit_templateParamTag_pre="\\tparam "
-let g:DoxygenToolkit_classTag="\\class"
-let g:DoxygenToolkit_compactDoc="yes"
 
 " HeaderGuards
 function! g:HeaderguardName()

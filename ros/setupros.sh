@@ -37,7 +37,7 @@ if [ -z "$CATKIN_FOLDER" ] ; then
 fi
 export CATKIN_WS="$CATKIN_FOLDER"
 
-LINTER_SETUP_FILE="/home/eggerk/catkin_ws/src/linter/setup_linter.sh"
+LINTER_SETUP_FILE="/home/eggerk/catkin_ws/src/maplab_dependencies/internal/linter/setup_linter.sh"
 if [ -f $LINTER_SETUP_FILE ] ; then
   . "$LINTER_SETUP_FILE"
 fi

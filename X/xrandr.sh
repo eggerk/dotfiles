@@ -101,6 +101,7 @@ $CMD2
 if [ $ACTION = "auto" ] ; then
   # Move all workspaces except 0 to monitor 2.
   CURRENT_WORKSPACE="$(i3-msg -t get_workspaces | python3 -mjson.tool | grep '\"focused\": true' -B3 -A3 | grep num | awk '{print $2}' | tr ',' ' ')"
+  CURRENT_WORKSPACE_MONITOR2="$(i3-msg -t get_workspaces | python3 -mjson.tool | grep '\"visible\": true' -B3 -A8 | grep $MONITOR2 -B10 | grep num | awk '{print $2}' | tr ',' ' ')"
   i3-msg workspace 0
   i3-msg move workspace to output $MONITOR1
   for i in $(seq 1 10) ; do
@@ -109,6 +110,7 @@ if [ $ACTION = "auto" ] ; then
       i3-msg move workspace to output $MONITOR2
     fi
   done
+  i3-msg workspace $CURRENT_WORKSPACE_MONITOR2
   i3-msg workspace $CURRENT_WORKSPACE
 fi
 

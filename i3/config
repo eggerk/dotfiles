@@ -157,10 +157,6 @@ assign [class="Spotify"] $workspace10
 for_window [class="Spotify"] move to workspace $workspace10
 for_window [class="LineAttack"] floating enable
 
-# Some floating windows.
-for_window [class="[Gg]nome-calculator"] floating enable
-for_window [class="[Nn]m-connection-editor"] floating enable
-
 # Reload the configuration file.
 bindsym $mod+Shift+c reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3).
@@ -196,7 +192,7 @@ bindsym $mod+r mode "resize"
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3  #aa8899
+  client.focused          #556064 #556064 #80FFF9 #FDF6E3  #16a085
   client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
   client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
@@ -249,6 +245,8 @@ bindsym $mod+Shift+F3 exec pcmanfm
 bindsym $mod+F3 exec $terminal -e 'ranger'
 
 # Open specific applications in floating mode
+for_window [class="[Gg]nome-calculator"] floating enable
+for_window [class="[Nn]m-connection-editor"] floating enable
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
@@ -258,6 +256,7 @@ for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pamac-manager"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+for_window [class="[Ff]ile-roller"] floating enable
 
 # Autostart applications
 exec --no-startup-id $dotfiles_path/i3/polkit.sh

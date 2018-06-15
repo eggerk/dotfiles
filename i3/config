@@ -327,8 +327,8 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id "dropbox start"
 exec --no-startup-id "udiskie --tray --config=$dotfiles_path/misc/udiskie.yml"
 
-# Start firefox
-exec "firefox"
+# Start firefox, sleep a while for wifi connection to be ready.
+exec "sleep 5s; firefox"
 exec "$dotfiles_path/tools/start-communication.sh"
 assign [class="Firefox"] $workspace1
 assign [class = "Thunderbird"] $workspace0

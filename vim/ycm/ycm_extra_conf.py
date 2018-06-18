@@ -46,7 +46,7 @@ flags = [
 # a "-std=<something>".
 # For a C project, you would set this to something like 'c99' instead of
 # 'c++11'.
-'-std=c++11',
+'-std=c++17',
 # ...and the same thing goes for the magic -x option which specifies the
 # language that the files to be compiled are written in. This is mostly
 # relevant for c++ headers.
@@ -115,14 +115,36 @@ def _CheckFolder(folder):
 # Get all catkin folders.
 if 'CATKIN_WS' in os.environ:
   catkin_ws = os.environ["CATKIN_WS"]
-  print 'catkin_ws:', catkin_ws
-  devel_include_folder = os.path.join(catkin_ws, 'devel', 'include')
-  flags.append('-I' + devel_include_folder)
-  flags.append('-I' + os.path.join(devel_include_folder, 'opencv'))
+  if os.path.isdir(catkin_ws):
+    print 'catkin_ws:', catkin_ws
+    devel_include_folder = os.path.join(catkin_ws, 'devel', 'include')
+    flags.append('-I' + devel_include_folder)
+    flags.append('-I' + os.path.join(devel_include_folder, 'opencv'))
 
-  # Find all include folders in src.
-  src_dir = os.path.join(catkin_ws, 'src')
-  _CheckFolder(src_dir)
+    # Find all include folders in src.
+    src_dir = os.path.join(catkin_ws, 'src')
+    _CheckFolder(src_dir)
+
+def include_folder_for_file(file_name):
+  dir_name = os.path.dirname(file_name)
+  for _ in range(5):
+    include_folder = os.path.join(dir_name, 'include')
+    if os.path.isdir(include_folder):
+      flags.append('-I' + include_folder)
+      return
+    dir_name = os.path.dirname(dir_name)
+
+
+def include_folders_for_repo(file_name):
+  dir_name = os.path.dirname(file_name)
+  print 'looking for git'
+  for _ in range(5):
+    git_folder = os.path.join(dir_name, '.git')
+    if os.path.isdir(git_folder):
+      print 'found git folder:,', git_folder
+      _CheckFolder(dir_name)
+      return
+    dir_name = os.path.dirname(dir_name)
 
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
@@ -265,6 +287,8 @@ def FlagsForFile( filename, **kwargs ):
     except ValueError:
       pass
   else:
+    include_folder_for_file(filename)
+    include_folders_for_repo(filename)
     relative_to = DirectoryOfThisScript()
     final_flags = MakeRelativePathsInFlagsAbsolute( flags, relative_to )
 

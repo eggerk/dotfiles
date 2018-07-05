@@ -18,12 +18,12 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Git
 Plug 'airblade/vim-gitgutter'
-Plug 'taketwo/vim-ros'
 Plug 'tpope/vim-fugitive'
 
 " C++
 Plug 'drmikehenry/vim-headerguard', { 'for': ['cpp', 'c'] }
 Plug 'richq/vim-cmake-completion'
+" Plug 'taketwo/vim-ros'
 
 " Latex
 Plug 'lervag/vimtex', { 'for': ['tex'] }

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Install i3-gaps.
-if which i3 > /dev/null ; then
+if ! which i3 > /dev/null ; then
   . /home/$USER/dotfiles/setup/install/i3_gaps.sh
 fi
 

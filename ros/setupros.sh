@@ -43,10 +43,12 @@ if [ -f $LINTER_SETUP_FILE ] ; then
 fi
 
 # ROS
-# Assume kinetic by default.
-ROS_DISTRO="kinetic"
+# Assume melodic by default.
+ROS_DISTRO="melodic"
 if lsb_release -a 2>&1 | grep trusty > /dev/null ; then
   ROS_DISTRO = "indigo"
+elif lsb_release -a 2>&1 | grep trusty > /dev/null ; then
+  ROS_DISTRO = "kinetic"
 fi
 if [ "$SHELL" = "/bin/bash" ] ; then
   ROS_OPT_FILE="/opt/ros/${ROS_DISTRO}/setup.bash"

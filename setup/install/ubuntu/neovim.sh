@@ -1,8 +1,10 @@
 #!/bin/bash
 
-sudo apt install -y software-properties-common curl
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt update
+if lsb_release -c | grep xenial > /dev/null ; then
+	sudo apt install -y software-properties-common curl
+	sudo add-apt-repository ppa:neovim-ppa/stable
+	sudo apt update
+fi
 sudo apt install -y python-dev python-pip python3-dev python3-pip
 sudo apt install -y neovim git
 

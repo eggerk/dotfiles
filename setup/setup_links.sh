@@ -30,7 +30,6 @@ ln -sf "$DOTFILES_PATH/i3/statusbar" "$HOME_FOLDER/.config/i3status/config"
 ln -sf "$DOTFILES_PATH/X/xbindkeysrc" "$HOME_FOLDER/.xbindkeysrc"
 
 # x stuff
-ln -sf "$DOTFILES_PATH/X/xsessionrc" "$HOME_FOLDER/.xsessionrc"
 ln -sf "$DOTFILES_PATH/X/xprofile" "$HOME_FOLDER/.xprofile"
 ln -sf "$DOTFILES_PATH/X/Xresources" "$HOME_FOLDER/.Xresources"
 

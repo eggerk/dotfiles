@@ -261,7 +261,7 @@ for_window [class="[Ff]ile-roller"] floating enable
 # Autostart applications
 exec --no-startup-id $dotfiles_path/i3/polkit.sh
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id xautolock -time 10 -locker $lock_command
+exec --no-startup-id xautolock -time 10 -locker $dotfiles_path/tools/lock.sh
 exec --no-startup-id $dotfiles_path/tools/lights_on.sh
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
@@ -279,7 +279,7 @@ mode $power_mode {
   # Power off.
   bindsym p exec systemctl poweroff
   # Suspend.
-  bindsym s exec $lock_command, exec systemctl suspend, mode "default"
+  bindsym s exec $dotfiles_path/tools/lock.sh, exec systemctl suspend, mode "default"
 
   bindsym Return mode "default"
   bindsym Escape mode "default"

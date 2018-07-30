@@ -258,10 +258,16 @@ for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="[Ff]ile-roller"] floating enable
 
+# Thunderbird floating windows.
+for_window [class="Thunderbird" title="Thunderbird Preferences"] floating enable border normal
+for_window [window_role="EventSummaryDialog"] floating enable border normal
+for_window [window_role="EventDialog"] floating enable border normal
+for_window [window_role="Msgcompose"] floating enable border normal
+
 # Autostart applications
 exec --no-startup-id $dotfiles_path/i3/polkit.sh
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id xautolock -time 10 -locker $dotfiles_path/tools/lock.sh
+exec --no-startup-id xautolock -time 5 -locker $dotfiles_path/tools/lock.sh
 exec --no-startup-id $dotfiles_path/tools/lights_on.sh
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor

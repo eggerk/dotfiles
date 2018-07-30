@@ -116,7 +116,6 @@ def _CheckFolder(folder):
 # Get all catkin folders.
 if 'CATKIN_WS' in os.environ:
   catkin_ws = os.environ["CATKIN_WS"]
-<<<<<<< HEAD
   if os.path.isdir(catkin_ws):
     print 'catkin_ws:', catkin_ws
     devel_include_folder = os.path.join(catkin_ws, 'devel', 'include')
@@ -147,15 +146,6 @@ def include_folders_for_repo(file_name):
       _CheckFolder(dir_name)
       return
     dir_name = os.path.dirname(dir_name)
-=======
-  devel_include_folder = os.path.join(catkin_ws, 'devel', 'include')
-  flags.append('-I' + devel_include_folder)
-  flags.append('-I' + os.path.join(devel_include_folder, 'opencv'))
-
-  # Find all include folders in src.
-  src_dir = os.path.join(catkin_ws, 'src')
-  _CheckFolder(src_dir)
->>>>>>> cd8b268180643446d18ed305678cae6c6cdfe13c
 
 
 # Set this to the absolute path to the folder (NOT the file!) containing the

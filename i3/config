@@ -154,6 +154,7 @@ exec i3 workspace $workspace1
 # Spotify, clementine on workspace 10.
 assign [class="Clementine"] $workspace10
 assign [class="Spotify"] $workspace10
+assign [class="Steam"] $workspace2
 for_window [class="Spotify"] move to workspace $workspace10
 for_window [class="LineAttack"] floating enable
 

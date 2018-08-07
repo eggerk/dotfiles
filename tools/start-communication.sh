@@ -1,11 +1,12 @@
 #!/bin/bash
 function startCommunication() {
-  /home/eggerk/software/yakyak-linux-x64/yakyak &
-  thunderbird &
-  slack &
-  i3-msg workspace 0
-  i3-msg layout tabbed
-  i3-msg workspace 1
+  # i3-msg layout tabbed
+  i3-msg 'workspace 0; layout tabbed;' \
+      'exec /home/eggerk/software/web_apps/github-linux-x64/github;' \
+      'exec /home/eggerk/software/web_apps/gitlab-linux-x64/gitlab;' \
+      'exec firefox wrike.com;' \
+      'exec /home/eggerk/software/web_apps/google-chat-linux-x64/google-chat;' \
+      'exec /home/eggerk/software/web_apps/gmail-linux-x64/gmail;'
 }
 
 if echo $HOSTNAME | grep 50  ; then

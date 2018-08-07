@@ -333,9 +333,8 @@ exec --no-startup-id "dropbox start"
 exec --no-startup-id "udiskie --tray --config=$dotfiles_path/misc/udiskie.yml"
 
 # Start firefox, sleep a while for wifi connection to be ready.
-exec "sleep 5s; firefox"
 exec "$dotfiles_path/tools/start-communication.sh"
-assign [class="Firefox"] $workspace1
+exec "sleep 5s; i3-msg 'workspace 1; exec firefox --browser'"
 assign [class = "Thunderbird"] $workspace0
 assign [class = "yakyak"] $workspace0
 assign [class = "slack"] $workspace0

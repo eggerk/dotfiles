@@ -126,6 +126,7 @@ if 'CATKIN_WS' in os.environ:
     src_dir = os.path.join(catkin_ws, 'src')
     _CheckFolder(src_dir)
 
+
 def include_folder_for_file(file_name):
   dir_name = os.path.dirname(file_name)
   for _ in range(5):

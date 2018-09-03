@@ -62,7 +62,12 @@ POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='black'
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{white%}%F{0%} $ %k%F{white%}%f "
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  prompt_color="red"
+else
+  prompt_color="white"
+fi
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{$prompt_color%}%F{0%} $ %k%F{white%}%f "
 POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="$POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX"
 
 POWERLEVEL9K_VI_INSERT_MODE_STRING="INS"
@@ -121,6 +126,7 @@ alias -s cpp='vim'
 alias -s h='vim'
 alias -s patch='vim'
 export PATH="/usr/lib/ccache:$PATH"
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 alias octave-gui='octave'
 alias octave='octave-cli'
@@ -166,9 +172,15 @@ alias time='time -p'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # SSH agent.
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent > ~/.ssh-agent-thing
+if [ ! -n "$SSH_CLIENT" ] && [ ! -n "$SSH_TTY" ]; then
+  if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+      ssh-agent > ~/.ssh-agent-thing
+  fi
+  if [[ "$SSH_AGENT_PID" == "" ]]; then
+      eval "$(<~/.ssh-agent-thing)" > /dev/null
+  fi
 fi
-if [[ "$SSH_AGENT_PID" == "" ]]; then
-    eval "$(<~/.ssh-agent-thing)" > /dev/null
-fi
+
+# xclip
+alias xclip_mid='xclip -selection primary'
+alias xclip_cp='xclip -selection clipboard'

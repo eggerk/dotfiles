@@ -95,6 +95,7 @@ flags = [
 '-I/usr/include/hdf5/openmpi',
 '-I/usr/include/libxml2',
 '-I/usr/include/tcl',
+'-I/usr/include/pcl-1.8/',
 '-DENABLE_TIMING=TRUE',
 '-DENABLE_STATISTICS=TRUE',
 '-DHAVE_OPENCV',

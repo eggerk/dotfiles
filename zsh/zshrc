@@ -67,7 +67,7 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 else
   prompt_color="white"
 fi
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{$prompt_color%}%F{0%} $ %k%F{white%}%f "
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{${prompt_color}%}%F{0%} $ %k%F{${prompt_color}%}%f "
 POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="$POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX"
 
 POWERLEVEL9K_VI_INSERT_MODE_STRING="INS"

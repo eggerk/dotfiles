@@ -7,6 +7,7 @@ sudo apt install \
   build-essential \
   clementine \
   cmake \
+  fonts-symbola \
   gimp \
   git \
   gparted \

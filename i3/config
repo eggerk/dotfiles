@@ -32,6 +32,7 @@ floating_modifier $mod
 # Start a terminal.
 set $terminal termite -c $HOME/.config/termite/config
 bindsym $mod+Return exec $terminal
+bindsym Ctrl+$mod+j exec $terminal
 
 # Kill focused window.
 bindsym $mod+Shift+q kill
@@ -157,6 +158,7 @@ assign [class="Spotify"] $workspace10
 assign [class="Steam"] $workspace2
 for_window [class="Spotify"] move to workspace $workspace10
 for_window [class="LineAttack"] floating enable
+for_window [class="[Ss]we"] floating enable
 
 # Reload the configuration file.
 bindsym $mod+Shift+c reload

@@ -340,10 +340,12 @@ exec "$dotfiles_path/tools/start-communication.sh"
 exec "sleep 5s; i3-msg 'workspace 1; exec firefox --browser'"
 assign [class = "Thunderbird"] $workspace0
 assign [class = "yakyak"] $workspace0
-assign [class = "slack"] $workspace0
-assign [class = "Slack"] $workspace0
-for_window [class="slack"] move to workspace $workspace0
-for_window [class="Slack"] move to workspace $workspace0
+assign [class = "[Ss]lack"] $workspace0
+for_window [class="[Ss]lack"] move to workspace $workspace0
+assign [class = "google-chat-nativefier.*"] $workspace0
+for_window [class = "google-chat-nativefier.*"] move to workspace $workspace0
+assign [class = "wrike-nativefier.*"] $workspace0
+for_window [class = "wrike-nativefier.*"] move to workspace $workspace0
 
 # Screenshot
 bindsym --release Print exec "scrot -e 'mv $f ~/Pictures/screenshots'"

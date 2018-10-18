@@ -11,6 +11,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-obsession'
+Plug 'vim-scripts/Vimball'
 
 " Theme
 Plug 'vim-airline/vim-airline'

@@ -186,3 +186,6 @@ fi
 # xclip
 alias xclip_mid='xclip -selection primary'
 alias xclip_cp='xclip -selection clipboard'
+
+LINTER_FILE="/home/eggerk/catkin_ws/src/linter/setup_linter.sh"
+[ -f $LINTER_FILE ] && . $LINTER_FILE

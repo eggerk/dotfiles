@@ -9,7 +9,7 @@ fi
 sudo add-apt-repository ppa:aguignard/ppa
 sudo apt update
 
-sudo apt install -y rofi scrot feh xfce4-notifyd compton
+sudo apt install -y rofi scrot feh xfce4-notifyd compton ligthdm
 
 WORKING_FOLDER=$(mktemp -d)
 cd $WORKING_FOLDER

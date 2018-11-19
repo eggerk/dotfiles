@@ -326,7 +326,7 @@ bindsym $mod+Shift+a exec playerctl previous
 exec $dotfiles_path/X/xrandr.sh
 exec_always --no-startup-id $dotfiles_path/tools/set-wallpaper.sh
 exec --no-startup-id "$dotfiles_path/tools/set-wallpaper.sh startup"
-exec_always xbindkeys
+exec xbindkeys
 
 # Applets.
 exec --no-startup-id nm-applet

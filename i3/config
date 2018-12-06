@@ -338,7 +338,7 @@ exec --no-startup-id "udiskie --tray --config=$dotfiles_path/misc/udiskie.yml"
 
 # Start firefox, sleep a while for wifi connection to be ready.
 exec "$dotfiles_path/tools/start-communication.sh"
-exec "sleep 5s; i3-msg 'workspace 1; exec firefox --browser'"
+exec "i3-msg 'workspace 1; exec firefox --browser'"
 assign [class = "Thunderbird"] $workspace0
 assign [class = "yakyak"] $workspace0
 assign [class = "[Ss]lack"] $workspace0

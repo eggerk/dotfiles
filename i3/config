@@ -332,7 +332,6 @@ exec xbindkeys
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift-gtk
 exec --no-startup-id blueman-applet
-exec --no-startup-id "dropbox start"
 exec --no-startup-id "/home/eggerk/.local/share/tresorit/tresorit --hidden"
 exec --no-startup-id "udiskie --tray --config=$dotfiles_path/misc/udiskie.yml"
 

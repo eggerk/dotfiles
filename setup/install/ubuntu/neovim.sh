@@ -19,6 +19,13 @@ sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
 sudo update-alternatives --config editor
 select-editor
 
+# Install coc.
+sudo apt install nodejs yarn rapidjson-dev zlib1g-dev ncurses-dev
+git clone --depth=1 --recursive https://github.com/MaskRay/ccls
+cd ccls
+cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release
+cmake --build Release
+
 # Install vim-plug.
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

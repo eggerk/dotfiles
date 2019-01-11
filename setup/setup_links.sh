@@ -10,6 +10,7 @@ ln -sf "$DOTFILES_PATH/zsh/zshrc" "$HOME_FOLDER/.zshrc"
 ln -sf "$DOTFILES_PATH/vim/vimrc" "$HOME_FOLDER/.vimrc"
 mkdir -p "$HOME_FOLDER/.config/nvim"
 ln -sf "$DOTFILES_PATH/vim/vimrc" "$HOME_FOLDER/.config/nvim/init.vim"
+ln -sf "$DOTFILES_PATH/vim/coc-settings.json" "$HOME_FOLDER/.config/nvim/coc-settings.json"
 
 # termite
 mkdir -p $HOME_FOLDER/.config/termite

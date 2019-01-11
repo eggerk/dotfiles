@@ -196,7 +196,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>cn <Plug>(coc-rename)
 
 " Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>cf  <Plug>(coc-fix-current)
 
 " fzf
 map <c-p> :FZF<cr>

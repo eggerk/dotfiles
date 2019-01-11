@@ -1,9 +1,11 @@
 {
   "coc.preferences.rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".hg/"],
+  "coc.preferences.diagnostic.errorSign": "✖",
+  "coc.preferences.diagnostic.infoSign": "ℹ",
+  "coc.preferences.diagnostic.hintSign": "➤",
   "languageserver": {
     "ccls": {
       "command": "/home/eggerk/software/ccls/Release/ccls",
-      "commandPath": "/home/eggerk/software/ccls/Release",
       "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
       "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".hg/"],
       "initializationOptions": {

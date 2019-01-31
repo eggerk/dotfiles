@@ -1,6 +1,6 @@
 #!/bin/bash
+
 killall compton
-i3lock -c 000011 -n
 
 if ! echo $HOSTNAME | grep 50 > /dev/null && ! echo $HOST | grep 50 > /dev/null ; then
   # Can't turn off screens for computers with nvidia gpu drivers and a docking
@@ -9,6 +9,9 @@ if ! echo $HOSTNAME | grep 50 > /dev/null && ! echo $HOST | grep 50 > /dev/null 
   sleep 0.2s
   xset dpms force off
 fi
+
+i3lock -c 000011 -n
+
 /home/eggerk/dotfiles/tools/set-wallpaper.sh
 compton --backend glx --paint-on-overlay --glx-no-stencil \
         --vsync opengl-swc --unredir-if-possible -b \

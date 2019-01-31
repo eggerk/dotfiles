@@ -31,6 +31,14 @@ then
   RESOLUTION1="1920x1080"
   MONITOR2=$(xrandr -q | grep DP | grep -v eDP | grep -v disconnected | awk '{print $1}')
   RESOLUTION2="1920x1200"
+  if [ "$ACTION" = "auto" ] ; then
+    if xrandr -q | grep $MONITOR2 -A3 | grep $RESOLUTION2 > /dev/null
+    then
+      ACTION="external"
+    else
+      ACTION="internal"
+    fi
+  fi
 elif echo $HOSTNAME | grep desktop > /dev/null || echo $HOST | grep desktop > /dev/null
 then
   # Desktop
@@ -68,7 +76,7 @@ then
     POSITION2="--right-of ${MONITOR1}"
   elif [ $ACTION = "external" ]
   then
-    POSITION2="-pos 0x0"
+    POSITION2="--pos 0x0"
   elif [ $ACTION = "mirror" ]
   then
     POSITION2="--same-as ${MONITOR1}"

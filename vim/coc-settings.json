@@ -9,7 +9,12 @@
       "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
       "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".hg/"],
       "initializationOptions": {
-         "cacheDirectory": "/home/eggerk/.cache/ccls"
+         "cacheDirectory": "/home/eggerk/.cache/ccls",
+         "index": {
+           "threads": 4,
+           "initialBlacklist": ["."],
+           "trackDependency": 1
+         }
        }
     }
   }

@@ -30,11 +30,21 @@ then
   MONITOR1=$(xrandr -q | grep eDP | awk '{ print $1 }')
   RESOLUTION1="1920x1080"
   MONITOR2=$(xrandr -q | grep DP | grep -v eDP | grep -v disconnected | awk '{print $1}')
-  RESOLUTION2="1920x1200"
+  RESOLUTION2="2560x1440"
+  RESOLUTION2b="1920x1200"
+  RESOLUTION2c="1920x1080"
   if [ "$ACTION" = "auto" ] ; then
     if xrandr -q | grep $MONITOR2 -A3 | grep $RESOLUTION2 > /dev/null
     then
       ACTION="external"
+    elif xrandr -q | grep $MONITOR2 -A3 | grep $RESOLUTION2b > /dev/null
+    then
+      ACTION="external"
+      RESOLUTION2="$RESOLUTION2b"
+    elif xrandr -q | grep $MONITOR2 -A3 | grep $RESOLUTION2c > /dev/null
+    then
+      ACTION="external"
+      RESOLUTION2="$RESOLUTION2c"
     else
       ACTION="internal"
     fi

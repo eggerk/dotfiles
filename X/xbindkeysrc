@@ -32,10 +32,10 @@ keystate_numlock = enable
 
 # Switch Tabs
 "xte 'keydown Control_L' 'key Page_Down' 'keyup Control_L'"
-   b:13
+   b:10
 
 "xte 'keydown Control_L' 'key Page_Up' 'keyup Control_L'"
-   b:10
+   b:13
 
 #"xte 'keydown Control_L' 'key Page_Down' 'keyup Control_L'"
 #   b:7

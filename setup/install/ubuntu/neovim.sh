@@ -20,7 +20,7 @@ sudo update-alternatives --config editor
 select-editor
 
 # Install coc.
-sudo apt install nodejs yarn rapidjson-dev zlib1g-dev ncurses-dev
+sudo apt install nodejs rapidjson-dev zlib1g-dev ncurses-dev
 git clone --depth=1 --recursive https://github.com/MaskRay/ccls
 cd ccls
 cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release

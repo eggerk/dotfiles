@@ -104,7 +104,7 @@
 ! rofi.theme:                          
 ! "Color scheme for normal row" Set from: Default
 ! "bg, fg, bgalt, hlbg, hlfg
-rofi.color-normal: #404a4e, #eee8d5, #202a2e, #16a085, #292f34
+rofi.color-normal: #404a4e, #eee8d5, #202a2e, #5294E2, #292f34
 ! "Color scheme for urgent row" Set from: Default
 ! "rofi.color-urgent: #16a085,  #FDF6E3,  #E5201D
 ! "Color scheme for active row" Set from: Default

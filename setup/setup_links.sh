@@ -12,9 +12,11 @@ mkdir -p "$HOME_FOLDER/.config/nvim"
 ln -sf "$DOTFILES_PATH/vim/vimrc" "$HOME_FOLDER/.config/nvim/init.vim"
 ln -sf "$DOTFILES_PATH/vim/coc-settings.json" "$HOME_FOLDER/.config/nvim/coc-settings.json"
 
-# termite
+# termite / kitty
 mkdir -p $HOME_FOLDER/.config/termite
 ln -sf $DOTFILES_PATH/misc/termite $HOME_FOLDER/.config/termite/config
+mkdir -p $HOME_FOLDER/.config/kitty
+ln -sf $DOTFILES_PATH/misc/kitty.conf $HOME_FOLDER/.config/kitty/kitty.conf
 
 # tmux
 ln -sf "$DOTFILES_PATH/tmux/tmux.conf" "$HOME_FOLDER/.tmux.conf"

@@ -5,6 +5,7 @@
 # this file and re-run i3-config-wizard(1).
 #
 set $dotfiles_path /home/eggerk/dotfiles
+set $terminal /home/eggerk/dotfiles/tools/i3-sensible-terminal
 
 # i3 config file (v4) #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -30,7 +31,6 @@ font pango:System Ubuntu 9, FontAwesome 10
 floating_modifier $mod
 
 # Start a terminal.
-set $terminal termite -c $HOME/.config/termite/config
 bindsym $mod+Return exec $terminal
 bindsym Ctrl+$mod+j exec $terminal
 
@@ -254,9 +254,7 @@ bindsym $mod+Ctrl+m exec $terminal -e 'alsamixer'
 #bindsym $mod+Ctrl+m exec pavucontrol
 
 # Start Applications
-bindsym $mod+Ctrl+b exec $terminal -e 'bmenu'
-bindsym $mod+F2 exec firfox
-bindsym $mod+Shift+F3 exec pcmanfm
+bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec $terminal -e 'ranger'
 
 # Open specific applications in floating mode

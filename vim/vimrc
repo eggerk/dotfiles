@@ -94,15 +94,15 @@ set laststatus=2 " show the satus line all the time
 set cmdheight=3
 set mouse=a
 
-colorscheme desert
+colorscheme default
 set cursorline
 hi CursorLine cterm=none ctermbg=237
-hi MatchParen cterm=none ctermbg=white ctermfg=black
+" hi MatchParen cterm=none ctermbg=white ctermfg=black
 set guifont=Ubuntu\ Mono\ derivative\ Powerline
 
 set colorcolumn=81  " Line at 80 chars.
 highlight ColorColumn ctermbg=magenta
-highlight Search ctermfg=white
+" highlight Search ctermfg=white
 au BufNewFile,BufRead *.tex setlocal colorcolumn=
 au VimEnter * :highlight Todo ctermfg=lightgray ctermbg=darkblue
 
@@ -194,6 +194,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
+hi default CocHighlightText ctermbg=magenta
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word

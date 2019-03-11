@@ -94,7 +94,7 @@ set laststatus=2 " show the satus line all the time
 set cmdheight=3
 set mouse=a
 
-colorscheme default
+colorscheme desert
 set cursorline
 hi CursorLine cterm=none ctermbg=237
 " hi MatchParen cterm=none ctermbg=white ctermfg=black
@@ -129,6 +129,7 @@ let g:formatter_yapf_style='pep8'
 let g:airline_powerline_fonts = 1
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+let g:airline_theme='base16_default'
 
 " GitGutter
 set updatetime=500

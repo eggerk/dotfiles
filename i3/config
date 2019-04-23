@@ -211,10 +211,12 @@ exec_always $dotfiles_path/i3/set_gaps.sh
 gaps inner 5
 gaps outer 3
 
-set $gaps_mode "Gaps: [S] Disable smart gaps, [s] Enable smart gaps, [<] Small gaps, [>] Large gaps"
+set $gaps_mode "Gaps: [S] Disable smart gaps, [s] Enable smart gaps, [,] Small gaps, [.] Large gaps, [<] Small gaps all, [>] Large gaps all"
 mode $gaps_mode {
   bindsym Shift+s      gaps horizontal current set 0 ; mode "default"
   bindsym s            gaps horizontal current set 100 ; mode "default"
+  bindsym comma  gaps outer current set 3; gaps horizontal current set 0; gaps inner current set 5 ; mode "default"
+  bindsym period gaps outer current set 0; gaps horizontal current set 100; gaps inner current set 12; mode "default"
   bindsym Shift+comma  gaps outer all set 3; gaps horizontal all set 0; gaps inner all set 5 ; mode "default"
   bindsym Shift+period gaps outer all set 0; gaps horizontal all set 100; gaps inner all set 12; mode "default"
   bindsym Return mode "default"
@@ -332,6 +334,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+Shift+s exec playerctl play-pause
 bindsym $mod+Shift+d exec playerctl next
 bindsym $mod+Shift+a exec playerctl previous
+bindsym $mod+shift+slash exec $dotfiles_path/tools/vlc_youtube_comment_to_notification.sh
 
 exec $dotfiles_path/X/xrandr.sh
 exec_always --no-startup-id $dotfiles_path/tools/set-wallpaper.sh
@@ -358,9 +361,9 @@ assign [class = "wrike-nativefier.*"] $workspace0
 for_window [class = "wrike-nativefier.*"] move to workspace $workspace0
 
 # Screenshot
-bindsym --release Print exec "scrot -e 'mv $f ~/Pictures/screenshots'"
-bindsym --release Shift+Print exec "notify-send -t 1500 'Select area for screenshot.'; scrot -s -e 'mv $f ~/Pictures/screenshots'"
-bindsym --release control+Print exec "scrot -u -e 'mv $f ~/Pictures/screenshots'"
+bindsym --release Print exec "maim /home/eggerk/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
+bindsym --release Shift+Print exec "notify-send -t 1500 'Select area for screenshot.'; maim -s /home/eggerk/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
+bindsym --release control+Print exec "maim -i $(xdotool getactivewindow) /home/eggerk/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
 
 # Keyboard layout.
 exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut -option caps:escape"

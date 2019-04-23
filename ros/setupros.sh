@@ -101,14 +101,7 @@ function cttl() {
   fi
 }
 
-alias muma1='cd ~/other_ckws/muma_ws/src/multiagent_mapping/'
-alias muma2='cd ~/catkin_ws/src/maplab/'
-alias maplab='rosrun maplab_console maplab_console'
+alias maplab_src='cd $CATKIN_FOLDER/src/maplab'
+alias maplab_console='rosrun maplab_console maplab_console'
 
-function muma() {
-  if [[ "$CATKIN_FOLDER" == "/home/eggerk/other_ckws/muma_ws" ]] ; then
-    muma1
-  else
-    cd $CATKIN_FOLDER/src/maplab
-  fi
-}
+export GTEST_COLOR='yes'

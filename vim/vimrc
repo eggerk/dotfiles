@@ -106,11 +106,11 @@ highlight ColorColumn ctermbg=magenta
 au BufNewFile,BufRead *.tex setlocal colorcolumn=
 au VimEnter * :highlight Todo ctermfg=lightgray ctermbg=darkblue
 
-" Disable relativenumber and cursorline for Latex files.
-au BufNewFile,BufRead *.tex
-    \ setlocal nocursorline |
-    \ setlocal nornu |
-    \ setlocal number |
+" " Disable relativenumber and cursorline for Latex files.
+" au BufNewFile,BufRead *.tex
+"     \ setlocal nocursorline |
+"     \ setlocal nornu |
+"     \ setlocal number |
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -4,6 +4,7 @@ filetype off
 
 call plug#begin()
 " General
+Plug 'joshdick/onedark.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -94,11 +95,11 @@ set laststatus=2 " show the satus line all the time
 set cmdheight=3
 set mouse=a
 
-colorscheme desert
+set termguicolors
+colorscheme onedark
 set cursorline
-hi CursorLine cterm=none ctermbg=237
-" hi MatchParen cterm=none ctermbg=white ctermfg=black
-set guifont=Ubuntu\ Mono\ derivative\ Powerline
+hi CursorLine cterm=none ctermbg=237 guibg=#2C323C
+set guifont=Ubuntu\ Mono\ derivative\ Powerline:h12
 
 set colorcolumn=81  " Line at 80 chars.
 highlight ColorColumn ctermbg=magenta

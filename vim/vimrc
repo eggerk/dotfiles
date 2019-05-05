@@ -196,7 +196,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-hi default CocHighlightText ctermbg=magenta
+hi default CocHighlightText ctermbg=magenta guibg=#61AFEF guifg=white
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word

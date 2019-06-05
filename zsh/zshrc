@@ -82,7 +82,7 @@ POWERLEVEL9K_CUSTOM_CKWS_BACKGROUND="blue"
 
 # User configuration
 export GOPATH="/home/eggerk/software/go"
-export PATH="/home/eggerk/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$GOPATH/bin"
+export PATH="/home/eggerk/software/vdwrap:/home/eggerk/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$GOPATH/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -121,6 +121,7 @@ fi
 source ~/dotfiles/ros/setupros.sh
 export GRB_LICENSE_FILE='/home/eggerk/catkin_ws/gurobi.lic'
 
+alias nvim='/home/eggerk/software/nvim-linux64/bin/nvim'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 alias -s cc='vim'

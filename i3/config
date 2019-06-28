@@ -282,7 +282,6 @@ for_window [window_role="Msgcompose"] floating enable border normal
 # Autostart applications
 exec --no-startup-id $dotfiles_path/i3/polkit.sh
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id xautolock -time 5 -locker $dotfiles_path/tools/lock.sh
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 

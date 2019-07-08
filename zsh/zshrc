@@ -121,7 +121,9 @@ fi
 source ~/dotfiles/ros/setupros.sh
 export GRB_LICENSE_FILE='/home/eggerk/catkin_ws/gurobi.lic'
 
-alias nvim='/home/eggerk/software/nvim-linux64/bin/nvim'
+if [ -f /home/eggerk/software/nvim-linux64/bin/nvim ] ; then
+  alias nvim='/home/eggerk/software/nvim-linux64/bin/nvim'
+fi
 alias vim='nvim'
 alias vimdiff='nvim -d'
 alias -s cc='vim'

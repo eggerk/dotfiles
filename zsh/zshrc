@@ -136,6 +136,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 alias octave-gui='octave'
 alias octave='octave-cli'
 alias cpr='rsync -azP'
+alias git_amend_no_edit='git commit -a --amend --no-edit'
 
 # Vi mode.
 function zle-line-init {
@@ -193,3 +194,24 @@ alias xclip_cp='xclip -selection clipboard'
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 alias kitty_image='kitty +kitten icat'
+
+if which g++-8 > /dev/null; then
+  export CXX="g++-8"
+fi
+
+# Keep title from `fg` to original jobname.
+function preexec_fg_title {
+  local fg_title
+  if [[ $* == fg* ]]; then
+     if [[ $* == *%* ]]; then
+        fg_title=($(jobs ${${(z)1}[2]})) 2> /dev/null
+     else
+        fg_title=($(jobs %%)) 2> /dev/null
+     fi
+     title "${fg_title[4,-1]}"
+  else
+     title $*
+  fi
+}
+
+preexec_functions+=(preexec_fg_title)

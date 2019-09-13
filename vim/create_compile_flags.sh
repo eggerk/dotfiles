@@ -6,7 +6,6 @@ cat << EOF
 -Wall
 -Wextra
 -xc++
--I/opt/ros/melodic/include
 -I/home/eggerk/catkin_ws/devel/include
 -I/usr/include/eigen3
 -isystem
@@ -25,8 +24,6 @@ cat << EOF
 ./tests/gmock
 -isystem
 ./tests/gmock/include
--I/opt/ros/melodic/include
--I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp
 -I/usr/include/eigen3
 -I/usr/include/pcl-1.7
 -I/usr/include/ni
@@ -56,3 +53,5 @@ if [ ! -z $1 ] ; then
   echo "-I$(realpath "$1")/install/include"
   find $(realpath "$1")/src -type d -name include | sed "s/^/-I/"
 fi
+
+echo "-I/opt/ros/melodic/include"

@@ -9,7 +9,7 @@ fi
 sudo add-apt-repository ppa:aguignard/ppa
 sudo apt update
 
-sudo apt install -y rofi maim xdotool feh xfce4-notifyd compton lightdm xautolock
+sudo apt install -y rofi maim xdotool feh xfce4-notifyd lightdm xautolock
 
 WORKING_FOLDER=$(mktemp -d)
 cd $WORKING_FOLDER

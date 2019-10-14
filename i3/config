@@ -159,6 +159,7 @@ assign [class="Steam"] $workspace2
 for_window [class="Spotify"] move to workspace $workspace10
 for_window [class="LineAttack"] floating enable
 for_window [class="[Ss]we"] floating enable
+for_window [instance="origin.exe"] floating enable
 
 # Reload the configuration file.
 bindsym $mod+Shift+c reload

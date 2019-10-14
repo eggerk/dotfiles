@@ -230,3 +230,13 @@ endfunction
 
 " Vim-ros
 let g:ros_build_system="catkin-tools"
+
+command! CatkinBuildThis execute ":sp term://cd $(dirname %) && catkin build --this --no-deps"
+command! CatkinBuildFromThis execute ":sp term://cd $(dirname %) && catkin build --start-with-this"
+command! CatkinBuildAll execute ":sp term://cd $(dirname %) && catkin build --this"
+command! CatkinTestThis execute ":sp term://cd $(dirname %) && catkin run_tests --this --no-deps"
+command! -nargs=+ CatkinBuild execute ":sp term://cd $(dirname %) && catkin build --no-deps " . <f-args>
+command! -nargs=+ CatkinBuildWithDeps execute ":sp term://cd $(dirname %) && catkin build " . <f-args>
+nmap <leader>bt :CatkinBuildThis<CR>
+nmap <leader>ba :CatkinBuildAll<CR>
+nmap <leader>tt :CatkinTestThis<CR>

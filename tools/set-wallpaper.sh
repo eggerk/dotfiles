@@ -7,7 +7,7 @@ if [ $1 ] ; then
   if echo $HOSTNAME | grep 50 > /dev/null || echo $HOST | grep 50 > /dev/null ; then
     # Do it again because there still seems to be an issue somewhere.
     sleep 0.2
-    feh --bg-fill --randomize $PICTURE_FOLDER/* &
+    feh --bg-fill --randomize $PICTURE_FOLDER &
   fi
 fi
 echo "Done!"

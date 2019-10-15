@@ -55,8 +55,6 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Powerlevel theme.
 POWERLEVEL9K_COLOR_SCHEME='dark'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time custom_ckws)
 
 POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='black'
 
@@ -64,9 +62,14 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   prompt_color="red"
+  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode host dir vcs)
 else
   prompt_color="white"
+  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode dir vcs)
 fi
+
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time custom_ckws)
+
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{${prompt_color}%}%F{0%} $ %k%F{${prompt_color}%}%f "
 POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="$POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX"
 
@@ -124,6 +127,7 @@ export GRB_LICENSE_FILE='/home/eggerk/catkin_ws/gurobi.lic'
 if [ -f /home/eggerk/software/nvim-linux64/bin/nvim ] ; then
   alias nvim='/home/eggerk/software/nvim-linux64/bin/nvim'
 fi
+export EDITOR=nvim
 alias vim='nvim'
 alias vimdiff='nvim -d'
 alias -s cc='vim'

@@ -360,9 +360,9 @@ assign [class = "wrike-nativefier.*"] $workspace0
 for_window [class = "wrike-nativefier.*"] move to workspace $workspace0
 
 # Screenshot
-bindsym --release Print exec "maim /home/eggerk/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
-bindsym --release Shift+Print exec "notify-send -t 1500 'Select area for screenshot.'; maim -s /home/eggerk/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
-bindsym --release control+Print exec "maim -i $(xdotool getactivewindow) /home/eggerk/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
+bindsym --release Print exec "maim -u /home/eggerk/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
+bindsym --release Shift+Print exec "notify-send -t 1500 'Select area for screenshot.'; maim -u -s /home/eggerk/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
+bindsym --release control+Print exec "maim -u -i $(xdotool getactivewindow) /home/eggerk/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
 
 # Keyboard layout.
 exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut -option caps:escape"

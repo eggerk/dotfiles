@@ -130,4 +130,4 @@ case $1 in
   ;;
 esac
 volume_notification
-return 0
+exit 0

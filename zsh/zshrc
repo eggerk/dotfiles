@@ -85,10 +85,18 @@ POWERLEVEL9K_CUSTOM_CKWS_BACKGROUND="blue"
 
 # User configuration
 export GOPATH="/home/eggerk/software/go"
-export PATH="/home/eggerk/software/vdwrap:/home/eggerk/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$GOPATH/bin"
+export PATH="$PATH:$GOPATH/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+
+if which nvim > /dev/null ; then
+  export EDITOR=nvim
+elif which vim > /dev/null ; then
+  EXPORT EDITOR=vim
+else
+  EXPORT EDITOR=vi
+fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -115,27 +123,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Make sure we always hide hidden files in Nautilus.
-# For some reason, this is set to true occasionally.
-if [ ! -n "$SSH_CLIENT" ] && [ ! -n "$SSH_TTY" ]; then
-  gsettings set org.gtk.Settings.FileChooser show-hidden false
-fi
-
 source ~/dotfiles/ros/setupros.sh
-export GRB_LICENSE_FILE='/home/eggerk/catkin_ws/gurobi.lic'
 
-if [ -f /home/eggerk/software/nvim-linux64/bin/nvim ] ; then
-  alias nvim='/home/eggerk/software/nvim-linux64/bin/nvim'
-fi
-export EDITOR=nvim
-alias vim='nvim'
-alias vimdiff='nvim -d'
-alias -s cc='vim'
-alias -s cpp='vim'
-alias -s h='vim'
-alias -s patch='vim'
+alias vim=nvim
+alias -s cc='nvim'
+alias -s cpp='nvim'
+alias -s h='nvim'
+alias -s patch='nvim'
 export PATH="/usr/lib/ccache:$PATH"
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 alias octave-gui='octave'
 alias octave='octave-cli'
@@ -171,10 +166,6 @@ zle -N zle-line-init
 zle -N ale-line-finish
 zle -N zle-keymap-select
 
-# Remote IPs.
-export TITUS_IP=192.168.1.3
-export MAPCOMPUTE_IP=129.132.16.42
-
 # Disable built-in time.
 disable -r time
 alias time='time -p'
@@ -195,7 +186,7 @@ fi
 alias xclip_mid='xclip -selection primary'
 alias xclip_cp='xclip -selection clipboard'
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH"
 
 alias kitty_image='kitty +kitten icat'
 

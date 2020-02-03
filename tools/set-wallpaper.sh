@@ -1,7 +1,7 @@
 #!/bin/zsh
 PICTURE_FOLDER=/home/eggerk/Pictures/wallpapers
 echo "Running feh..."
-feh --bg-fill --randomize $PICTURE_FOLDER/* &
+feh --bg-fill --randomize $PICTURE_FOLDER &
 if [ $1 ] ; then
   # If given an argument it was during startup.
   if echo $HOSTNAME | grep 50 > /dev/null || echo $HOST | grep 50 > /dev/null ; then

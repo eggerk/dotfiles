@@ -9,6 +9,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'liuchengxu/vista.vim'
 " Plug 'Shougo/echodoc.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-commentary'
@@ -66,7 +67,6 @@ set splitbelow
 set splitright
 set equalalways
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => User Interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -113,7 +113,6 @@ au VimEnter * :highlight Todo ctermfg=lightgray ctermbg=darkblue
 "     \ setlocal nornu |
 "     \ setlocal number |
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -134,9 +133,6 @@ let g:airline_theme='base16_default'
 
 " GitGutter
 set updatetime=500
-
-" let g:echodoc#enable_at_startup = 1
-" let g:echodoc#type = 'signature'
 
 """""
 " CoC
@@ -206,6 +202,28 @@ nmap <leader>cn <Plug>(coc-rename)
 nmap <leader>cf  <Plug>(coc-fix-current)
 
 " fzf
+let $FZF_DEFAULT_OPTS='--layout=reverse'
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+
+  let height = &lines - 10
+  let width = float2nr(&columns - (&columns * 2 / 12))
+  let col = float2nr((&columns - width) / 2)
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': 3,
+        \ 'col': col,
+        \ 'width': width,
+        \ 'height': height
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
+
 map <c-p> :FZF<cr>
 map <c-g> :GFiles<cr>
 map <c-b> :Buffers<cr>
@@ -240,3 +258,18 @@ command! -nargs=+ CatkinBuildWithDeps execute ":sp term://cd $(dirname %) && cat
 nmap <leader>bt :CatkinBuildThis<CR>
 nmap <leader>ba :CatkinBuildAll<CR>
 nmap <leader>tt :CatkinTestThis<CR>
+
+" Vista
+let g:vista_default_executive = 'coc'
+
+" Taken from https://vim.fandom.com/wiki/Modeline_magic
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+function! AppendModeline()
+  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
+        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("$"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>

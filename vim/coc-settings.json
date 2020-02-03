@@ -5,7 +5,7 @@
   "diagnostic.hintSign": "➤",
   "languageserver": {
     "clangd": {
-      "command": "/home/eggerk/software/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04/bin/clangd",
+      "command": "clangd-9",
       "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
       "filetypes": ["c", "cpp", "objc", "objcpp"]
     }

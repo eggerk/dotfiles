@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cat << EOF
--std=c++14
+-std=c++17
 -pthread
 -Wall
 -Wextra

@@ -92,7 +92,6 @@ function cttl() {
   fi
 }
 
-alias maplab_src='cd $CATKIN_FOLDER/src/maplab'
-alias maplab_console='rosrun maplab_console maplab_console'
-
 export GTEST_COLOR='yes'
+
+export STATE_MACHINE_IPC_DIR_OVERRIDE="$XDG_RUNTIME_DIR"

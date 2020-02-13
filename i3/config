@@ -40,8 +40,9 @@ bindsym $mod+Shift+q kill
 bindsym --release Shift+button2 kill
 
 # Rofi.
-bindsym $mod+d exec "rofi -modi drun,run,window -show drun -fuzzy"
-bindsym $mod+c exec rofi -show window
+bindsym $mod+d exec --no-startup-id "rofi -modi drun,run,window -show drun -fuzzy"
+bindsym $mod+x exec --no-startup-id "rofi -show window"
+bindsym $mod+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort"
 
 # Change focus.
 bindsym $mod+h focus left
@@ -351,9 +352,6 @@ exec --no-startup-id "udiskie --tray --config=$dotfiles_path/misc/udiskie.yml"
 exec "$dotfiles_path/tools/start-communication.sh"
 exec "i3-msg 'workspace 1; exec firefox --browser'"
 assign [class = "Thunderbird"] $workspace0
-assign [class = "yakyak"] $workspace0
-assign [class = "[Ss]lack"] $workspace0
-for_window [class="[Ss]lack"] move to workspace $workspace0
 assign [class = "google-chat-nativefier.*"] $workspace0
 for_window [class = "google-chat-nativefier.*"] move to workspace $workspace0
 assign [class = "wrike-nativefier.*"] $workspace0

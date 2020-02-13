@@ -6,10 +6,17 @@ if ! which i3 > /dev/null ; then
 fi
 
 # Latest rofi
-sudo add-apt-repository ppa:aguignard/ppa
-sudo apt update
+sudo apt install -y libbison-dev flex libxcb-ewmh-dev librsvg2-dev
+git clone https://github.com/davatorium/rofi.git --recursive || true
+cd rofi || exit 1
+autoreconf -i
+mkdir -p build && cd build
+../configure --disable-check  # check too old on 18.04.
+make
+sudo make install
+cd ..
 
-sudo apt install -y rofi maim xdotool feh xfce4-notifyd lightdm xautolock
+sudo apt install -y maim xdotool feh xfce4-notifyd lightdm xautolock
 
 WORKING_FOLDER=$(mktemp -d)
 cd $WORKING_FOLDER

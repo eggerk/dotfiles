@@ -3,3 +3,6 @@ neovim-gtk
 kitty
 termite
 compton
+rofi-calc
+rofi
+libqalculate

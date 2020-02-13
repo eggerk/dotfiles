@@ -37,19 +37,5 @@ keystate_numlock = enable
 "xte 'keydown Control_L' 'key Page_Up' 'keyup Control_L'"
    b:13
 
-#"xte 'keydown Control_L' 'key Page_Down' 'keyup Control_L'"
-#   b:7
-
-#"xte 'keydown Control_L' 'key Page_Up' 'keyup Control_L'"
-#   b:6
-
-# open system montior
-"gnome-system-monitor"
-   release+control+alt+ Pause
-
-#Remark
-"spotify"
-   m:0x10 + c:179
-
 #
 # End of xbindkeys configuration

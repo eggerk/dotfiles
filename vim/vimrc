@@ -9,6 +9,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'yuki-ycino/fzf-preview.vim'
 Plug 'liuchengxu/vista.vim'
 " Plug 'Shougo/echodoc.vim'
 Plug 'ntpeters/vim-better-whitespace'
@@ -16,6 +17,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-obsession'
 Plug 'vim-scripts/Vimball'
 Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'bogado/file-line'
 
 " Theme
 Plug 'vim-airline/vim-airline'
@@ -202,32 +204,11 @@ nmap <leader>cn <Plug>(coc-rename)
 nmap <leader>cf  <Plug>(coc-fix-current)
 
 " fzf
-let $FZF_DEFAULT_OPTS='--layout=reverse'
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-
-function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&signcolumn', 'no')
-
-  let height = &lines - 10
-  let width = float2nr(&columns - (&columns * 2 / 12))
-  let col = float2nr((&columns - width) / 2)
-
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': 3,
-        \ 'col': col,
-        \ 'width': width,
-        \ 'height': height
-        \ }
-
-  call nvim_open_win(buf, v:true, opts)
-endfunction
-
-map <c-p> :FZF<cr>
-map <c-g> :GFiles<cr>
-map <c-b> :Buffers<cr>
-map <c-s> :Ag<cr>
+map <c-p> :FzfPreviewDirectoryFiles<cr>
+map <c-g> :FzfPreviewProjectFiles<cr>
+map <c-b> :FzfPreviewBuffers<cr>
+map <c-s> :FzfPreviewProjectGrep<cr>
+let g:fzf_preview_filelist_command = 'git ls-files --exclude-standard $(git rev-parse --show-toplevel)'
 
 " Commentary
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s

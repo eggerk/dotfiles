@@ -257,7 +257,7 @@ endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 " Float term
-let g:floaterm_keymap_toggle = '<c-k>'
+let g:floaterm_keymap_toggle = '<c-]>'
 let g:floaterm_width = 0.8
 let g:floaterm_position = 'center'
 let g:floaterm_background = '#383c44'

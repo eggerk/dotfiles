@@ -20,5 +20,5 @@ sudo apt install -y maim xdotool feh xfce4-notifyd lightdm xautolock
 
 WORKING_FOLDER=$(mktemp -d)
 cd $WORKING_FOLDER
-wget -O "playerctl.deb" "https://github.com/acrisci/playerctl/releases/download/v0.5.0/playerctl-0.5.0_amd64.deb"
+wget -O "playerctl.deb" "https://github.com/altdesktop/playerctl/releases/download/v2.1.1/playerctl-2.1.1_amd64.deb"
 sudo dpkg -i playerctl.deb

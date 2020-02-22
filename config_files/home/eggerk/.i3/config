@@ -139,11 +139,11 @@ bindsym $mod+Shift+m move workspace to output right
 set $monitor_mode "Monitors: [1] auto, [2] internal only, [3] external only, [4] expand, [5] mirror"
 bindsym $mod+m mode $monitor_mode
 mode  $monitor_mode{
-  bindsym 1 exec $dotfiles_path/X/xrandr.sh auto ; mode "default"
-  bindsym 2 exec $dotfiles_path/X/xrandr.sh internal ; mode "default"
-  bindsym 3 exec $dotfiles_path/X/xrandr.sh external ; mode "default"
-  bindsym 4 exec $dotfiles_path/X/xrandr.sh expand ; mode "default"
-  bindsym 5 exec $dotfiles_path/X/xrandr.sh mirror ; mode "default"
+  bindsym 1 exec $dotfiles_path/tools/xrandr.sh auto ; mode "default"
+  bindsym 2 exec $dotfiles_path/tools/xrandr.sh internal ; mode "default"
+  bindsym 3 exec $dotfiles_path/tools/xrandr.sh external ; mode "default"
+  bindsym 4 exec $dotfiles_path/tools/xrandr.sh expand ; mode "default"
+  bindsym 5 exec $dotfiles_path/tools/xrandr.sh mirror ; mode "default"
 
   # Back to normal: Enter or Escape.
   bindsym Return mode "default"
@@ -209,7 +209,7 @@ client.background #2B2C2B
 for_window [class="^.*"] border pixel 2
 for_window [class="Xfce4-notifyd"] border pixel 0
 smart_gaps inverse_outer
-exec_always $dotfiles_path/i3/set_gaps.sh
+exec_always $dotfiles_path/tools/set_gaps.sh
 gaps inner 5
 gaps outer 3
 
@@ -282,7 +282,7 @@ for_window [window_role="EventDialog"] floating enable border normal
 for_window [window_role="Msgcompose"] floating enable border normal
 
 # Autostart applications
-exec --no-startup-id $dotfiles_path/i3/polkit.sh
+exec --no-startup-id $dotfiles_path/tools/polkit.sh
 exec --no-startup-id xfce4-power-manager
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
@@ -323,7 +323,7 @@ bindsym XF86MonBrightnessUp exec $dotfiles_path/X/acpilight/xbacklight -inc 5 # 
 bindsym XF86MonBrightnessDown exec $dotfiles_path/X/acpilight/xbacklight -dec 5 # decrease screen brightness
 
 # Touchpad controls.
-bindsym $mod+shift+t exec $dotfiles_path/X/toggle_touchpad.sh
+bindsym $mod+shift+t exec $dotfiles_path/tools/toggle_touchpad.sh
 
 # Media player controls
 # Needs https://github.com/acrisci/playerctl/releases
@@ -336,7 +336,7 @@ bindsym $mod+Shift+d exec playerctl next
 bindsym $mod+Shift+a exec playerctl previous
 bindsym $mod+shift+slash exec $dotfiles_path/tools/vlc_youtube_comment_to_notification.sh
 
-exec $dotfiles_path/X/xrandr.sh
+exec $dotfiles_path/tools/xrandr.sh
 exec_always --no-startup-id $dotfiles_path/tools/set-wallpaper.sh
 exec --no-startup-id "$dotfiles_path/tools/set-wallpaper.sh startup"
 exec xbindkeys
@@ -378,4 +378,4 @@ exec_always --no-startup-id killall compton; compton --backend glx --paint-on-ov
 # Disable caps lock because sometimes it reenables itself for some reason.
 exec_always --no-startup-id "python3 -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
 
-exec_always --no-startup-id $dotfiles_path/X/remap_keys
+exec_always --no-startup-id $dotfiles_path/tools/remap_keys

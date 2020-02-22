@@ -15,13 +15,41 @@ exec 2>/dev/null
 filename=$(basename -- "$1")
 filesize=$(du -Hh -- "$1" | cut -f 1)
 geometry="${2}x${3}"
+
+output="${filename}${s}${filesize}${s}${geometry}"
+
+created="$(exiv2 -g Exif.Photo.DateTimeOriginal -Pt "$1")"
+if [ -n "$created" ]; then
+  output="$output$s$created"
+fi
+
 make="$(exiv2 -g Image.Make -Pt "$1")"
 model="$(exiv2 -g Image.Model -Pt "$1")"
-aperture="$(exiv2 -g FNumber -Pt "$1")"
-exposure="$(exiv2 -g Exif.Photo.ExposureTime -Pt "$1")"
-iso="$(exiv2 -g Exif.Photo.ISOSpeedRatings -Pt "$1")"
+if [ -n "$make" ] || [ -n "$model" ]; then
+  output="$output$s$make $model"
+fi
+
 focal_length="$(exiv2 -g Exif.Photo.FocalLength\$ -Pt "$1")"
 focal_length_35mm="$(exiv2 -g Exif.Photo.FocalLengthIn35mmFilm -Pt "$1")"
-exposure_bias="$(exiv2 -g Exif.Photo.ExposureBiasValue -Pt "$1")"
+if [ -n "$focal_length"]; then
+  output="$output$s$focal_length"
+  if [ -n "$focal_length_35mm" ]; then
+    output="$output ($focal_length_35mm)"
+  fi
+fi
 
-echo "${filename}${s}${filesize}${s}${geometry}${s}${make} ${model}${s}${focal_length} (${focal_length_35mm})${s}${aperture}${s}${exposure}${s}${exposure_bias}${s}ISO ${iso}"
+aperture="$(exiv2 -g FNumber -Pt "$1")"
+exposure="$(exiv2 -g Exif.Photo.ExposureTime -Pt "$1")"
+exposure_bias="$(exiv2 -g Exif.Photo.ExposureBiasValue -Pt "$1")"
+for val in "$aperture" "$exposure" "$exposure_bias"; do
+  if [ -n "$val" ]; then
+    output="$output$s$val"
+  fi
+done
+
+iso="$(exiv2 -g Exif.Photo.ISOSpeedRatings -Pt "$1")"
+if [ -n "$iso" ]; then
+  output="$output${s}ISO $iso"
+fi
+
+echo "$output"

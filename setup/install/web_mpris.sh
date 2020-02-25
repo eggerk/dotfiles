@@ -1,5 +1,6 @@
 #!/bin/sh
 
+sudo apt-get install -y libjson-glib-dev
 git clone https://github.com/f1u77y/wmc-mpris.git
 cd wmc-mpris || exit 1
 mkdir build

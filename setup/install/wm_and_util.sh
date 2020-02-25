@@ -16,7 +16,7 @@ make
 sudo make install
 cd ..
 
-sudo apt install -y maim xdotool feh xfce4-notifyd lightdm xautolock
+sudo apt install -y maim xdotool feh xfce4-notifyd lightdm xautolock sxiv exiv2
 
 WORKING_FOLDER=$(mktemp -d)
 cd $WORKING_FOLDER

@@ -31,7 +31,7 @@ fi
 
 focal_length="$(exiv2 -g Exif.Photo.FocalLength\$ -Pt "$1")"
 focal_length_35mm="$(exiv2 -g Exif.Photo.FocalLengthIn35mmFilm -Pt "$1")"
-if [ -n "$focal_length"]; then
+if [ -n "$focal_length" ]; then
   output="$output$s$focal_length"
   if [ -n "$focal_length_35mm" ]; then
     output="$output ($focal_length_35mm)"

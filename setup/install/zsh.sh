@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo apt -y install git zsh
+sudo apt-get -y install git zsh
 chsh -s $(which zsh)
 
 # Install oh-my-zsh

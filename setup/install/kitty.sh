@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install -y \
+sudo apt-get install -y \
   libdbus-1-dev \
   libxcursor-dev \
   libxrandr-dev \

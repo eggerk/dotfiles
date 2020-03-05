@@ -6,7 +6,7 @@ if ! which i3 > /dev/null ; then
 fi
 
 # Latest rofi
-sudo apt install -y libbison-dev flex libxcb-ewmh-dev librsvg2-dev
+sudo apt-get install -y libbison-dev flex libxcb-ewmh-dev librsvg2-dev
 git clone https://github.com/davatorium/rofi.git --recursive || true
 cd rofi || exit 1
 autoreconf -i
@@ -16,7 +16,7 @@ make
 sudo make install
 cd ..
 
-sudo apt install -y maim xdotool feh xfce4-notifyd lightdm xautolock sxiv exiv2
+sudo apt-get install -y maim xdotool feh xfce4-notifyd lightdm xautolock sxiv exiv2
 
 WORKING_FOLDER=$(mktemp -d)
 cd $WORKING_FOLDER

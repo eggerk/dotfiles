@@ -1,14 +1,14 @@
 #!/bin/bash
 
 rm -rf i3-gaps
-sudo apt remove i3
+sudo apt-get remove i3
 if lsb_release -c | grep xenial > /dev/null ; then
 sudo add-apt-repository ppa:aguignard/ppa
   sudo apt-get update
 
-  sudo apt install -y libxcb-xrm-dev
+  sudo apt-get install -y libxcb-xrm-dev
 
-  sudo apt install -y \
+  sudo apt-get install -y \
     libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev \
     libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev \
     libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev \
@@ -16,7 +16,7 @@ sudo add-apt-repository ppa:aguignard/ppa
     libxcb-xrm-dev
 else
   # Different requirements for 16.10+.
-  sudo apt install -y \
+  sudo apt-get install -y \
     libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev \
     libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev \
     libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev \
@@ -25,7 +25,7 @@ else
 fi
 
 # Packages not provided by i3-gaps.
-sudo apt install -y i3lock i3status
+sudo apt-get install -y i3lock i3status
 
 git clone https://www.github.com/Airblader/i3 i3-gaps
 cd i3-gaps

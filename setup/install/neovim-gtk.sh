@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install -y \
+sudo apt-get install -y \
     libatk1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev libglib2.0-dev \
     libgtk-3-dev libpango1.0-dev cargo
 

@@ -1,5 +1,5 @@
 #!/bin/sh -e
-sudo apt install -y libmpfr-dev
+sudo apt-get install -y libmpfr-dev
 git clone https://github.com/Qalculate/libqalculate.git || true
 cd libqalculate || exit 1
 ./autogen.sh

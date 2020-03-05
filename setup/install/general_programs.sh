@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Install everything
-sudo apt install \
+sudo apt-get install \
   backintime-gnome \
   blueman \
   build-essential \

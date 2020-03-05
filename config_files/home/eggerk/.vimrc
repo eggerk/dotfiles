@@ -18,7 +18,6 @@ Plug 'tpope/vim-obsession'
 Plug 'vim-scripts/Vimball'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'bogado/file-line'
-Plug 'voldikss/vim-floaterm'
 
 " Theme
 Plug 'vim-airline/vim-airline'
@@ -255,9 +254,3 @@ function! AppendModeline()
   call append(line("$"), l:modeline)
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
-
-" Float term
-let g:floaterm_keymap_toggle = '<c-]>'
-let g:floaterm_width = 0.8
-let g:floaterm_position = 'center'
-let g:floaterm_background = '#383c44'

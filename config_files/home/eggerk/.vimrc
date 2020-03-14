@@ -104,6 +104,8 @@ hi CursorLine cterm=none ctermbg=237 guibg=#2C323C
 set guifont=Ubuntu\ Mono\ derivative\ Powerline:h12
 
 set colorcolumn=81  " Line at 80 chars.
+autocmd FileType python setlocal colorcolumn=80
+autocmd FileType rust setlocal colorcolumn=100
 highlight ColorColumn ctermbg=magenta
 " highlight Search ctermfg=white
 au BufNewFile,BufRead *.tex setlocal colorcolumn=

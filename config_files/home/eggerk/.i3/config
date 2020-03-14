@@ -311,12 +311,12 @@ bindsym $mod+shift+p mode $power_mode
 # Pulse Audio controls.
 # See https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
 # Increase sound volume.
-bindsym XF86AudioRaiseVolume exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -r"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "$dotfiles_path/programs/audio_tools/client.sh raise"
 # Decrease sound volume.
-bindsym XF86AudioLowerVolume exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -l"
-bindsym XF86AudioMute exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -m"
-bindsym $mod+XF86AudioMute exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -c"
-bindsym $mod+F1 exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -c"
+bindsym XF86AudioLowerVolume exec --no-startup-id "$dotfiles_path/programs/audio_tools/client.sh lower"
+bindsym XF86AudioMute exec --no-startup-id "$dotfiles_path/programs/audio_tools/client.sh mute"
+bindsym $mod+F1 exec --no-startup-id "$dotfiles_path/programs/audio_tools/client.sh cycle-inputs"
+exec --no-startup-id /home/eggerk/.cargo/bin/audio_tools
 
 # Screen brightness controls.
 bindsym XF86MonBrightnessUp exec $dotfiles_path/X/acpilight/xbacklight -inc 5 # increase screen brightness

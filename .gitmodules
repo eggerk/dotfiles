@@ -1,0 +1,3 @@
+[submodule "programs/audio_tools"]
+	path = programs/audio_tools
+	url = https://github.com/eggerk/audio_tools.git

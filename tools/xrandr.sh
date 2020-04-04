@@ -52,8 +52,13 @@ then
 elif echo $HOSTNAME | grep desktop > /dev/null || echo $HOST | grep desktop > /dev/null
 then
   # Desktop
-  MONITOR1=$(xrandr -q | grep DVI | grep connected | awk '{print $1}')
   RESOLUTION1="1920x1080"
+  DISPLAY_NAME=DVI
+  if xrandr -q | grep DP | grep -qv disconnected; then
+    DISPLAY_NAME=DP
+    RESOLUTION1="2560x1440"
+  fi
+  MONITOR1=$(xrandr -q | grep "$DISPLAY_NAME" | grep -v disconnected | awk '{print $1}')
   MONITOR2=$(xrandr -q | grep HDMI | grep connected | awk '{print $1}')
   RESOLUTION2="1920x1080"
   if [ "$ACTION" = "auto" ] ; then

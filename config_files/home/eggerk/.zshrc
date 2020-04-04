@@ -1,5 +1,4 @@
 # Path to your oh-my-zsh installation.
-# source ~/grml.zshrc
 export ZSH=/home/eggerk/.oh-my-zsh
 export TERM=xterm-256color
 

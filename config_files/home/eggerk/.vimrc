@@ -17,7 +17,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-obsession'
 Plug 'vim-scripts/Vimball'
 Plug 'powerman/vim-plugin-AnsiEsc'
-Plug 'bogado/file-line'
 
 " Theme
 Plug 'vim-airline/vim-airline'

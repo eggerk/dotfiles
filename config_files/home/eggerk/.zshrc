@@ -54,7 +54,9 @@ plugins=(git vi-mode command-not-found cp fancy-ctrl-z cargo)
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# User configuration
+source $ZSH/oh-my-zsh.sh
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -64,9 +66,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# User configuration
-source $ZSH/oh-my-zsh.sh
 
 if which nvim > /dev/null ; then
   export EDITOR=nvim

@@ -143,4 +143,4 @@ function preexec_fg_title {
 
 preexec_functions+=(preexec_fg_title)
 
-[ -f ~/.zprofile ] && . ~/.zprofile
+[ -f ~/.zprofile ] && . ~/.zprofile || true

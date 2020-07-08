@@ -3,6 +3,8 @@
   "diagnostic.errorSign": "✖",
   "diagnostic.infoSign": "ℹ",
   "diagnostic.hintSign": "➤",
+  "python.formatting.provider": "yapf",
+  "python.formatting.yapfPath": "/home/eggerk/.local/bin/yapf",
   "languageserver": {
     "clangd": {
       "command": "clangd-9",

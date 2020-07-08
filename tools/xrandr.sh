@@ -62,7 +62,7 @@ then
   MONITOR2=$(xrandr -q | grep HDMI | grep connected | awk '{print $1}')
   RESOLUTION2="1920x1080"
   if [ "$ACTION" = "auto" ] ; then
-    ACTION="mirror"
+    ACTION="internal"
   fi
 else
   # T440p

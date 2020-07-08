@@ -44,7 +44,7 @@ HYPHEN_INSENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode command-not-found cp fancy-ctrl-z cargo)
+plugins=(git vi-mode cp fancy-ctrl-z cargo)
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

@@ -207,7 +207,6 @@ client.background #2B2C2B
 
 # Gaps.
 for_window [class="^.*"] border pixel 2
-for_window [class="Xfce4-notifyd"] border pixel 0
 smart_gaps inverse_outer
 exec_always $dotfiles_path/tools/set_gaps.sh
 gaps inner 5
@@ -276,7 +275,6 @@ for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="[Ff]ile-roller"] floating enable
 
 # Thunderbird floating windows.
-for_window [class="Thunderbird" title="Thunderbird Preferences"] floating enable border normal
 for_window [window_role="EventSummaryDialog"] floating enable border normal
 for_window [window_role="EventDialog"] floating enable border normal
 for_window [window_role="Msgcompose"] floating enable border normal

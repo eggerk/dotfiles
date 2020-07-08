@@ -4,7 +4,7 @@ filetype off
 
 call plug#begin()
 " General
-Plug 'joshdick/onedark.vim'
+" Plug 'joshdick/onedark.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -97,18 +97,17 @@ set cmdheight=3
 set mouse=a
 
 set termguicolors
-colorscheme onedark
 set cursorline
-hi CursorLine cterm=none ctermbg=237 guibg=#2C323C
+hi CursorLine cterm=none ctermbg=237 guibg=#eee8d5
+highlight ColorColumn guibg=#eee8d5
 set guifont=Ubuntu\ Mono\ derivative\ Powerline:h12
+" au VimEnter * :highlight Todo ctermfg=lightgray ctermbg=darkblue
 
 set colorcolumn=81  " Line at 80 chars.
 autocmd FileType python setlocal colorcolumn=80
 autocmd FileType rust setlocal colorcolumn=100
-highlight ColorColumn ctermbg=magenta
 " highlight Search ctermfg=white
 au BufNewFile,BufRead *.tex setlocal colorcolumn=
-au VimEnter * :highlight Todo ctermfg=lightgray ctermbg=darkblue
 
 " " Disable relativenumber and cursorline for Latex files.
 " au BufNewFile,BufRead *.tex
@@ -132,7 +131,7 @@ let g:formatter_yapf_style='pep8'
 let g:airline_powerline_fonts = 1
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-let g:airline_theme='base16_default'
+let g:airline_theme='solarized'
 
 " GitGutter
 set updatetime=500
@@ -174,6 +173,9 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use `[c` and `]c` for navigate diagnostics
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
+
+" xmap <c-f>  <Plug>(coc-format-selected)
+" nmap <c-f>  <Plug>(coc-format-selected)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)

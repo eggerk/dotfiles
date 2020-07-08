@@ -67,6 +67,9 @@ fi
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+if [ -f "/home/$USER/software/nvim-linux64/bin/nvim" ]; then
+  alias nvim="/home/$USER/software/nvim-linux64/bin/nvim"
+fi
 if which nvim > /dev/null ; then
   export EDITOR=nvim
 elif which vim > /dev/null ; then

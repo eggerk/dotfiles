@@ -9,7 +9,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'yuki-ycino/fzf-preview.vim'
+Plug 'yuki-ycino/fzf-preview.vim', { 'tag': 'version_1' }
 Plug 'liuchengxu/vista.vim'
 " Plug 'Shougo/echodoc.vim'
 Plug 'ntpeters/vim-better-whitespace'
@@ -17,6 +17,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-obsession'
 Plug 'vim-scripts/Vimball'
 Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'simnalamburt/vim-mundo'
 
 " Theme
 Plug 'vim-airline/vim-airline'
@@ -104,7 +105,7 @@ set guifont=Ubuntu\ Mono\ derivative\ Powerline:h12
 " au VimEnter * :highlight Todo ctermfg=lightgray ctermbg=darkblue
 
 set colorcolumn=81  " Line at 80 chars.
-autocmd FileType python setlocal colorcolumn=80
+autocmd FileType python setlocal colorcolumn=101
 autocmd FileType rust setlocal colorcolumn=100
 " highlight Search ctermfg=white
 au BufNewFile,BufRead *.tex setlocal colorcolumn=
@@ -126,7 +127,7 @@ let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 let g:formatters_python=['yapf']
-let g:formatter_yapf_style='pep8'
+let g:formatdef_yapf = '"yapf --style /usr/share/sevensense_linter/yapf_style_100_column_length.cfg -d"'
 
 let g:airline_powerline_fonts = 1
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'

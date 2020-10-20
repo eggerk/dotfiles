@@ -326,13 +326,18 @@ bindsym $mod+shift+t exec $dotfiles_path/tools/toggle_touchpad.sh
 
 # Media player controls
 # Needs https://github.com/acrisci/playerctl/releases
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-bindsym $mod+Shift+s exec playerctl play-pause
-bindsym $mod+Shift+d exec playerctl next
-bindsym $mod+Shift+a exec playerctl previous
+set $mediactrl_path /home/eggerk/rust/media_control/target/debug/media_control
+bindsym XF86AudioPlay exec $mediactrl_path play-pause
+bindsym XF86AudioPause exec $mediactrl_path pause
+bindsym XF86AudioNext exec $mediactrl_path next
+bindsym Ctrl+XF86AudioNext exec $mediactrl_path next_player
+bindsym XF86AudioPrev exec $mediactrl_path previous
+bindsym Ctrl+XF86AudioPrev exec $mediactrl_path previous_player
+bindsym $mod+Shift+s exec $mediactrl_path play-pause
+bindsym $mod+Shift+d exec $mediactrl_path next
+bindsym $mod+Ctrl+d exec $mediactrl_path next_player
+bindsym $mod+Shift+a exec $mediactrl_path previous
+bindsym $mod+Ctrl+a exec $mediactrl_path previous_player
 bindsym $mod+shift+slash exec $dotfiles_path/tools/vlc_youtube_comment_to_notification.sh
 
 exec $dotfiles_path/tools/xrandr.sh

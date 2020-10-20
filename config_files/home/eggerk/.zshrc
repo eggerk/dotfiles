@@ -44,7 +44,7 @@ HYPHEN_INSENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode cp fancy-ctrl-z cargo)
+plugins=(git vi-mode cp fancy-ctrl-z cargo z)
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -144,3 +144,7 @@ function preexec_fg_title {
 preexec_functions+=(preexec_fg_title)
 
 [ -f ~/.zprofile ] && . ~/.zprofile || true
+
+function help {
+  bash -c "help $@"
+}

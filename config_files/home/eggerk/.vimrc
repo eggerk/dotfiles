@@ -6,10 +6,10 @@ call plug#begin()
 " General
 " Plug 'joshdick/onedark.vim'
 Plug 'Chiel92/vim-autoformat'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'yuki-ycino/fzf-preview.vim', { 'tag': 'version_1' }
+" Plug 'yuki-ycino/fzf-preview.vim', { 'tag': 'version_1' }
 Plug 'liuchengxu/vista.vim'
 " Plug 'Shougo/echodoc.vim'
 Plug 'ntpeters/vim-better-whitespace'
@@ -127,7 +127,7 @@ let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 let g:formatters_python=['yapf']
-let g:formatdef_yapf = '"yapf --style /usr/share/sevensense_linter/yapf_style_100_column_length.cfg -d"'
+let g:formatdef_yapf = '"yapf --style /usr/share/sevensense_linter/yapf_style_100_column_length.cfg"'
 
 let g:airline_powerline_fonts = 1
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
@@ -208,10 +208,10 @@ nmap <leader>cn <Plug>(coc-rename)
 nmap <leader>cf  <Plug>(coc-fix-current)
 
 " fzf
-map <c-p> :FzfPreviewDirectoryFiles<cr>
-map <c-g> :FzfPreviewProjectFiles<cr>
-map <c-b> :FzfPreviewBuffers<cr>
-map <c-s> :FzfPreviewProjectGrep<cr>
+map <c-p> :Files<cr>
+map <c-g> :GFiles<cr>
+map <c-b> :Buffers<cr>
+map <c-s> :Rg<cr>
 let g:fzf_preview_filelist_command = 'git ls-files --exclude-standard $(git rev-parse --show-toplevel)'
 
 " Commentary

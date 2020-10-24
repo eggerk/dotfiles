@@ -308,14 +308,11 @@ bindsym $mod+shift+p mode $power_mode
 
 # Pulse Audio controls.
 # See https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
-# Increase sound volume.
-bindsym XF86AudioRaiseVolume exec --no-startup-id "$dotfiles_path/programs/audio_tools/client.sh raise"
-# Decrease sound volume.
-bindsym XF86AudioLowerVolume exec --no-startup-id "$dotfiles_path/programs/audio_tools/client.sh lower"
-bindsym XF86AudioMute exec --no-startup-id "$dotfiles_path/programs/audio_tools/client.sh mute"
-bindsym $mod+F10 exec --no-startup-id "$dotfiles_path/programs/audio_tools/client.sh show"
-bindsym $mod+F1 exec --no-startup-id "$dotfiles_path/programs/audio_tools/client.sh cycle-inputs"
-exec_always --no-startup-id "pgrep audio_tools || /home/eggerk/.cargo/bin/audio_tools"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "audio_tools raise"
+bindsym XF86AudioLowerVolume exec --no-startup-id "audio_tools lower"
+bindsym XF86AudioMute exec --no-startup-id "audio_tools mute"
+bindsym $mod+F10 exec --no-startup-id "audio_tools show"
+bindsym $mod+F1 exec --no-startup-id "audio_tools cycle-inputs"
 
 # Screen brightness controls.
 bindsym XF86MonBrightnessUp exec $dotfiles_path/X/acpilight/xbacklight -inc 5 # increase screen brightness
@@ -326,7 +323,7 @@ bindsym $mod+shift+t exec $dotfiles_path/tools/toggle_touchpad.sh
 
 # Media player controls
 # Needs https://github.com/acrisci/playerctl/releases
-set $mediactrl_path /home/eggerk/rust/media_control/target/debug/media_control
+set $mediactrl_path media_control
 bindsym XF86AudioPlay exec $mediactrl_path play-pause
 bindsym XF86AudioPause exec $mediactrl_path pause
 bindsym XF86AudioNext exec $mediactrl_path next

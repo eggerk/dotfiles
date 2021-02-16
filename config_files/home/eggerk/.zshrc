@@ -94,7 +94,6 @@ alias -s cc='nvim'
 alias -s cpp='nvim'
 alias -s h='nvim'
 alias -s patch='nvim'
-export PATH="/usr/lib/ccache:$HOME/.local/bin:$PATH"
 
 # Octave
 alias octave-gui='octave'
@@ -120,8 +119,6 @@ if [ ! -n "$SSH_CLIENT" ] && [ ! -n "$SSH_TTY" ]; then
       eval "$(<~/.ssh-agent-thing)" > /dev/null
   fi
 fi
-
-export PATH="$HOME/.yarn/bin:$PATH"
 
 alias kitty_image='kitty +kitten icat'
 
@@ -151,3 +148,5 @@ preexec_functions+=(preexec_fg_title)
 function help {
   bash -c "help $@"
 }
+
+source /home/eggerk/dotfiles/tools/path.sh

@@ -15,7 +15,7 @@ fi
 if "$big_gaps"; then
   i3-msg gaps vertical all set 0
   i3-msg gaps horizontal all set 200
-  i3-msg gaps inner all set 12
+  i3-msg gaps inner all set 10
 else
   i3-msg gaps inner all set 5
   i3-msg gaps outer all set 3

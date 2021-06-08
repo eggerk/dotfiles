@@ -5,9 +5,10 @@
   "diagnostic.hintSign": "➤",
   "python.formatting.provider": "yapf",
   "python.formatting.yapfPath": "/home/eggerk/.local/bin/yapf",
+  "rust-analyzer.procMacro.enable": true,
   "languageserver": {
     "clangd": {
-      "command": "clangd-10",
+      "command": "clangd-11",
       "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
       "filetypes": ["c", "cpp", "objc", "objcpp"]
     }

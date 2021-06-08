@@ -22,8 +22,8 @@ for folder in /home/eggerk/catkin_ws \
 done
 
 # ROS
-# Assume melodic by default.
-ROS_DISTRO="melodic"
+# Assume noetic by default.
+ROS_DISTRO="noetic"
 
 setupros() {
   if [ "$SHELL" = "/bin/bash" ] ; then

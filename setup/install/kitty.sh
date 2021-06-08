@@ -16,4 +16,8 @@ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 # make
 
 # sudo sh -c "echo \"#\!/usr/bin/env python3\nimport runpy\nrunpy.run_path('/home/eggerk/dotfiles/setup/install/kitty', run_name='__main__')\" > /usr/bin/kitty; chmod +x /usr/bin/kitty"
-sudo sh -c "echo '#/bin/sh\nexec /home/eggerk/.local/kitty.app/bin/kitty "$@"' > /usr/bin/kitty; chmod +x /usr/bin/kitty"
+target=/home/eggerk/.local/kitty.app/bin/kitty
+link_name=/usr/bin/kitty
+if [ ! -e "$link_name" ] && [ -f "$target" ]; then
+  sudo ln -s "$target" "$link_name"
+fi

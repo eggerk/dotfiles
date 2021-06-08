@@ -54,4 +54,4 @@ if [ ! -z $1 ] ; then
   find $(realpath "$1")/src -type d -name include | sed "s/^/-I/"
 fi
 
-echo "-I/opt/ros/melodic/include"
+echo "-I/opt/ros/noetic/include"

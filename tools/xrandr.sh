@@ -114,7 +114,7 @@ then
   exit 1
 fi
 
-CMD1="xrandr --output $MONITOR1 $MODE1 $POSITION1 --dpi 96"
+CMD1="xrandr --output $MONITOR1 $MODE1 $POSITION1 --dpi 96 --primary"
 CMD2="xrandr --output $MONITOR2 $MODE2 $POSITION2 --dpi 96"
 echo $CMD1
 $CMD1

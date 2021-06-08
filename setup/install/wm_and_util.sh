@@ -17,8 +17,3 @@ sudo make install
 cd ..
 
 sudo apt-get install -y maim xdotool feh dunst lightdm xautolock sxiv exiv2
-
-WORKING_FOLDER=$(mktemp -d)
-cd $WORKING_FOLDER
-wget -O "playerctl.deb" "https://github.com/altdesktop/playerctl/releases/download/v2.1.1/playerctl-2.1.1_amd64.deb"
-sudo dpkg -i playerctl.deb

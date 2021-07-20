@@ -4,7 +4,7 @@ function startCommunication() {
   i3-msg 'workspace 0; exec thunderbird;'
 }
 
-if hostname | grep -q 50  ; then
-  # P50
+if hostname | grep -q 50  || hostname | grep -q work ; then
+  # Work
   startCommunication
 fi

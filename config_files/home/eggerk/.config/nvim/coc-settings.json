@@ -8,7 +8,7 @@
   "rust-analyzer.procMacro.enable": true,
   "languageserver": {
     "clangd": {
-      "command": "clangd-11",
+      "command": "clangd-10",
       "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
       "filetypes": ["c", "cpp", "objc", "objcpp"]
     }

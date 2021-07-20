@@ -373,7 +373,7 @@ no_focus [class="Xfce4-notifyd"]
 
 # Compton
 exec_always --no-startup-id killall compton; compton --backend glx --paint-on-overlay --glx-no-stencil \
-                             --vsync --unredir-if-possible -b \
+                             --unredir-if-possible -b \
                              --config $dotfiles_path/compton/compton.conf
 
 # Disable caps lock because sometimes it reenables itself for some reason.

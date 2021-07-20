@@ -16,4 +16,4 @@ make
 sudo make install
 cd ..
 
-sudo apt-get install -y maim xdotool feh dunst lightdm xautolock sxiv exiv2
+sudo apt-get install -y maim xdotool feh dunst lightdm xautolock sxiv exiv2 i3lock i3status

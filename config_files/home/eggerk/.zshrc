@@ -149,4 +149,12 @@ function help {
   bash -c "help $@"
 }
 
+function one_line {
+  tr '\n' ' '
+}
+
+function strip_file_prefix {
+  sed 's,file://,,g'
+}
+
 source /home/eggerk/dotfiles/tools/path.sh

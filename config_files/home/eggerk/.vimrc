@@ -4,20 +4,28 @@ filetype off
 
 call plug#begin()
 " General
-" Plug 'joshdick/onedark.vim'
 Plug 'Chiel92/vim-autoformat'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-" Plug 'yuki-ycino/fzf-preview.vim', { 'tag': 'version_1' }
 Plug 'liuchengxu/vista.vim'
-" Plug 'Shougo/echodoc.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-obsession'
 Plug 'vim-scripts/Vimball'
 Plug 'powerman/vim-plugin-AnsiEsc'
-Plug 'simnalamburt/vim-mundo'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'simrat39/rust-tools.nvim'
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'RRethy/vim-illuminate'
+
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-path'
 
 " Theme
 Plug 'vim-airline/vim-airline'
@@ -130,91 +138,27 @@ let g:formatters_python=['yapf']
 let g:formatdef_yapf = '"yapf --style /usr/share/sevensense_linter/yapf_style_100_column_length.cfg"'
 
 let g:airline_powerline_fonts = 1
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+" let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+" let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 let g:airline_theme='solarized'
 
 " GitGutter
 set updatetime=500
 
-"""""
-" CoC
-" if hidden not set, TextEdit might fail.
-set hidden
+"" Highlight symbol under cursor on CursorHold
+"hi default CocHighlightText ctermbg=magenta guibg=#61AFEF guifg=white
+"hi default CocRustTypeHint guifg=#b5b5b5 gui=italic
+"hi default CocRustChainingHint guifg=#b5b5b5 gui=italic
 
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
+set completeopt=menu,menuone,noselect,noinsert,preview
 
-" don't give |ins-completion-menu| messages.
+luafile ~/dotfiles/neovim/lsp.lua
+
+" Avoid showing message extra message when using completion
 set shortmess+=c
 
-" always show signcolumns
-set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> for trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> [d <Plug>(coc-diagnostic-prev)
-nmap <silent> ]d <Plug>(coc-diagnostic-next)
-
-" xmap <c-f>  <Plug>(coc-format-selected)
-" nmap <c-f>  <Plug>(coc-format-selected)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>cg <Plug>(coc-definition)
-nmap <leader>cr <Plug>(coc-references)
-
-nmap <leader>cd <Plug>(coc-diagnostic-info)
-
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-hi default CocHighlightText ctermbg=magenta guibg=#61AFEF guifg=white
-hi default CocRustTypeHint guifg=#b5b5b5 gui=italic
-hi default CocRustChainingHint guifg=#b5b5b5 gui=italic
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>cn <Plug>(coc-rename)
-
-" Fix autofix problem of current line
-nmap <leader>cf  <Plug>(coc-fix-current)
-
-" fzf
-map <c-p> :Files<cr>
-map <c-g> :GFiles<cr>
-map <c-b> :Buffers<cr>
-map <c-s> :Rg<cr>
-let g:fzf_preview_filelist_command = 'git ls-files --exclude-standard $(git rev-parse --show-toplevel)'
+" Telescope
+luafile ~/dotfiles/neovim/telescope_settings.lua
 
 " Commentary
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s

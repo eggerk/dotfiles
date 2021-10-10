@@ -1,7 +1,7 @@
 #!/bin/bash
 
-/bin/bash: indent: command not found
-/bin/bash: indent: command not found
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update
 sudo apt-get install -y python3-dev python3-pip curl
 sudo apt-get install -y neovim git
 
@@ -19,7 +19,8 @@ select-editor
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# Install coc.
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get update && sudo apt-get -y install yarn
+# Language servers
+sudo npm i -g pyright
+sudo npm i -g bash-language-server
+sudo npm i -g vscode-langservers-extracted
+yarn global add yaml-language-server

@@ -12,7 +12,6 @@ fi
 
 i3lock -c 000011 -n
 
-/home/eggerk/dotfiles/tools/set-wallpaper.sh
 compton --backend glx --paint-on-overlay --glx-no-stencil \
         --vsync opengl-swc --unredir-if-possible -b \
         --config /home/eggerk/dotfiles/compton/compton.conf

@@ -103,3 +103,5 @@ nvim_lsp.clangd.setup {
 nvim_lsp.bashls.setup { on_attach = on_attach }
 nvim_lsp.jsonls.setup { on_attach = on_attach }
 nvim_lsp.yamlls.setup { on_attach = on_attach }
+
+require('dd').setup()

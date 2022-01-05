@@ -21,6 +21,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'RRethy/vim-illuminate'
+Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
 
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'

@@ -24,3 +24,5 @@ sudo npm i -g pyright
 sudo npm i -g bash-language-server
 sudo npm i -g vscode-langservers-extracted
 yarn global add yaml-language-server
+curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+chmod +x ~/.local/bin/rust-analyzer

@@ -157,4 +157,12 @@ function strip_file_prefix {
   sed 's,file://,,g'
 }
 
+function activate_local_python {
+  python_package=$(find */* -maxdepth 1 -name __init__.py)
+  if [ -n "$python_package" ]; then
+    add_python_path=$(dirname $(dirname $(realpath $python_package)))
+    export PYTHONPATH="$add_python_path:$PYTHONPATH"
+  fi
+}
+
 source /home/eggerk/dotfiles/tools/path.sh

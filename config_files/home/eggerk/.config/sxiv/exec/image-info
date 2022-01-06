@@ -10,6 +10,10 @@
 
 s="  " # field separator
 
+if [ -n "$SXIV_OPEN_FILE" ]; then
+  echo "$1" > "$SXIV_OPEN_FILE"
+fi
+
 exec 2>/dev/null
 
 filename=$(basename -- "$1")

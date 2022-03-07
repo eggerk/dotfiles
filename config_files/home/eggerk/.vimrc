@@ -203,7 +203,7 @@ nmap <leader>ba :CatkinBuildAll<CR>
 nmap <leader>tt :CatkinTestThis<CR>
 
 " Vista
-let g:vista_default_executive = 'coc'
+let g:vista_default_executive = 'nvim_lsp'
 
 " Taken from https://vim.fandom.com/wiki/Modeline_magic
 " Append modeline after last line in buffer.

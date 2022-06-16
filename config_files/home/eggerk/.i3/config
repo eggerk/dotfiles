@@ -257,7 +257,7 @@ bindsym $mod+Ctrl+m exec $terminal -e 'alsamixer'
 #bindsym $mod+Ctrl+m exec pavucontrol
 
 # Start Applications
-bindsym $mod+F2 exec firefox
+bindsym $mod+F2 exec "firefox"
 bindsym $mod+F3 exec $terminal ranger
 
 # Open specific applications in floating mode
@@ -351,7 +351,7 @@ exec --no-startup-id "udiskie --tray --config=$dotfiles_path/misc/udiskie.yml"
 
 # Start firefox, sleep a while for wifi connection to be ready.
 exec "$dotfiles_path/tools/start-communication.sh"
-exec "i3-msg 'workspace 1; exec firefox --browser'"
+exec "sleep 2; i3-msg 'workspace 1; exec firefox'"
 assign [class = "Thunderbird"] $workspace0
 assign [class = "google-chat-nativefier.*"] $workspace0
 for_window [class = "google-chat-nativefier.*"] move to workspace $workspace0

@@ -95,9 +95,6 @@ alias -s cpp='nvim'
 alias -s h='nvim'
 alias -s patch='nvim'
 
-# Octave
-alias octave-gui='octave'
-alias octave='octave-cli'
 alias git_amend_no_edit='git commit -a --amend --no-edit'
 
 # Xclip
@@ -107,6 +104,10 @@ alias xclip_cp='xclip -selection clipboard'
 # Disable built-in time.
 disable -r time
 alias time='time -p'
+
+alias lx=exa
+alias ll='exa -l'
+alias lt='exa -TL4'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

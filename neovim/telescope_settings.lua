@@ -1,5 +1,26 @@
 local actions = require('telescope.actions')
 require('telescope').setup{
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {
+        -- even more opts
+      }
+
+      -- pseudo code / specification for writing custom displays, like the one
+      -- for "codeactions"
+      -- specific_opts = {
+      --   [kind] = {
+      --     make_indexed = function(items) -> indexed_items, width,
+      --     make_displayer = function(widths) -> displayer
+      --     make_display = function(displayer) -> function(e)
+      --     make_ordinal = function(e) -> string
+      --   },
+      --   -- for example to disable the custom builtin "codeactions" display
+      --      do the following
+      --   codeactions = false,
+      -- }
+    }
+  },
   defaults = {
     mappings = {
       i = {
@@ -12,6 +33,7 @@ require('telescope').setup{
 }
 
 require('telescope').load_extension('fzf')
+require("telescope").load_extension("ui-select")
 
 vim.api.nvim_set_keymap('n', '<c-p>', [[<Cmd>lua require('telescope.builtin').find_files()<cr>]], {})
 vim.api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require('telescope.builtin').find_files()<cr>]], {})

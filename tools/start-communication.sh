@@ -6,5 +6,6 @@ function startCommunication() {
 
 if hostname | grep -q 50  || hostname | grep -q work ; then
   # Work
+  sleep 2
   startCommunication
 fi

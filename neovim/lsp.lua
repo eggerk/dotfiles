@@ -78,7 +78,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_set_keymap('n', '[r', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true})
 end
 
-require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+require('cmp_nvim_lsp').default_capabilities()
 
 require('rust-tools').setup({
   server = {

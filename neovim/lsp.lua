@@ -83,6 +83,16 @@ require('cmp_nvim_lsp').default_capabilities()
 require('rust-tools').setup({
   server = {
     on_attach = on_attach,
+    settings = {
+      ['rust-analyzer'] = {
+        procMacro = {
+          attributes = {
+            enable = true,
+          },
+          enable = true,
+        }
+      }
+    }
   },
   tools = {
     autoSetHints = true,

@@ -2,57 +2,6 @@
 set nocompatible
 filetype off
 
-call plug#begin()
-" General
-Plug 'Chiel92/vim-autoformat'
-Plug 'liuchengxu/vista.vim'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-obsession'
-Plug 'vim-scripts/Vimball'
-Plug 'powerman/vim-plugin-AnsiEsc'
-
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'nvim-telescope/telescope-ui-select.nvim'
-
-" LSP
-Plug 'neovim/nvim-lspconfig'
-Plug 'simrat39/rust-tools.nvim'
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'RRethy/vim-illuminate'
-Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
-
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-path'
-
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'rafamadriz/friendly-snippets'
-
-" Theme
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" Git
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-
-" C++
-Plug 'drmikehenry/vim-headerguard', { 'for': ['cpp', 'c'] }
-Plug 'richq/vim-cmake-completion'
-" Plug 'taketwo/vim-ros'
-
-" Latex
-Plug 'lervag/vimtex', { 'for': ['tex'] }
-
-" CSV
-Plug 'chrisbra/csv.vim', { 'for': ['csv'] }
-call plug#end()
-
 set autoread " Detect when a file is changed
 set clipboard=unnamedplus
 
@@ -129,6 +78,11 @@ au BufNewFile,BufRead *.tex setlocal colorcolumn=
 "     \ setlocal nocursorline |
 "     \ setlocal nornu |
 "     \ setlocal number |
+
+lua vim.cmd [[set runtimepath+=/home/eggerk/dotfiles/neovim]]
+luafile ~/dotfiles/neovim/packer_bootstrap.lua
+" lua print(vim.inspect(vim.api.nvim_list_runtime_paths()))
+lua require('plugins')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings

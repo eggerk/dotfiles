@@ -101,10 +101,7 @@ let g:autoformat_remove_trailing_spaces = 0
 let g:formatters_python=['yapf']
 let g:formatdef_yapf = '"yapf --style /usr/share/sevensense_linter/yapf_style_100_column_length.cfg"'
 
-let g:airline_powerline_fonts = 1
-" let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-" let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-let g:airline_theme='solarized'
+luafile ~/dotfiles/neovim/lualine.lua
 
 " GitGutter
 set updatetime=500

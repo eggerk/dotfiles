@@ -4,8 +4,10 @@ return require('packer').startup(function(use)
 
   -- Theme
   use "shaunsingh/solarized.nvim"
-  use "vim-airline/vim-airline"
-  use "vim-airline/vim-airline-themes"
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
 
   -- General
   use "Chiel92/vim-autoformat"

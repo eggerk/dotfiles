@@ -49,8 +49,10 @@ return require('packer').startup(function(use)
   use "rafamadriz/friendly-snippets"
 
   -- Git
-  use "airblade/vim-gitgutter"
   use "tpope/vim-fugitive"
+  use {
+    'lewis6991/gitsigns.nvim',
+  }
 
   -- C++
   use { "drmikehenry/vim-headerguard", ft = {'cpp', 'c'} }

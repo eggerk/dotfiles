@@ -102,6 +102,7 @@ let g:formatters_python=['yapf']
 let g:formatdef_yapf = '"yapf --style /usr/share/sevensense_linter/yapf_style_100_column_length.cfg"'
 
 luafile ~/dotfiles/neovim/lualine.lua
+luafile ~/dotfiles/neovim/other_plugin_config.lua
 
 " GitGutter
 set updatetime=500

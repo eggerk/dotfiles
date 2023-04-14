@@ -3,12 +3,12 @@ i3-msg gaps inner all set 0
 i3-msg gaps outer all set 0
 
 big_gaps=false
-if echo $HOSTNAME | grep -q 50  || echo $HOST | grep -q 50 ; then
+if hostname | grep -q 50 ; then
   big_gaps=true
 fi
 
 if hostname | grep -q desktop && \
-    xrandr -q | grep DP | grep -v disconnected | grep -q 2560; then
+    xrandr -q | grep -E '(DP|DisplayPort)' | grep -v disconnected | grep -q 2560; then
   big_gaps=true
 fi
 

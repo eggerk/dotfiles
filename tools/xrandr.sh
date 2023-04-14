@@ -54,8 +54,12 @@ then
   # Desktop
   RESOLUTION1="1920x1080"
   DISPLAY_NAME=DVI
-  if xrandr -q | grep DP | grep -qv disconnected; then
-    DISPLAY_NAME=DP
+  if xrandr -q | grep -E '(DP|DisplayPort)' | grep -qv disconnected; then
+    if xrandr -q | grep -q DP; then
+      DISPLAY_NAME=DP
+    else
+      DISPLAY_NAME=DisplayPort
+    fi
     RESOLUTION1="2560x1440"
   fi
   MONITOR1=$(xrandr -q | grep "$DISPLAY_NAME" | grep -v disconnected | awk '{print $1}')

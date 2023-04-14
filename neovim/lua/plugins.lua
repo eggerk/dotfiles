@@ -7,12 +7,17 @@ return require('packer').startup(function(use)
   use "vim-airline/vim-airline"
   use "vim-airline/vim-airline-themes"
 
-
   -- General
   use "Chiel92/vim-autoformat"
   use "liuchengxu/vista.vim"
   use "ntpeters/vim-better-whitespace"
-  use "tpope/vim-commentary"
+  -- use "tpope/vim-commentary"
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
   use "tpope/vim-obsession"
   use "vim-scripts/Vimball"
   use "powerman/vim-plugin-AnsiEsc"

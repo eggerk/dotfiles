@@ -1,0 +1,26 @@
+[user]
+	name = Kevin Egger
+[include]
+  path = /home/eggerk/dotfiles/git/user_configs/base
+[includeif "gitdir:/home/eggerk/work/"]
+  path = /home/eggerk/dotfiles/git/user_configs/work
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+[core]
+	excludesfile = /home/eggerk/dotfiles/git/gitignore
+[difftool]
+	prompt = true
+[alias]
+  lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+  lg = !"git lg1"
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[push]
+	default = current

@@ -107,6 +107,7 @@ luafile ~/dotfiles/neovim/other_plugin_config.lua
 set completeopt=menu,menuone,noselect,noinsert,preview
 
 luafile ~/dotfiles/neovim/lsp.lua
+lua require('treesitter')
 
 " Avoid showing message extra message when using completion
 set shortmess+=c

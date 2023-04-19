@@ -49,6 +49,16 @@ return require('packer').startup(function(use)
   use "hrsh7th/vim-vsnip"
   use "rafamadriz/friendly-snippets"
 
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end,
+  }
+  use "HiPhish/nvim-ts-rainbow2"
+
   -- Git
   use "tpope/vim-fugitive"
   use {

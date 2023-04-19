@@ -104,14 +104,6 @@ let g:formatdef_yapf = '"yapf --style /usr/share/sevensense_linter/yapf_style_10
 luafile ~/dotfiles/neovim/lualine.lua
 luafile ~/dotfiles/neovim/other_plugin_config.lua
 
-" GitGutter
-set updatetime=500
-
-"" Highlight symbol under cursor on CursorHold
-"hi default CocHighlightText ctermbg=magenta guibg=#61AFEF guifg=white
-"hi default CocRustTypeHint guifg=#b5b5b5 gui=italic
-"hi default CocRustChainingHint guifg=#b5b5b5 gui=italic
-
 set completeopt=menu,menuone,noselect,noinsert,preview
 
 luafile ~/dotfiles/neovim/lsp.lua
@@ -129,26 +121,6 @@ smap <expr> <c-l>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab
 imap <expr> <c-h> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 smap <expr> <c-h> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
-" Commentary
-autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
-autocmd FileType cmake setlocal commentstring=#\ %s
-
-" HeaderGuards
-function! g:HeaderguardName()
-  let project_name = expand('%:p:gs@.*include/\(.*\)/.*@\1@g')
-  let project_name = substitute(project_name, '[^0-9a-zA-Z_]', '_', 'g')
-  let project_name = toupper(project_name)
-  let file_name = toupper(expand('%:t:gs/[^0-9a-zA-Z_]/_/g'))
-  return project_name . "_" . file_name . "_"
-endfunction
-
-function! g:HeaderguardLine3()
-  return "#endif  // " . g:HeaderguardName() . ""
-endfunction
-
-" Vim-ros
-let g:ros_build_system="catkin-tools"
-
 command! CatkinBuildThis execute ":sp term://cd $(dirname %) && catkin build --this --no-deps"
 command! CatkinBuildFromThis execute ":sp term://cd $(dirname %) && catkin build --start-with-this"
 command! CatkinBuildAll execute ":sp term://cd $(dirname %) && catkin build --this"
@@ -158,9 +130,6 @@ command! -nargs=+ CatkinBuildWithDeps execute ":sp term://cd $(dirname %) && cat
 nmap <leader>bt :CatkinBuildThis<CR>
 nmap <leader>ba :CatkinBuildAll<CR>
 nmap <leader>tt :CatkinTestThis<CR>
-
-" Vista
-let g:vista_default_executive = 'nvim_lsp'
 
 " Taken from https://vim.fandom.com/wiki/Modeline_magic
 " Append modeline after last line in buffer.

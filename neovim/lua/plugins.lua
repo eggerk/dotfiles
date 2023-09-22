@@ -35,6 +35,10 @@ return require('packer').startup(function(use)
 
   -- LSP
   use "neovim/nvim-lspconfig"
+  use {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+  }
   use "simrat39/rust-tools.nvim"
   use "ray-x/lsp_signature.nvim"
   use "RRethy/vim-illuminate"
@@ -47,7 +51,6 @@ return require('packer').startup(function(use)
 
   use "hrsh7th/cmp-vsnip"
   use "hrsh7th/vim-vsnip"
-  use "rafamadriz/friendly-snippets"
 
   -- Treesitter
   use {

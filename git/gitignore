@@ -2,3 +2,5 @@ compile_flags.txt
 Session.vim
 CATKIN_IGNORE
 .nvimlog
+*orig
+.mypy_cache

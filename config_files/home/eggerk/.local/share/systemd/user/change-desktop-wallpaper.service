@@ -1,0 +1,9 @@
+[Unit]
+Description=Foo
+
+[Service]
+ExecStart=/home/eggerk/dotfiles/tools/set-wallpaper.sh
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=multi-user.target

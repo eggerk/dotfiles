@@ -94,7 +94,7 @@ colorscheme solarized
 " Format
 noremap <C-F> V:Autoformat<cr>
 imap <C-F> <c-o>V:Autoformat<cr>
-let g:formatdef_clangformat='"clang-format-11 -style=file -fallback-style=google"'
+let g:formatdef_clangformat='"clang-format-12 -style=file -fallback-style=google"'
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0

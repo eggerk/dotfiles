@@ -12,4 +12,4 @@ do
   ln -sf "$file" "$target"
 done
 
-ln -s /home/eggerk/dotfiles/config_files/home/eggerk/.local/share/systemd/user/change-desktop-wallpaper.timer /home/eggerk/.config/systemd/user/timers.target.wants/change-desktop-wallpaper.timer
+ln -fs /home/eggerk/dotfiles/config_files/home/eggerk/.local/share/systemd/user/change-desktop-wallpaper.timer /home/eggerk/.config/systemd/user/timers.target.wants/change-desktop-wallpaper.timer

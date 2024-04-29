@@ -73,9 +73,9 @@ fi
 if which nvim > /dev/null ; then
   export EDITOR=nvim
 elif which vim > /dev/null ; then
-  EXPORT EDITOR=vim
+  export EDITOR=vim
 else
-  EXPORT EDITOR=vi
+  export EDITOR=vi
 fi
 
 # You may need to manually set your language environment
@@ -86,7 +86,13 @@ fi
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-source ~/dotfiles/ros/setupros.sh
+if grep -q Ubuntu /etc/os-release; then
+  # Assume distrobox context
+  source ~/dotfiles/ros/setupros.sh
+
+  export CARGO_HOME=/home/eggerk/work/.cargo
+  source "/home/eggerk/work/.cargo/env"
+fi
 
 alias zshrc='source ~/.zshrc'
 alias vim=nvim

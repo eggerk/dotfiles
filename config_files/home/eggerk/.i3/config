@@ -43,6 +43,8 @@ bindsym --release Shift+button2 kill
 bindsym $mod+d exec --no-startup-id "rofi -modi drun,run,window -show drun -fuzzy"
 bindsym $mod+x exec --no-startup-id "rofi -show window"
 bindsym $mod+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort"
+bindsym $mod+p exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
+exec_always --no-startup-id greenclip daemon>/dev/null
 
 # Change focus.
 bindsym $mod+h focus left
@@ -298,7 +300,7 @@ mode $power_mode {
   # Power off.
   bindsym p exec systemctl poweroff
   # Suspend.
-  bindsym s exec $dotfiles_path/tools/lock.sh, exec systemctl suspend, mode "default"
+  bindsym s exec $dotfiles_path/tools/lock.sh, exec "sleep 0.2s; exec systemctl suspend", mode "default"
 
   bindsym Return mode "default"
   bindsym Escape mode "default"

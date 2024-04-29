@@ -1,0 +1,21 @@
+# Lock computer.
+bindsym $mod+Shift+x exec swaylock -c 000011
+# set $power_mode "Power menu: [x] lock; [l]ogout; [s]uspend; [r]eboot; [p]oweroff"
+# mode $power_mode {
+#   # Lock.
+#   bindsym x exec swaylock -c 000011, mode "default"
+#   # Logout.
+#   bindsym l exec i3-msg exit
+#   # Reboot.
+#   bindsym r exec systemctl reboot
+#   # Power off.
+#   bindsym p exec systemctl poweroff
+#   # Suspend.
+#   bindsym s exec swaylock -c 000011, exec "sleep 0.2s; exec systemctl suspend", mode "default"
+#
+#   bindsym Return mode "default"
+#   bindsym Escape mode "default"
+#   bindsym $mod+shift+p mode "default"
+# }
+# bindsym $mod+shift+p mode $power_mode
+bindsym $mod+shift+p exec "rofi -show p -modi p:rofi-power-menu"

@@ -103,9 +103,8 @@ alias -s patch='nvim'
 
 alias git_amend_no_edit='git commit -a --amend --no-edit'
 
-# Xclip
-alias xclip_mid='xclip -selection primary'
-alias xclip_cp='xclip -selection clipboard'
+alias wlc=wl-copy
+alias wlp=wl-paste
 
 # Disable built-in time.
 disable -r time
@@ -115,16 +114,23 @@ alias lx=exa
 alias ll='exa -l'
 alias lt='exa -TL4'
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+for fzf_file in /usr/share/fzf/key-bindings.zsh /usr/share/fzf/completion.zsh /usr/share/doc/fzf/examples/completion.zsh /usr/share/doc/fzf/examples/key-bindings.zsh; do
+  [ -f "$fzf_file" ] && . "$fzf_file"
+done
 
 # SSH agent.
 if [ ! -n "$SSH_CLIENT" ] && [ ! -n "$SSH_TTY" ]; then
-  if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-      ssh-agent > ~/.ssh-agent-thing
+  sock=$XDG_RUNTIME_DIR/ssh-agent.socket
+  if [ -S "$sock" ]; then
+    export SSH_AUTH_SOCK=$sock
   fi
-  if [[ "$SSH_AGENT_PID" == "" ]]; then
-      eval "$(<~/.ssh-agent-thing)" > /dev/null
-  fi
+  unset sock
+  # if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+  #     ssh-agent > ~/.ssh-agent-thing
+  # fi
+  # if [[ "$SSH_AGENT_PID" == "" ]]; then
+  #     eval "$(<~/.ssh-agent-thing)"
+  # fi
 fi
 
 alias kitty_image='kitty +kitten icat'

@@ -1,0 +1,4 @@
+input "type:keyboard" {
+    xkb_layout us_umlaut
+    xkb_options caps:escape
+}

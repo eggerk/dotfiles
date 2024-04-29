@@ -1,0 +1,149 @@
+#!/usr/bin/env python
+
+import argparse
+import datetime
+import json
+import os
+from pathlib import Path
+import time
+from typing import Optional, Dict, Any, Callable, Iterable, Sequence, Tuple, Any, cast
+
+import piexif
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--short', action='store_true')
+    parser.add_argument('--loop', action='store_true')
+    return parser.parse_args()
+
+
+def get_wallpaper() -> Optional[Path]:
+    if runtime_dir := os.environ.get('XDG_RUNTIME_DIR'):
+        path = Path(runtime_dir) / 'change-desktop-wallpaper' / 'current_wallpaper'
+        if path.exists():
+            return path.resolve()
+
+    return None
+
+
+def format_date(date_seq: Sequence[str]) -> Optional[str]:
+    date_original = date_seq[0]
+    if not date_original:
+        return None
+    return datetime.datetime.strptime(date_original.decode(),
+                                      '%Y:%m:%d %H:%M:%S').strftime('%d. %b %Y, %H:%M:%S')
+
+
+def format_focal_length(focal_lengths: Sequence[Any]) -> Optional[str]:
+    focal_length = cast(Tuple[int, int], focal_lengths[0])
+    focal_length_35mm = cast(int, focal_lengths[1])
+    if focal_length is None:
+        return None
+    focal_length = focal_length[0] / focal_length[1]
+    return f'{focal_length}mm' + f' ({focal_length_35mm}mm)' if focal_length_35mm else ''
+
+
+def format_exposure_time(exposure_time_arr: Sequence[Tuple[int, int]]) -> Optional[str]:
+    exposure_time = exposure_time_arr[0]
+    if not exposure_time:
+        return None
+    if exposure_time[1] == 1:
+        exposure_time_formatted = f'{exposure_time[0]}s'
+    else:
+        exposure_time_formatted = f'{exposure_time[0]}/{exposure_time[1]}s'
+
+    exposure_bias = exposure_time_arr[1]
+    if exposure_bias:
+        if exposure_bias[0] == 0:
+            prefix = '±'
+            bias_value_str = '0'
+        else:
+            bias_value_str = f'{exposure_bias[0]}/{exposure_bias[1]}'
+            if exposure_bias[0] < 0:
+                prefix = ''
+            else:
+                prefix = '+'
+        return f'{exposure_time_formatted}   {prefix}{bias_value_str} EV'
+
+
+def load_exif_data(raw_exif_data: Dict[str, Any], keys: Iterable[Tuple[str, int]],
+                   func: Callable[[Sequence[Any]], Optional[str]]) -> Optional[str]:
+    data = [raw_exif_data.get(outer, {}).get(inner) for outer, inner in keys]
+    return func(data)
+
+
+def load_all_exif_data(p: Path) -> Dict[str, str]:
+    raw_exif_data = piexif.load(p.as_posix())
+    exif_dict = {
+        label: value
+        for label, value in ((label, load_exif_data(raw_exif_data, keys, func))
+                             for label, keys, func in [
+                                 ('make_and_model', (
+                                     ('0th', piexif.ImageIFD.Make),
+                                     ('0th', piexif.ImageIFD.Model),
+                                 ), lambda x: ' '.join(s.decode() for s in x if s)),
+                                 ('date_time_original',
+                                  (('Exif', piexif.ExifIFD.DateTimeOriginal), ), format_date),
+                                 ('focal_length', (('Exif', piexif.ExifIFD.FocalLength),
+                                                   ('Exif', piexif.ExifIFD.FocalLengthIn35mmFilm)),
+                                  format_focal_length),
+                                 ('f_number', (('Exif', piexif.ExifIFD.FNumber),
+                                               ('Exif', piexif.ExifIFD.FocalLengthIn35mmFilm)),
+                                  lambda x: x[0][0] / x[0][1]),
+                                 ('exposure_time', (('Exif', piexif.ExifIFD.ExposureTime),
+                                                    ('Exif', piexif.ExifIFD.ExposureBiasValue)),
+                                  format_exposure_time),
+                                 ('iso', (('Exif', piexif.ExifIFD.ISOSpeedRatings), ),
+                                  lambda x: str(x[0]) if x[0] is not None else None),
+                             ]) if value
+    }
+    return exif_dict
+
+
+def print_output_for_file(file: Path, short: bool = False):
+    text = "" if short else (file.name if file else '(wallpaper unknown)')
+
+    tooltip = ''
+    if file:
+        exif_dict = load_all_exif_data(file)
+        tooltip_elements = [
+            f'<b>{title}</b>\t{exif_dict[key]}' for title, key in (
+                # ('󰄄', ''),
+                ('Camera\t\t', 'make_and_model'),
+                ('Date\t\t', 'date_time_original'),
+                ('Focal length\t', 'focal_length'),
+                ('Aperture\t', 'f_number'),
+                ('Exposure\t', 'exposure_time'),
+                ('ISO\t\t\t', 'iso'),
+            ) if key in exif_dict
+        ]
+        tooltip = '\r'.join(tooltip_elements)
+        tooltip = f'<b>󰄄  {file.name}</b>\r\r{tooltip}'
+
+    if file:
+        load_all_exif_data(file)
+
+    print(json.dumps({"text": text, "tooltip": tooltip}), flush=True)
+
+
+def main():
+    args = parse_args()
+    current_wallpaper = get_wallpaper()
+    while True:
+        if current_wallpaper is not None:
+            print_output_for_file(current_wallpaper, short=args.short)
+
+        if not args.loop:
+            break
+
+        previous_wallpaper = current_wallpaper
+        while True:
+            time.sleep(5)
+            current_wallpaper = get_wallpaper()
+            if current_wallpaper != previous_wallpaper:
+                break
+
+
+if __name__ == "__main__":
+    main()

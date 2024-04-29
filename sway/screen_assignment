@@ -1,0 +1,4 @@
+assign [class="Clementine"] workspace number 10
+assign [class="Spotify"] workspace number 10
+assign [class="Steam"] workspace number 2
+assign [class = "Thunderbird"] workspace number 0

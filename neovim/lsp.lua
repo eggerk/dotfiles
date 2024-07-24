@@ -40,7 +40,7 @@ require "lsp_signature".on_attach({
   }
 })
 
-local on_attach = function(client, bufnr)
+local lsp_on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -80,46 +80,64 @@ end
 
 require('cmp_nvim_lsp').default_capabilities()
 
-require('rust-tools').setup({
-  server = {
-    on_attach = on_attach,
-    settings = {
-      ['rust-analyzer'] = {
-        procMacro = {
-          attributes = {
-            enable = true,
-          },
-          enable = true,
-        }
-      }
-    }
-  },
-  tools = {
-    autoSetHints = true,
-    inlay_hints = {
-      only_current_line = false,
-      only_current_line_autocmd = "CursorHold",
-      show_parameter_hints = true,
-      parameter_hints_prefix = "◂ ",
-      other_hints_prefix = "▸ ",
-      highlight = "Comment",
-    },
-  },
-})
-
 nvim_lsp.pyright.setup {
-  on_attach = on_attach,
+  on_attach = lsp_on_attach,
 }
 nvim_lsp.clangd.setup {
-  on_attach = on_attach,
+  on_attach = lsp_on_attach,
   cmd = {'clangd-12', '--background-index'},
 }
 
-nvim_lsp.bashls.setup { on_attach = on_attach }
-nvim_lsp.jsonls.setup { on_attach = on_attach }
-nvim_lsp.yamlls.setup { on_attach = on_attach }
+nvim_lsp.bashls.setup { on_attach = lsp_on_attach }
+nvim_lsp.jsonls.setup { on_attach = lsp_on_attach }
+nvim_lsp.yamlls.setup { on_attach = lsp_on_attach }
+
+local rust_lsp_on_attach = function(client, bufnr)
+  lsp_on_attach(client, bufnr)
+
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  buf_set_keymap('n', '<space>k', "<cmd>lua vim.cmd.RustLsp('openDocs')<CR>", opts)
+  buf_set_keymap('n', '<space>p', "<cmd>lua vim.cmd.RustLsp('openCargo')<CR>", opts)
+end
+
+vim.g.rustaceanvim = function()
+  return {
+    -- Plugin configuration
+    tools = {
+    },
+    -- LSP configuration
+    server = {
+      on_attach = rust_lsp_on_attach,
+      default_settinigs = {
+        -- rust-analyzer language server configuration
+        ['rust-analyzer'] = {
+        },
+      },
+    },
+    -- DAP configuration
+    dap = {
+    },
+  }
+end
 
 require('dd').setup()
 
 require("mason").setup()
 require("mason-lspconfig").setup()
+require("lsp-endhints").setup {
+	icons = {
+		type = "▸ ",
+		parameter = "◂ ",
+	},
+	label = {
+		padding = 1,
+		marginLeft = 3,
+		bracketedParameters = true,
+	},
+	autoEnableHints = true,
+}

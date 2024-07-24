@@ -39,7 +39,15 @@ return require('packer').startup(function(use)
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
   }
-  use "simrat39/rust-tools.nvim"
+  use {
+    "chrisgrieser/nvim-lsp-endhints",
+  }
+  -- use "simrat39/rust-tools.nvim"
+  use {
+    "mrcjkb/rustaceanvim",
+    version = '^4',
+    disable = false,
+  }
   use "ray-x/lsp_signature.nvim"
   use "RRethy/vim-illuminate"
   use "yorickpeterse/nvim-dd" -- Defer diagnostics.

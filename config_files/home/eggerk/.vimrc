@@ -42,7 +42,7 @@ set hlsearch
 set incsearch " set incremental search, like modern browsers
 
 " switch syntax highlighting on
-syntax on
+" syntax on
 
 set autoindent " automatically set indent of new line
 set smartindent
@@ -81,7 +81,7 @@ au BufNewFile,BufRead *.tex setlocal colorcolumn=
 
 lua vim.cmd [[set runtimepath+=/home/eggerk/dotfiles/neovim]]
 luafile ~/dotfiles/neovim/packer_bootstrap.lua
-" lua print(vim.inspect(vim.api.nvim_list_runtime_paths()))
+
 lua require('plugins')
 
 let g:solarized_italic_comments = v:true

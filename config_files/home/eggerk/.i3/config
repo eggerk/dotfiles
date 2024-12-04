@@ -310,10 +310,13 @@ bindsym $mod+shift+p mode $power_mode
 
 # Pulse Audio controls.
 # See https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
-bindsym XF86AudioRaiseVolume exec --no-startup-id "audio_tools raise"
-bindsym XF86AudioLowerVolume exec --no-startup-id "audio_tools lower"
+# bindsym XF86AudioRaiseVolume exec --no-startup-id "audio_tools raise"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5%"
+# bindsym XF86AudioLowerVolume exec --no-startup-id "audio_tools lower"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -5%"
 bindsym XF86AudioMute exec --no-startup-id "audio_tools mute"
-bindsym $mod+F10 exec --no-startup-id "audio_tools volume_notification"
+# bindsym $mod+F10 exec --no-startup-id "audio_tools volume_notification"
+bindsym $mod+F10 exec --no-startup-id "paplay /usr/share/sounds/freedesktop/stereo/message.oga"
 bindsym $mod+F1 exec --no-startup-id "audio_tools next_input"
 
 # Screen brightness controls.
@@ -374,11 +377,11 @@ exec --no-startup-id "sleep 5; setxkbmap -model pc105 -layout us_umlaut -option 
 no_focus [class="Xfce4-notifyd"]
 
 # Compton
-exec_always --no-startup-id killall compton; compton --backend glx --paint-on-overlay --glx-no-stencil \
+exec_always --no-startup-id killall picom; picom --backend glx --glx-no-stencil \
                              --unredir-if-possible -b \
                              --config $dotfiles_path/compton/compton.conf
 
 # Disable caps lock because sometimes it reenables itself for some reason.
-exec_always --no-startup-id "python3 -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
+exec_always --no-startup-id "$dotfiles_path/tools/disable_capslock.py"
 
 exec_always --no-startup-id $dotfiles_path/tools/remap_keys

@@ -1,7 +1,7 @@
-set $dp DP-1
+set $dp DP-4
 set $hdmi HDMI-A-1
 
-output $dp mode 2560x1440
+output $dp mode 3840x2160 scale 1
 output $hdmi disable
 
 assign [app_id="at.yrlf.wl_mirror"] workspace mirror
@@ -9,8 +9,8 @@ workspace Mirror output $hdmi
 
 set $monitor_mode "Monitors: [1] auto, [2] mirror"
 mode $monitor_mode {
-  bindsym 1 exec pkill wl-mirror; output $dp mode 2560x1440; output $hdmi disable; mode "default"
-  bindsym 2 exec pkill wl-mirror; output $dp mode 1920x1080; output $hdmi enable; output $hdmi mode 1920x1080; exec wl-mirror --fullscreen $dp; mode "default"
+  bindsym 1 exec pkill wl-mirror; output $dp mode 3840x2160; output $hdmi disable; mode "default"
+  bindsym 2 exec pkill wl-mirror; output $dp mode 3840x2160; output $hdmi enable; output $hdmi mode 3840x2160; exec wl-mirror --fullscreen $dp; mode "default"
 
   # Back to normal: Enter or Escape.
   bindsym Return mode "default"

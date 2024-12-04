@@ -25,7 +25,7 @@ sudo pacman -S \
   rapid-photo-downloader \
   redshift \
   ripgrep \
-  rofi-calc \
+  skim \
   strawberry \
   sxiv \
   tree \

@@ -1,4 +1,9 @@
-assign [class="Clementine"] workspace number 10
+# Workspace assignments
+assign [class="steam"] workspace number 8
+assign [app_id="lutris"] workspace number 8
+assign [class = "thunderbird"] workspace number 0
 assign [class="Spotify"] workspace number 10
-assign [class="Steam"] workspace number 2
-assign [class = "Thunderbird"] workspace number 0
+assign [app_id="org.strawberrymusicplayer.strawberry"] workspace number 10
+assign [app_id="org.kde.digikam"] workspace number 2
+assign [title="Rapid Photo Downloader"] workspace number 2
+assign [class="Darktable"] workspace number 3

@@ -114,9 +114,16 @@ alias lx=exa
 alias ll='exa -l'
 alias lt='exa -TL4'
 
-for fzf_file in /usr/share/fzf/key-bindings.zsh /usr/share/fzf/completion.zsh /usr/share/doc/fzf/examples/completion.zsh /usr/share/doc/fzf/examples/key-bindings.zsh; do
-  [ -f "$fzf_file" ] && . "$fzf_file"
-done
+
+skim_file=/usr/share/skim/key-bindings.zsh
+if [ -f "$skim_file" ]; then
+  . "$skim_file"
+else
+  for fzf_file in  /usr/share/fzf/key-bindings.zsh /usr/share/fzf/completion.zsh /usr/share/doc/fzf/examples/completion.zsh /usr/share/doc/fzf/examples/key-bindings.zsh; do
+   [ -f "$fzf_file" ] && . "$fzf_file"
+  done
+fi
+unset skim_file
 
 # SSH agent.
 if [ ! -n "$SSH_CLIENT" ] && [ ! -n "$SSH_TTY" ]; then

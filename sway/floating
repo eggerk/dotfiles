@@ -2,15 +2,11 @@
 for_window [app_id="org.gnome.Calculator"] floating enable
 for_window [app_id="nm-connection-editor"] floating enable
 for_window [app_id="com.github.wwmm.easyeffects"] floating enable
+for_window [title = "Picture-in-Picture"] floating enable
+for_window [title = "Picture-in-Picture"] move position 70ppt 69ppt
+for_window [title = "Picture-in-Picture"] resize set 30ppt 30ppt
 
 # Thunderbird floating windows.
 for_window [window_role="EventSummaryDialog"] floating enable border normal
 for_window [window_role="EventDialog"] floating enable border normal
 for_window [window_role="Msgcompose"] floating enable border normal
-
-# Workspace assignments
-assign [class="steam"] workspace number 8
-assign [app_id="lutris"] workspace number 8
-assign [class = "thunderbird"] workspace number 0
-assign [class="Spotify"] workspace number 10
-assign [app_id="org.strawberrymusicplayer.strawberry"] workspace number 10

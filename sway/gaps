@@ -1,17 +1,16 @@
 smart_gaps inverse_outer
-exec_always $dotfiles_path/tools/set_gaps.sh
-gaps inner 5
-gaps outer 3
-gaps vertical 0
-gaps horizontal 200
+# exec_always $dotfiles_path/tools/set_gaps.sh
 gaps inner 10
+gaps outer 6
+gaps vertical 0
+gaps horizontal 0
 
 set $gaps_mode "Gaps: [S] Disable smart gaps, [s] Enable smart gaps, [,] Small gaps, [.] Large gaps, [<] Small gaps all, [>] Large gaps all"
 mode $gaps_mode {
-  bindsym comma  gaps outer current set 3; gaps horizontal current set 0; gaps inner current set 5 ; mode "default"
-  bindsym period gaps outer current set 0; gaps horizontal current set 200; gaps inner current set 10; mode "default"
-  bindsym Shift+comma  gaps outer all set 3; gaps horizontal all set 0; gaps inner all set 5 ; mode "default"
-  bindsym Shift+period gaps outer all set 0; gaps horizontal all set 200; gaps inner all set 10; mode "default"
+  bindsym comma  gaps outer current set 6; gaps horizontal current set 0; gaps inner current set 5 ; mode "default"
+  bindsym period gaps outer current set 0; gaps horizontal current set 10; gaps inner current set 10; mode "default"
+  bindsym Shift+comma  gaps outer all set 6; gaps horizontal all set 0; gaps inner all set 5 ; mode "default"
+  bindsym Shift+period gaps outer all set 0; gaps horizontal all set 10; gaps inner all set 10; mode "default"
   bindsym Return mode "default"
   bindsym Escape mode "default"
   bindsym $mod+g mode "default"

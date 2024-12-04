@@ -1,3 +1,4 @@
+[general]
 import = [
     "/usr/share/alacritty/themes/solarized_light.toml"
 ]
@@ -10,7 +11,7 @@ dynamic_title = true
 
 [font]
 normal = { family = "UbuntuMonoNerdFont", style = "Regular" }
-size = 12
+size = 16
 
 [cursor]
 style = { shape = "Block" }
@@ -23,3 +24,6 @@ bindings = [
   # { key = "Escape", mods = "None", mode = "Vi|~Search", action = "ToggleViMode" }
 ]
 
+
+[terminal]
+osc52 = "CopyPaste"

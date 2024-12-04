@@ -83,6 +83,8 @@ def load_all_exif_data(p: Path) -> Dict[str, str]:
                                      ('0th', piexif.ImageIFD.Make),
                                      ('0th', piexif.ImageIFD.Model),
                                  ), lambda x: ' '.join(s.decode() for s in x if s)),
+                                 ('lens', (('Exif', piexif.ExifIFD.LensModel), ),
+                                  lambda x: x[0].decode() if x[0] is not None else None),
                                  ('date_time_original',
                                   (('Exif', piexif.ExifIFD.DateTimeOriginal), ), format_date),
                                  ('focal_length', (('Exif', piexif.ExifIFD.FocalLength),
@@ -111,6 +113,7 @@ def print_output_for_file(file: Path, short: bool = False):
             f'<b>{title}</b>\t{exif_dict[key]}' for title, key in (
                 # ('󰄄', ''),
                 ('Camera\t\t', 'make_and_model'),
+                ('Lens\t\t', 'lens'),
                 ('Date\t\t', 'date_time_original'),
                 ('Focal length\t', 'focal_length'),
                 ('Aperture\t', 'f_number'),

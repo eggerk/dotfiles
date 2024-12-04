@@ -1,7 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    font-size: 18px;
 }
 
 window#waybar {
@@ -40,7 +40,7 @@ button {
     /* Avoid rounded borders under each button name */
     border: none;
     border-radius: 0;
-    min-width: 40px;
+    min-width: 80px;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -50,9 +50,9 @@ button:hover {
 }
 
 #workspaces button {
-    border-radius: 5px;
-    margin: 0 3px;
-    padding: 0 5px;
+    border-radius: 10px;
+    margin: 2 2px;
+    padding: 5 5px;
     background-color: transparent;
     color: #ffffff;
 }
@@ -103,7 +103,7 @@ button:hover {
 
 #window,
 #workspaces {
-    margin: 0 4px;
+    margin: 0 8px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -232,10 +232,10 @@ label:focus {
     padding: 0 5px;
 }
 #custom-previous-audio {
-    margin-right: 2px;
+    margin-right: 4px;
 }
 #custom-next-audio {
-    margin-left: 2px;
+    margin-left: 5px;
 }
 
 #custom-media.custom-spotify {
@@ -296,9 +296,9 @@ label:focus {
 #language {
     background: #00b093;
     color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
+    padding: 0 10px;
+    margin: 0 10px;
+    min-width: 32px;
 }
 
 #keyboard-state {
@@ -355,8 +355,8 @@ label:focus {
 .drawer-power > label {
   background: #e8422c;
   padding: 0 10px;
-  margin-right: 1px;
-  border-radius: 5px;
+  margin-right: 2px;
+  border-radius: 10px;
 }
 
 .drawer-hardware > label {

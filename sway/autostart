@@ -1,5 +1,6 @@
 exec --no-startup-id $dotfiles_path/tools/polkit.sh
-exec --no-startup-id wlsunset -l 47 -L 8 -t 5500
+# exec --no-startup-id wlsunset -l 47 -L 8 -t 5500
+exec --no-startup-id gammastep-indicator -l 47:8
 
 # Applets.
 exec --no-startup-id nm-applet

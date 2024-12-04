@@ -8,7 +8,11 @@
     // Choose the order of the modules
     "modules-left": [
         "network",
-        "group/hardware-info",
+        "temperature",
+        "disk",
+        "disk#home",
+        "cpu",
+        "memory",
         "sway/scratchpad",
         "sway/mode",
     ],
@@ -25,21 +29,6 @@
         "tray",
         "group/group-power",
     ],
-    "group/hardware-info": {
-        "orientation": "inherit",
-        "modules": [
-          "temperature",
-          "disk",
-          "disk#home",
-          "cpu",
-          "memory",
-        ],
-        "drawer": {
-          "transition-duration": 500,
-          "children-class": "drawer-hardware",
-          "transition-left-to-right": true,
-        },
-    },
     "group/audio": {
       "orientation": "inherit",
         "modules": [
@@ -292,11 +281,11 @@
     },
     "custom/photo-icon": {
       "format": "",
-      "exec": "$HOME/dotfiles/tools/waybar/wallpaper --loop --short 2> /dev/null",
+      "exec": "$HOME/dotfiles/waybar/wallpaper --loop --short 2> /dev/null",
       "return-type": "json",
     },
     "custom/wallpaper": {
-        "exec": "$HOME/dotfiles/tools/waybar/wallpaper --loop 2> /dev/null",
+        "exec": "$HOME/dotfiles/waybar/wallpaper --loop 2> /dev/null",
         "return-type": "json",
     },
 }

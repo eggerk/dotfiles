@@ -18,10 +18,12 @@ sudo pacman -S --noconfirm \
   cliphist \
   easyeffects \
   python-piexif \
-  wl-mirror
+  wl-mirror \
+  gammastep
 
 yay -S \
-  rofi-lbonn-wayland
-  rofi-power-menu
+  rofi-lbonn-wayland \
+  rofi-power-menu \
+  nwg-displays
 
 sudo systemctl enable greetd

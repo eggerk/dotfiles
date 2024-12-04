@@ -1,0 +1,11 @@
+[Unit]
+Description=Foo
+
+[Service]
+ExecStart=/home/eggerk/.local/share/eggerk_utils/set_wallpaper.sh
+Environment=DISPLAY=:0
+RuntimeDirectory=change-desktop-wallpaper
+RuntimeDirectoryPreserve=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+/////////////////////////////////////////////////////////////////////////////////
+//
+// Generated keyboard layout file with the Keyboard Layout Editor.
+// For more about the software, see http://code.google.com/p/keyboardlayouteditor
+//
+
+default partial alphanumeric_keys
+xkb_symbols "umlaut"
+{
+	name[Group1] = "English (US, Umlauts)";
+	include "us(basic)"
+	key <AC01> { [       NoSymbol,       NoSymbol,     adiaeresis,     Adiaeresis ] }; //   ä Ä 
+	key <AC10> { [       NoSymbol,       NoSymbol, dead_diaeresis                 ] }; //   D¨ 
+	key <AC11> { [       NoSymbol,       NoSymbol,     dead_acute                 ] }; //   D´ 
+	key <AD03> { [       NoSymbol,       NoSymbol,         eacute,         Eacute ] }; //   é É 
+	key <AD07> { [       NoSymbol,       NoSymbol,     udiaeresis,     Udiaeresis ] }; //   ü  
+	key <AD09> { [       NoSymbol,       NoSymbol,     odiaeresis,     Odiaeresis ] }; //   ö Ö 
+	key <AE04> { [       NoSymbol,       NoSymbol,       EuroSign,       sterling ] }; //   € £ 
+	key <AE06> { [       NoSymbol,       NoSymbol, dead_circumflex                 ] }; //   D^ 
+  key <AE10> { [       NoSymbol,       NoSymbol,       degree                   ] };
+  key <TLDE> { [       NoSymbol,       NoSymbol,     dead_grave,     dead_tilde ] }; //   D` D~ 
+	//key <LSGT> { [ dead_diaeresis                                                 ] }; // D¨ 
+
+  include "level3(ralt_switch)"
+};
+

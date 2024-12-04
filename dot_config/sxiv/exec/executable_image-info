@@ -1,0 +1,75 @@
+#!/bin/sh
+
+# Example for $XDG_CONFIG_HOME/sxiv/exec/image-info
+# Called by sxiv(1) whenever an image gets loaded.
+# The output is displayed in sxiv's status bar.
+# Arguments:
+#   $1: path to image file
+#   $2: image width
+#   $3: image height
+
+s="  " # field separator
+
+if [ -n "$SXIV_OPEN_FILE" ]; then
+  echo "$1" > "$SXIV_OPEN_FILE"
+fi
+
+exec 2>/dev/null
+
+filename=$(basename -- "$1")
+filesize=$(du -Hh -- "$1" | cut -f 1)
+geometry="${2}x${3}"
+
+
+exif_data="$(exiv2 -g Exif.Photo.DateTimeOriginal \
+                   -g Image.Make \
+                   -g Image.Model \
+                   -g Exif.Photo.FocalLength\$ \
+                   -g Exif.Photo.FocalLengthIn35mmFilm \
+                   -g FNumber  \
+                   -g Exif.Photo.ExposureTime \
+                   -g Exif.Photo.ExposureBiasValue \
+                   -g Exif.Photo.ExposureBiasValue \
+                   -g Exif.Photo.ISOSpeedRatings \
+                   -Pnt "$1")"
+
+extract_exif_from_string() {
+  local name="$1"
+  echo "$exif_data" | sed -n "/$name/ s/[A-Za-z0-9]*\s*//p"
+}
+
+created="$(extract_exif_from_string DateTimeOriginal | tr : -)"
+make="$(extract_exif_from_string Make)"
+model="$(extract_exif_from_string Model)"
+focal_length="$(extract_exif_from_string FocalLength\ )"
+focal_length_35mm="$(extract_exif_from_string FocalLengthIn35mmFilm)"
+aperture="$(extract_exif_from_string FNumber)"
+exposure="$(extract_exif_from_string ExposureTime)"
+exposure_bias="$(extract_exif_from_string ExposureBiasValue)"
+
+echo -n "${filename}${s}${filesize}${s}${geometry}"
+if [ -n "$created" ]; then
+  echo -n "$s$created"
+fi
+if [ -n "$make" ]; then
+  echo -n "$s$make"
+  if [ -n "$model" ]; then
+    echo -n " $model"
+  fi
+fi
+if [ -n "$focal_length" ]; then
+  echo -n "$s$focal_length"
+  if [ -n "$focal_length_35mm" ]; then
+    echo " ($focal_length_35mm)"
+  fi
+fi
+
+for val in "$aperture" "$exposure" "$exposure_bias"; do
+  if [ -n "$val" ]; then
+    echo -n "$s$val"
+  fi
+done
+
+if [ -n "$iso" ]; then
+  echo -n "r{s}ISO $iso"
+fi

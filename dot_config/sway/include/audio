@@ -1,0 +1,26 @@
+# Pulse Audio controls.
+# See https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
+# bindsym XF86AudioRaiseVolume exec --no-startup-id "audio_tools raise"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5%"
+# bindsym XF86AudioLowerVolume exec --no-startup-id "audio_tools lower"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -5%"
+#bindsym XF86AudioMute exec --no-startup-id "audio_tools mute"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
+# bindsym $mod+F10 exec --no-startup-id "audio_tools volume_notification"
+bindsym $mod+F10 exec --no-startup-id "paplay /usr/share/sounds/freedesktop/stereo/message.oga"
+bindsym $mod+F1 exec --no-startup-id "audio_tools next_input"
+
+# Media player controls
+# Needs https://github.com/acrisci/playerctl/releases
+set $mediactrl_path media_control
+bindsym XF86AudioPlay exec $mediactrl_path play-pause
+bindsym XF86AudioPause exec $mediactrl_path pause
+bindsym XF86AudioNext exec $mediactrl_path next
+bindsym Ctrl+XF86AudioNext exec $mediactrl_path next_player
+bindsym XF86AudioPrev exec $mediactrl_path previous
+bindsym Ctrl+XF86AudioPrev exec $mediactrl_path previous_player
+bindsym $mod+Shift+s exec $mediactrl_path play-pause
+bindsym $mod+Shift+d exec $mediactrl_path next
+bindsym $mod+Ctrl+d exec $mediactrl_path next_player
+bindsym $mod+Shift+a exec $mediactrl_path previous
+bindsym $mod+Ctrl+a exec $mediactrl_path previous_player

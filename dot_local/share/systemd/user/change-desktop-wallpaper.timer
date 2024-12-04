@@ -1,0 +1,11 @@
+[Unit]
+Description=Change desktop wallpaper every 30min
+Requires=change-desktop-wallpaper.service
+
+[Timer]
+OnCalendar=*-*-* *:00:00
+OnCalendar=*-*-* *:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

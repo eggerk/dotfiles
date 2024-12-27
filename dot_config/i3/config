@@ -4,8 +4,7 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-set $dotfiles_path /home/eggerk/dotfiles
-set $terminal /home/eggerk/dotfiles/tools/i3-sensible-terminal
+set $terminal alacritty
 
 # i3 config file (v4) #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -138,20 +137,20 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 # Move workspace to other monitor.
 bindsym $mod+Shift+m move workspace to output right
 
-set $monitor_mode "Monitors: [1] auto, [2] internal only, [3] external only, [4] expand, [5] mirror"
-bindsym $mod+m mode $monitor_mode
-mode  $monitor_mode{
-  bindsym 1 exec $dotfiles_path/tools/xrandr.sh auto ; mode "default"
-  bindsym 2 exec $dotfiles_path/tools/xrandr.sh internal ; mode "default"
-  bindsym 3 exec $dotfiles_path/tools/xrandr.sh external ; mode "default"
-  bindsym 4 exec $dotfiles_path/tools/xrandr.sh expand ; mode "default"
-  bindsym 5 exec $dotfiles_path/tools/xrandr.sh mirror ; mode "default"
-
-  # Back to normal: Enter or Escape.
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym $mod+m mode "default"
-}
+# set $monitor_mode "Monitors: [1] auto, [2] internal only, [3] external only, [4] expand, [5] mirror"
+# bindsym $mod+m mode $monitor_mode
+# mode $monitor_mode {
+#   bindsym 1 exec /home/eggerk/.share/eg/tools/xrandr.sh auto ; mode "default"
+#   bindsym 2 exec $dotfiles_path/tools/xrandr.sh internal ; mode "default"
+#   bindsym 3 exec $dotfiles_path/tools/xrandr.sh external ; mode "default"
+#   bindsym 4 exec $dotfiles_path/tools/xrandr.sh expand ; mode "default"
+#   bindsym 5 exec $dotfiles_path/tools/xrandr.sh mirror ; mode "default"
+#
+#   # Back to normal: Enter or Escape.
+#   bindsym Return mode "default"
+#   bindsym Escape mode "default"
+#   bindsym $mod+m mode "default"
+# }
 
 exec i3 workspace $workspace1
 
@@ -210,7 +209,6 @@ client.background #2B2C2B
 
 # Gaps.
 smart_gaps inverse_outer
-exec_always $dotfiles_path/tools/set_gaps.sh
 gaps inner 5
 gaps outer 3
 
@@ -282,17 +280,17 @@ for_window [window_role="EventDialog"] floating enable border normal
 for_window [window_role="Msgcompose"] floating enable border normal
 
 # Autostart applications
-exec --no-startup-id $dotfiles_path/tools/polkit.sh
+exec --no-startup-id /home/eggerk/.local/share/eggerk_utils/tools/polkit.sh
 exec --no-startup-id xfce4-power-manager
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 # Lock computer.
-bindsym $mod+Shift+x exec $dotfiles_path/tools/lock.sh
+bindsym $mod+Shift+x exec i3lock
 set $power_mode "Power menu: [x] lock; [l]ogout; [s]uspend; [r]eboot; [p]oweroff"
 mode $power_mode {
   # Lock.
-  bindsym x exec $dotfiles_path/tools/lock.sh, mode "default"
+  bindsym x exec i3lock, mode "default"
   # Logout.
   bindsym l exec i3-msg exit
   # Reboot.
@@ -300,7 +298,7 @@ mode $power_mode {
   # Power off.
   bindsym p exec systemctl poweroff
   # Suspend.
-  bindsym s exec $dotfiles_path/tools/lock.sh, exec "sleep 0.2s; exec systemctl suspend", mode "default"
+  bindsym s exec i3lock, exec "sleep 0.2s; exec systemctl suspend", mode "default"
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
@@ -320,15 +318,15 @@ bindsym $mod+F10 exec --no-startup-id "paplay /usr/share/sounds/freedesktop/ster
 bindsym $mod+F1 exec --no-startup-id "audio_tools next_input"
 
 # Screen brightness controls.
-bindsym XF86MonBrightnessUp exec $dotfiles_path/X/acpilight/xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec $dotfiles_path/X/acpilight/xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 # Touchpad controls.
-bindsym $mod+shift+t exec $dotfiles_path/tools/toggle_touchpad.sh
+# bindsym $mod+shift+t exec $dotfiles_path/tools/toggle_touchpad.sh
 
 # Media player controls
 # Needs https://github.com/acrisci/playerctl/releases
-set $mediactrl_path media_control
+set $mediactrl_path /home/eggerk/.cargo/bin/media_control
 bindsym XF86AudioPlay exec $mediactrl_path play-pause
 bindsym XF86AudioPause exec $mediactrl_path pause
 bindsym XF86AudioNext exec $mediactrl_path next
@@ -340,11 +338,10 @@ bindsym $mod+Shift+d exec $mediactrl_path next
 bindsym $mod+Ctrl+d exec $mediactrl_path next_player
 bindsym $mod+Shift+a exec $mediactrl_path previous
 bindsym $mod+Ctrl+a exec $mediactrl_path previous_player
-bindsym $mod+shift+slash exec $dotfiles_path/tools/vlc_youtube_comment_to_notification.sh
 
-exec $dotfiles_path/tools/xrandr.sh
-exec_always --no-startup-id $dotfiles_path/tools/set-wallpaper.sh
-exec --no-startup-id "$dotfiles_path/tools/set-wallpaper.sh startup"
+# exec $dotfiles_path/tools/xrandr.sh
+# exec_always --no-startup-id $dotfiles_path/tools/set-wallpaper.sh
+# exec --no-startup-id "$dotfiles_path/tools/set-wallpaper.sh startup"
 exec xbindkeys
 
 # Applets.
@@ -352,10 +349,9 @@ exec --no-startup-id nm-applet
 exec --no-startup-id redshift-gtk
 exec --no-startup-id blueman-applet
 exec --no-startup-id "/home/eggerk/.local/share/tresorit/tresorit --hidden"
-exec --no-startup-id "udiskie --tray --config=$dotfiles_path/misc/udiskie.yml"
+exec --no-startup-id "udiskie --tray"
 
 # Start firefox, sleep a while for wifi connection to be ready.
-exec "$dotfiles_path/tools/start-communication.sh"
 exec "sleep 2; i3-msg 'workspace 1; exec firefox'"
 assign [class = "Thunderbird"] $workspace0
 assign [class = "google-chat-nativefier.*"] $workspace0
@@ -378,10 +374,4 @@ no_focus [class="Xfce4-notifyd"]
 
 # Compton
 exec_always --no-startup-id killall picom; picom --backend glx --glx-no-stencil \
-                             --unredir-if-possible -b \
-                             --config $dotfiles_path/compton/compton.conf
-
-# Disable caps lock because sometimes it reenables itself for some reason.
-exec_always --no-startup-id "$dotfiles_path/tools/disable_capslock.py"
-
-exec_always --no-startup-id $dotfiles_path/tools/remap_keys
+                             --unredir-if-possible -b

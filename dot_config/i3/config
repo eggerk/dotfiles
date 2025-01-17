@@ -375,3 +375,5 @@ no_focus [class="Xfce4-notifyd"]
 # Compton
 exec_always --no-startup-id killall picom; picom --backend glx --glx-no-stencil \
                              --unredir-if-possible -b
+
+include /home/eggerk/.config/i3/include/display

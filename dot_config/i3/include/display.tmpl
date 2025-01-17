@@ -1,0 +1,17 @@
+set $dp {{.main_screen}}
+set $hdmi {{.external_screen}}
+
+exec xrandr --output $dp --mode {{.default_resolution}} --output $hdmi --off
+
+
+set $monitor_mode "Monitors: [1] auto, [2] mirror, [3] external only"
+mode $monitor_mode {
+  bindsym 1 exec "xrandr --output $dp --mode {{.default_resolution}}; xrandr --output $hdmi --off"; mode "default"
+  bindsym 3 exec "xrandr --output $hdmi --mode {{.external_resolution}}; xrandr --output $dp --off"; mode "default"
+
+  # Back to normal: Enter or Escape.
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+m mode "default"
+}
+bindsym $mod+m mode $monitor_mode

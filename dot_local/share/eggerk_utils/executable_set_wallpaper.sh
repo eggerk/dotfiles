@@ -15,4 +15,8 @@ if [ -d "$runtime_dir" ]; then
   ls -l "$runtime_dir" > /home/eggerk/bar
 fi
 
-swaymsg output '*' bg "$pic" fill
+if pgrep i3 > /dev/null; then
+  feh --bg-fill "$pic"
+else
+  swaymsg output '*' bg "$pic" fill
+fi

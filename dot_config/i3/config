@@ -286,11 +286,11 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 # Lock computer.
-bindsym $mod+Shift+x exec i3lock
+bindsym $mod+Shift+x exec i3lock -c 000000
 set $power_mode "Power menu: [x] lock; [l]ogout; [s]uspend; [r]eboot; [p]oweroff"
 mode $power_mode {
   # Lock.
-  bindsym x exec i3lock, mode "default"
+  bindsym x exec i3lock -c 000000, mode "default"
   # Logout.
   bindsym l exec i3-msg exit
   # Reboot.
@@ -298,7 +298,7 @@ mode $power_mode {
   # Power off.
   bindsym p exec systemctl poweroff
   # Suspend.
-  bindsym s exec i3lock, exec "sleep 0.2s; exec systemctl suspend", mode "default"
+  bindsym s exec i3lock -c 000000, exec "sleep 0.2s; exec systemctl suspend", mode "default"
 
   bindsym Return mode "default"
   bindsym Escape mode "default"

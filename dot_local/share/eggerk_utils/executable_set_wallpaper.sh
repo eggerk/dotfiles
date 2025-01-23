@@ -12,7 +12,6 @@ fi
 
 if [ -d "$runtime_dir" ]; then
   ln -fs "$pic" "$runtime_dir"/current_wallpaper
-  ls -l "$runtime_dir" > /home/eggerk/bar
 fi
 
 if pgrep i3 > /dev/null; then

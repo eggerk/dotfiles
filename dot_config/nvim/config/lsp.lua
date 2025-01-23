@@ -85,7 +85,7 @@ nvim_lsp.pyright.setup {
 }
 nvim_lsp.clangd.setup {
   on_attach = lsp_on_attach,
-  cmd = {'clangd-12', '--background-index'},
+  cmd = {'clangd', '--background-index'},
 }
 
 nvim_lsp.bashls.setup { on_attach = lsp_on_attach }

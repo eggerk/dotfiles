@@ -1,0 +1,6 @@
+[[language]]
+name = "rust"
+
+[language.config.rust.inlayHints]
+enable = true
+type_hints = true

@@ -1,0 +1,58 @@
+theme = "solarized_light"
+
+[editor]
+line-number = "relative"
+cursorline = true
+#cursorcolumn = true
+path-completion = true
+rulers = [100]
+bufferline = "always"
+color-modes = true
+end-of-line-diagnostics = "hint"
+auto-pairs = false
+
+[editor.statusline]
+left = [
+  "mode",
+  "spinner",
+  "file-name",
+  "read-only-indicator",
+  "file-modification-indicator",
+  "version-control",
+]
+center = []
+right = [
+  "diagnostics",
+  "selections",
+  "register",
+  "file-type",
+  "position",
+  "total-line-numbers",
+  "file-encoding",
+]
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+other-lines = "error"
+
+[editor.whitespace]
+render = { newline = "all" }
+
+[editor.indent-guides]
+render = true
+
+[editor.gutters]
+layout = [
+  "diagnostics",
+  "line-numbers",
+  "diff",
+]
+
+[keys.normal.space]
+i = ":toggle lsp.display-inlay-hints"

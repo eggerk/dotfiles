@@ -7,10 +7,11 @@ output $hdmi disable
 assign [app_id="at.yrlf.wl_mirror"] workspace mirror
 workspace Mirror output $hdmi
 
-set $monitor_mode "Monitors: [1] auto, [2] mirror"
+set $monitor_mode "Monitors: [1] auto, [2] mirror, [3] external"
 mode $monitor_mode {
   bindsym 1 exec pkill wl-mirror; output $dp mode {{.default_resolution}}; output $hdmi disable; mode "default"
   bindsym 2 exec pkill wl-mirror; output $dp mode {{.mirror_resolution}}; output $hdmi enable; output $hdmi mode {{.mirror_resolution}}; exec wl-mirror --fullscreen $dp; mode "default"
+  bindsym 3 exec pkill wl-mirror; output $dp off ; output $hdmi enable; output $hdmi mode {{.mirror_resolution}}; mode "default"
 
   # Back to normal: Enter or Escape.
   bindsym Return mode "default"

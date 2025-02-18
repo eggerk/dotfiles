@@ -1,6 +1,5 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/eggerk/.oh-my-zsh
-export TERM=xterm-256color
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -125,6 +124,7 @@ else
 fi
 unset skim_file
 
+alias ssh='TERM=xterm-256color ssh'
 # SSH agent.
 if [ ! -n "$SSH_CLIENT" ] && [ ! -n "$SSH_TTY" ]; then
   sock=$XDG_RUNTIME_DIR/ssh-agent.socket

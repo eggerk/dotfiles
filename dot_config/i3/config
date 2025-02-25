@@ -342,6 +342,7 @@ bindsym $mod+Ctrl+a exec $mediactrl_path previous_player
 # exec $dotfiles_path/tools/xrandr.sh
 # exec_always --no-startup-id $dotfiles_path/tools/set-wallpaper.sh
 # exec --no-startup-id "$dotfiles_path/tools/set-wallpaper.sh startup"
+exec --no-startup-id "systemctl --user start change-desktop-wallpaper.service"
 exec xbindkeys
 
 # Applets.

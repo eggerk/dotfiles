@@ -87,7 +87,9 @@ fi
 
 if grep -q Ubuntu /etc/os-release; then
   # Assume distrobox context
-  source ~/.local/share/eggerk_utils/setupros.sh
+  function setupros() {
+    source ~/.local/share/eggerk_utils/setupros.sh
+  }
 
   export CARGO_HOME=/home/eggerk/work/.cargo
   source "/home/eggerk/work/.cargo/env"
@@ -145,21 +147,6 @@ alias kitty_image='kitty +kitten icat'
 if which g++-8 > /dev/null; then
   export CXX="g++-8"
 fi
-
-# Keep title from `fg` to original jobname.
-function preexec_fg_title {
-  local fg_title
-  if [[ $* == fg* ]]; then
-     if [[ $* == *%* ]]; then
-        fg_title=($(jobs ${${(z)1}[2]})) 2> /dev/null
-     else
-        fg_title=($(jobs %%)) 2> /dev/null
-     fi
-     title "${fg_title[4,-1]}"
-  else
-     title $*
-  fi
-}
 
 preexec_functions+=(preexec_fg_title)
 

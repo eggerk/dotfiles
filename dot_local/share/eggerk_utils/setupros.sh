@@ -16,7 +16,7 @@ function ckrelease() {
 
 for folder in /home/eggerk/ros2_ws \
               /home/eggerk/work/ros2_ws; do
-  if [ -d "$folder"/devel ] ; then
+  if [ -d "$folder"/install ] ; then
     export ROS_WS="$folder"
   fi
 done
@@ -28,10 +28,10 @@ ROS_DISTRO="humble"
 setupros() {
   if [ "$SHELL" = "/bin/bash" ] ; then
     ROS_OPT_FILE="/opt/ros/${ROS_DISTRO}/setup.bash"
-    ROS_DEVEL_FILE="${ROS_WS}/devel/setup.bash"
+    ROS_DEVEL_FILE="${ROS_WS}/install/setup.bash"
   else
     ROS_OPT_FILE="/opt/ros/${ROS_DISTRO}/setup.zsh"
-    ROS_DEVEL_FILE="${ROS_WS}/devel/setup.zsh"
+    ROS_DEVEL_FILE="${ROS_WS}/install/setup.zsh"
   fi
   if [ -f $ROS_OPT_FILE ]; then
     source $ROS_OPT_FILE

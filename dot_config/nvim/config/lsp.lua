@@ -80,6 +80,8 @@ end
 
 require('cmp_nvim_lsp').default_capabilities()
 
+nvim_lsp.typos_lsp.setup{}
+
 nvim_lsp.pyright.setup {
   on_attach = lsp_on_attach,
 }
@@ -140,4 +142,30 @@ require("lsp-endhints").setup {
 		bracketedParameters = true,
 	},
 	autoEnableHints = true,
+}
+
+
+local cspell = require('cspell')
+local cspell_config = {
+  ---@param payload AddToJSONSuccess
+  on_add_to_json = function(payload)
+      -- For example, you can format the cspell config file after you add a word
+      os.execute(
+          string.format(
+              "jq --indent 4 -S '.words |= sort_by(ascii_upcase)' %s > %s.tmp && mv %s.tmp %s",
+              payload.cspell_config_path,
+              payload.cspell_config_path,
+              payload.cspell_config_path,
+              payload.cspell_config_path
+          )
+      )
+  end
+}
+
+local null_ls = require("null-ls")
+null_ls.setup {
+    sources = {
+        cspell.diagnostics.with({ config = cspell_config }),
+        cspell.code_actions.with({ config = cspell_config }),
+    }
 }

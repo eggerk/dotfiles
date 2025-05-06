@@ -42,6 +42,28 @@ return require('packer').startup(function(use)
   use {
     "chrisgrieser/nvim-lsp-endhints",
   }
+  use {
+    "nvimtools/none-ls.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "davidmh/cspell.nvim"
+    },
+    config = function(_, opts)
+      local cspell = require("cspell")
+      opts.sources = opts.sources or {}
+      table.insert(
+        opts.sources,
+        cspell.diagnostics.with({
+          diagnostics_postprocess = function(diagnostic)
+            diagnostic.severity = vim.diagnostic.severity.HINT
+          end,
+        })
+      )
+      table.insert(opts.sources, cspell.code_actions)
+    end,
+  }
+  use "davidmh/cspell.nvim"
+
   -- use "simrat39/rust-tools.nvim"
   use {
     "mrcjkb/rustaceanvim",

@@ -47,11 +47,11 @@ set incsearch " set incremental search, like modern browsers
 set autoindent " automatically set indent of new line
 set smartindent
 
-" set tab == 2 spaces
-set tabstop=2
-set softtabstop=2
+" set tab == 4 spaces
+set tabstop=4
+set softtabstop=4
 set expandtab
-set shiftwidth=2
+set shiftwidth=4
 set smarttab
 
 set laststatus=2 " show the satus line all the time
@@ -79,18 +79,16 @@ au BufNewFile,BufRead *.tex setlocal colorcolumn=
 "     \ setlocal nornu |
 "     \ setlocal number |
 
-lua vim.cmd [[set runtimepath+=/home/eggerk/.config/nvim/config]]
-luafile ~/.config/nvim/config/packer_bootstrap.lua
-
-lua require('plugins')
-
-let g:solarized_italic_comments = v:true
-let g:solarized_disable_background = v:true
-colorscheme solarized
+" lua vim.cmd [[set runtimepath+=/home/eggerk/.config/nvim/config]]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+lua require("config.lazy")
+
+let g:solarized_italic_comments = v:true
+let g:solarized_disable_background = v:true
+
 " Format
 noremap <C-F> V:Autoformat<cr>
 imap <C-F> <c-o>V:Autoformat<cr>
@@ -101,19 +99,18 @@ let g:autoformat_remove_trailing_spaces = 0
 let g:formatters_python=['yapf']
 let g:formatdef_yapf = '"yapf --style /usr/share/sevensense_linter/yapf_style_100_column_length.cfg"'
 
-luafile ~/.config/nvim/config/lualine.lua
-luafile ~/.config/nvim/config/other_plugin_config.lua
+" luafile ~/.config/nvim/lua/telescope_settings.lua
+
+luafile ~/.config/nvim/lua/other_plugin_config.lua
 
 set completeopt=menu,menuone,noselect,noinsert,preview
 
-luafile ~/.config/nvim/config/lsp.lua
-lua require('treesitter')
+luafile ~/.config/nvim/lua/lsp_config.lua
 
 " Avoid showing message extra message when using completion
 set shortmess+=c
 
 " Telescope
-luafile ~/.config/nvim/config/telescope_settings.lua
 
 " snippets
 " Jump forward or backward

@@ -1,0 +1,17 @@
+exec --no-startup-id /home/eggerk/.config/eggerk_utils/polkit.sh
+# exec --no-startup-id wlsunset -l 47 -L 8 -t 5500
+exec --no-startup-id gammastep-indicator -l 47:8
+
+# Applets.
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id "/home/eggerk/.local/share/tresorit/tresorit --hidden"
+exec --no-startup-id "udiskie --tray"
+exec --no-startup-id kdeconnect-indicator
+
+# Start firefox, sleep a while for wifi connection to be ready.
+exec "sleep 2; swaymsg 'workspace 1; exec firefox'"
+
+exec_always "/home/eggerk/.local/share/eggerk_utils/set_wallpaper.sh"
+
+exec cliphist wipe && wl-paste --watch cliphist store

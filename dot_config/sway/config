@@ -1,0 +1,2 @@
+include /home/eggerk/.config/sway/include/*
+include /etc/sway/config.d/*

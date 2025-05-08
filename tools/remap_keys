@@ -1,6 +1,0 @@
-# Map button 9 (top side button) to button 2 (middle button)
-logitech_mx_master=$(xinput | grep "Logitech MX Master" | grep pointer | awk {'print substr($6,4,2)'})
-xinput set-button-map $logitech_mx_master 1 2 3 4 5 10 13 8 9 10 11 12 13 14 15 16
-
-# logitech_m705=$(xinput | grep "Logitech M705" | grep pointer | awk {'print substr($5,4,2)'})
-# xinput set-button-map $logitech_m705 1 2 3 4 5 6 7 8 9 13 11 12 10 14 15 16

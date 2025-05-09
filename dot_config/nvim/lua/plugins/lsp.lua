@@ -18,16 +18,23 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            {
-                "williamboman/mason.nvim",
-            },
-            {
-                "williamboman/mason-lspconfig.nvim",
-            },
+            -- {
+            --     "williamboman/mason.nvim",
+            -- },
+            -- {
+            --     "williamboman/mason-lspconfig.nvim",
+            -- },
         },
         -- config = function()
             -- luafile ~/.config/nvim/lua/lsp_config.lua
         -- end
+    },
+    {
+        "mason-org/mason.nvim",
+        opts = {},
+    },
+    {
+        "mason-org/mason-lspconfig.nvim",
     },
     {
         "chrisgrieser/nvim-lsp-endhints",

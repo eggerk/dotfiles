@@ -115,6 +115,7 @@ alias lx=exa
 alias ll='exa -l'
 alias lt='exa -TL4'
 
+alias ops='eval $(op signin)'
 
 skim_file=/usr/share/skim/key-bindings.zsh
 if [ -f "$skim_file" ]; then

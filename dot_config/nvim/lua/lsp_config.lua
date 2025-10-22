@@ -48,14 +48,19 @@ require('cmp_nvim_lsp').default_capabilities()
 vim.lsp.config('pyright', {
   on_attach = lsp_on_attach,
 })
+vim.lsp.enable('pyright')
 vim.lsp.config('clangd', {
   on_attach = lsp_on_attach,
   cmd = {'clangd', '--background-index'},
 })
+vim.lsp.enable('clangd')
 
 vim.lsp.config('bashls', { on_attach = lsp_on_attach })
+vim.lsp.enable('bashls')
 vim.lsp.config('jsonls', { on_attach = lsp_on_attach })
+vim.lsp.enable('jsonls')
 vim.lsp.config('yamlls', { on_attach = lsp_on_attach })
+vim.lsp.enable('yamlls')
 
 local rust_lsp_on_attach = function(client, bufnr)
   lsp_on_attach(client, bufnr)

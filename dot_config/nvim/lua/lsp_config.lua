@@ -1,5 +1,3 @@
-local nvim_lsp = require('lspconfig')
-
 require "lsp_signature".on_attach({
   bind = true,
   handler_opts = {
@@ -47,17 +45,17 @@ end
 
 require('cmp_nvim_lsp').default_capabilities()
 
-nvim_lsp.pyright.setup {
+vim.lsp.config('pyright', {
   on_attach = lsp_on_attach,
-}
-nvim_lsp.clangd.setup {
+})
+vim.lsp.config('clangd', {
   on_attach = lsp_on_attach,
   cmd = {'clangd', '--background-index'},
-}
+})
 
-nvim_lsp.bashls.setup { on_attach = lsp_on_attach }
-nvim_lsp.jsonls.setup { on_attach = lsp_on_attach }
-nvim_lsp.yamlls.setup { on_attach = lsp_on_attach }
+vim.lsp.config('bashls', { on_attach = lsp_on_attach })
+vim.lsp.config('jsonls', { on_attach = lsp_on_attach })
+vim.lsp.config('yamlls', { on_attach = lsp_on_attach })
 
 local rust_lsp_on_attach = function(client, bufnr)
   lsp_on_attach(client, bufnr)

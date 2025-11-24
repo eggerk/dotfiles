@@ -86,6 +86,9 @@ vim.g.rustaceanvim = function()
       default_settinigs = {
         -- rust-analyzer language server configuration
         ['rust-analyzer'] = {
+          cargo = {
+            features =  'all'
+          }
         },
       },
     },

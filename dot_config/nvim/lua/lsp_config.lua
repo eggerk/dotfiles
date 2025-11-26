@@ -83,7 +83,7 @@ vim.g.rustaceanvim = function()
     -- LSP configuration
     server = {
       on_attach = rust_lsp_on_attach,
-      default_settinigs = {
+      default_settings = {
         -- rust-analyzer language server configuration
         ['rust-analyzer'] = {
           cargo = {

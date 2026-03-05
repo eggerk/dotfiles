@@ -90,14 +90,9 @@ let g:solarized_italic_comments = v:true
 let g:solarized_disable_background = v:true
 
 " Format
-noremap <C-F> V:Autoformat<cr>
-imap <C-F> <c-o>V:Autoformat<cr>
-let g:formatdef_clangformat='"clang-format-12 -style=file -fallback-style=google"'
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
-let g:formatters_python=['yapf']
-let g:formatdef_yapf = '"yapf --style /usr/share/sevensense_linter/yapf_style_100_column_length.cfg"'
 
 " luafile ~/.config/nvim/lua/telescope_settings.lua
 

@@ -73,6 +73,9 @@ local rust_lsp_on_attach = function(client, bufnr)
 
   buf_set_keymap('n', '<space>k', "<cmd>lua vim.cmd.RustLsp('openDocs')<CR>", opts)
   buf_set_keymap('n', '<space>p', "<cmd>lua vim.cmd.RustLsp('openCargo')<CR>", opts)
+  -- Use LSP for formatting for Rust because the edition is not picked up correctly through the AutoFormat plugin.
+  -- Maybe this could have been solved via rustfmt config file, but it's not nice to have to add one everywhere.
+  buf_set_keymap('n', '<C-F>', "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 end
 
 vim.g.rustaceanvim = function()
